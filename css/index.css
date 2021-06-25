@@ -1,0 +1,59 @@
+body {
+  background-image: url("../ressources/plannet_logo_mitBackback.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: "Source Code Pro";
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  color: white;
+}
+
+input[type="submit"] {
+  background-color: #ADD3F7;
+  font-family: "Source Code Pro";
+  background-color: #F7BFBF;
+  border-radius: 25pt;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+  float: left;
+  margin: 3%;
+}
+
+div.btn {
+  position: relative;
+  left: 48%;
+  width: min-content;
+}
+
+h1 {
+  font-family: "Pacifico";
+  font-weight: normal;
+  color: #ADD3F7;
+  width: min-content;
+  margin: auto;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 99%;
+}
+
+div.footer-elements {
+  float: right;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: blue;
+  text-decoration: underline;
+}

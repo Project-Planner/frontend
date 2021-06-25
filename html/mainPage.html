@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main Page</title>
+  <link rel="stylesheet" href="../css/mainPage.css">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+</head>
+
+<body>
+  <div class="logo">
+    <img src="../ressources/plannet_logo_mitBack1.png" alt="">
+  </div>
+  <div class="viewToggle">
+
+    <p>Kalenderansicht</p>
+    <label class="switch">
+      <input type="checkbox">
+      <span class=" slider round"></span>
+    </label>
+    <p>Projektansicht</p>
+  </div>
+
+  <div class="timeToggle">
+    <p>Zeitraum</p>
+    <input type="radio" class="stv-radio-button" name="timeframeSelect" checked />
+    <input type="radio" class="stv-radio-button" name="timeframeSelect" />
+    <input type="radio" class="stv-radio-button" name="timeframeSelect" />
+  </div>
+
+  <input type="image" src="../ressources/user.png" class="userIcon"></input>
+  <form class="" action="login.html">
+    <input type="image" src="../ressources/logout.png" class="logoutIcon"></input>
+  </form>
+
+  <div class="dropdown">
+    <button class="dropbtn">Meine Kalender</button>
+    <div class="dropdown-content">
+
+      <div class="dropdown-entry">
+        <p>Arbeit</p>
+
+        <input type="checkbox">
+      </div>
+
+      <div class="dropdown-entry">
+        <p>Privat</p>
+        <input type="checkbox">
+      </div>
+
+      <div class="dropdown-entry">
+        <p>DHBW</p>
+        <input type="checkbox">
+      </div>
+    </div>
+  </div>
+
+  <form class="search" action="mainPage.html" method="post">
+    <p>Andere Kalender</p>
+    <input type="search" name="Suche" value="Suche">
+  </form>
+
+  <div class="add">
+    <p>Hinzufügen</p>
+
+    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Kalender/Projekt</a>
+    <br>
+    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Aufgabe</a>
+    <br>
+    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Unteraufgabe</a>
+    <br>
+    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Termin</a>
+    <br>
+    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Meilenstein</a>
+
+  </div>
+  <iframe src="../html/CalendarView.html" frameBorder="0"></iframe>
+  <footer>
+    <hr>
+    </hr>
+    <div class="footer-elements">
+      <a href="#">Einstellungen</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="impressum.html">Impressum</a>
+    </div>
+  </footer>
+
+</body>
+
+</html>
