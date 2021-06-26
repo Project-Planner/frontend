@@ -1,0 +1,48 @@
+body {
+  background-color: #5a5c5f;
+  font-family: "Source Code Pro", "Arial";
+  color: white;
+}
+
+input[type="submit"] {
+  background-color: #ADD3F7;
+  font-family: "Source Code Pro", "Arial";
+  border-radius: 25pt;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+}
+
+h1 {
+  font-family: "Pacifico", "Arial";
+  font-weight: normal;
+  color: #ADD3F7;
+  width: min-content;
+  margin: auto;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 99%;
+  height: 5%;
+}
+
+.footerBody {
+  background: none;
+}
+
+div.footer-elements {
+  float: right;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: blue;
+  text-decoration: underline;
+}

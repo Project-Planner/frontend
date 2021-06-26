@@ -1,7 +1,5 @@
 body {
-  color: white;
   height: 100%;
-  font-family: "Source Code Pro";
 }
 
 milestone {
@@ -23,7 +21,7 @@ task {
 div.daydiv {
   background-color: #EAEBEF;
   border-radius: 5px;
-  border: solid black 1px;
+  border: solid   1px;
   height: 100%;
   width: 100%;
 }

@@ -1,9 +1,3 @@
-body {
-  background-color: #5a5c5f;
-  font-family: "Source Code Pro", "Arial";
-  color: white;
-}
-
 div.logo img {
   border-radius: 50%;
   width: 30%;
@@ -54,26 +48,6 @@ div.logo {
   width: 20%;
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 99%;
-}
-
-div.footer-elements {
-  float: right;
-}
-
-footer a {
-  color: white;
-  text-decoration: none;
-}
-
-footer a:hover {
-  color: blue;
-  text-decoration: underline;
-}
-
 .dropdown {
   width: min-content;
 }
@@ -112,7 +86,7 @@ div.dropdown:hover div.dropdown-content {
   color: white;
 }
 
-iframe {
+iframe.CalendarView {
   width: 82%;
   height: 85%;
   position: absolute;
