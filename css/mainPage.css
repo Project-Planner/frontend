@@ -81,9 +81,7 @@ div.dropdown:hover div.dropdown-content {
 }
 
 .add a {
-  text-decoration: none;
   margin-left: 2%;
-  color: white;
 }
 
 iframe.CalendarView {

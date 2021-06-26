@@ -21,7 +21,7 @@ task {
 div.daydiv {
   background-color: #EAEBEF;
   border-radius: 5px;
-  border: solid   1px;
+  border: solid 1px;
   height: 100%;
   width: 100%;
 }
@@ -37,9 +37,4 @@ div.daydiv p {
 table {
   height: 100%;
   width: 100%;
-}
-
-a {
-  color: white;
-  text-decoration: none;
 }

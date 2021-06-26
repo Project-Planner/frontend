@@ -14,8 +14,6 @@ input, button {
 }
 
 input[type="submit"] {
-  background-color: #ADD3F7;
-  font-family: "Source Code Pro";
   margin: auto;
   width: min-content;
   margin-top: 5%;
