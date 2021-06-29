@@ -6,7 +6,7 @@ body {
 
 input[type="submit"] {
   background-color: #ADD3F7;
-  font-family: "Source Code Pro", "Arial";
+  font-family:  "Source Code Pro", Arial, Helvetica, sans-serif;
   border-radius: 25pt;
   border-color: white;
   border-width: 1px;
