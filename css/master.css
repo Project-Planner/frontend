@@ -14,7 +14,7 @@ input[type="submit"] {
 }
 
 h1 {
-  font-family: "Pacifico", "Arial";
+  font-family: "Pacifico", Arial, Helvetica, sans-serif;
   font-weight: normal;
   color: #ADD3F7;
   width: min-content;
