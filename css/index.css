@@ -14,14 +14,23 @@ html, body {
 input[type="submit"] {
   float: left;
   margin: 3%;
+  background-color: #F7BFBF !important;
+  border-radius: 25pt;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+  margin-top: 5%;
 }
 
-.background{
-  z-index: 0;
+h1{
+  position: relative;
+  top: 30%;
+  color: #F7BFBF !important;
 }
 
 div.btn {
-  position: relative;
+  position: absolute;
   left: 48%;
+  top:40%;
   width: min-content;
 }
