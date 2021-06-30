@@ -1,0 +1,45 @@
+<calendar>
+    <name val="Birthday Calendar" />
+    <owner href="ownerFile1" />
+    <permissions>
+        <group val="View">
+            <user href="Kevin" />
+        </group>
+        <group val="Edit">
+            <user href="lol" />
+        </group>
+    </permissions>
+    <items>
+        <appointments>
+            <p class="appointment">
+                <name val="somename"/>
+                <color val="#FF0000" />
+                <start val="insertLongHere" />
+                <end val="insertLongHere" />
+                <cat val="Leisure" />
+                <desc>Lorem Ipsum.</desc> <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
+            </p>
+        </appointments>
+        <milestones>
+            <milestone id="someID">
+                <name val="somename"/>
+                <duedate val="date"/>
+            </p>
+        </milestones>
+        <tasks>
+            <p class="task">
+                <name val="name"/>
+                <milestone id="id of the milestone"/>
+                <duedate val="date"/>
+                <desc>Dolor</desc>
+                <subtasks>
+                    <p class="subtask">
+                        <name val="someName"/>
+                        <duedate val="date"/>
+                        <desc>sit amet</desc>
+                    </p>
+                </subtasks>
+            </p>
+        </tasks>
+    </items>
+</calendar>

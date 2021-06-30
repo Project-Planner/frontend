@@ -5,10 +5,10 @@
 <xsl:template match="/">
   <html>
     <head>
-      <link rel="stylesheet" href="../css/CalendarView.css"/>
+      <link rel="stylesheet" href="../css/calendarView.css"/>
     </head>
   <body>
-
+    <div class="tableDiv">
       <table>
         <thead>
           <th>
@@ -32,29 +32,30 @@
           <th>
             <p>Sonntag</p>
           </th>
-
         </thead>
         <tbody>
-          <tr>
-              <xsl:for-each select="calendar/items/milestones/milestone">
-            <td>
-              <div class="daydiv">
-                <p>1</p>
-                  <milestone><xsl:value-of select="name/@val"/></milestone>
-                  <br/>
-                  <appointment><xsl:value-of select="//calendar/items/appointments/appointment/name/@val"/></appointment>
-
-              </div>
-            </td>
-          </xsl:for-each>
+          <tr class="daydiv">
+          <td style="border-left: transparent">Hallo</td>
+          <td>Hallo</td>
+          <td>Hallo</td>
+          <td>Hallo</td>
+          <td>Hallo</td>
+          <td>Hallo</td>
+          <td style="border-right: transparent">Hallo</td>
           </tr>
         </tbody>
     </table>
-
-
-
+  </div>
   </body>
   </html>
 </xsl:template>
 
 </xsl:stylesheet>
+
+          <!-- <xsl:for-each select="calendar/items/appointments/appointment">
+            <td>
+              <div>
+                  <p class="appointment"><xsl:value-of select="name/@val"/></p>
+              </div>
+            </td>
+          </xsl:for-each> -->

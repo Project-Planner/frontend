@@ -84,7 +84,7 @@ div.dropdown:hover div.dropdown-content {
   margin-left: 2%;
 }
 
-iframe.CalendarView {
+iframe.calendarView {
   width: 82%;
   height: 85%;
   position: absolute;
