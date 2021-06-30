@@ -35,13 +35,13 @@
         </thead>
         <tbody>
           <tr class="daydiv">
-          <td style="border-left: transparent">Hallo</td>
+          <td id="leftBorder">Hallo</td>
           <td>Hallo</td>
           <td>Hallo</td>
           <td>Hallo</td>
           <td>Hallo</td>
           <td>Hallo</td>
-          <td style="border-right: transparent">Hallo</td>
+          <td id="rightBorder">Hallo</td>
           </tr>
         </tbody>
     </table>

@@ -64,3 +64,11 @@ tbody {
 div.daydiv p {
   color: black;
 }
+
+#leftBorder {
+  border-left: transparent;
+}
+
+#rightBorder {
+  border-right: transparent;
+}
