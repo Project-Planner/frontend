@@ -45,6 +45,7 @@ table {
   width: 98%;
   border-collapse: collapse;
   table-layout: fixed;
+  font-family:  "Source Code Pro", Arial, Helvetica, sans-serif;
 }
 
 tbody {
