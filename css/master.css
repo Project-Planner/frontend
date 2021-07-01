@@ -6,7 +6,7 @@ body {
 
 input[type="submit"] {
   background-color: #ADD3F7;
-  font-family:  "Source Code Pro", Arial, Helvetica, sans-serif;
+  font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
   border-radius: 25pt;
   border-color: white;
   border-width: 1px;
@@ -40,6 +40,7 @@ div.footer-elements {
 a {
   color: white;
   text-decoration: none;
+  filter: invert(100%);
 }
 
 footer a:hover {
