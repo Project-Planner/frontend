@@ -35,13 +35,29 @@
         </thead>
         <tbody>
           <tr class="daydiv">
-          <td id="leftBorder">Hallo</td>
-          <td>Hallo</td>
-          <td>Hallo</td>
-          <td>Hallo</td>
-          <td>Hallo</td>
-          <td>Hallo</td>
-          <td id="rightBorder">Hallo</td>
+          <td id="leftBorder"><xsl:call-template name="insert">
+            <xsl:with-param name="day" select="1"/>
+          </xsl:call-template></td>
+          <td>
+          <xsl:call-template name="insert">
+            <xsl:with-param name="day" select="2"/>
+          </xsl:call-template>
+          </td>
+          <td><xsl:call-template name="insert">
+            <xsl:with-param name="day" select="3"/>
+          </xsl:call-template></td>
+          <td><xsl:call-template name="insert">
+            <xsl:with-param name="day" select="4"/>
+          </xsl:call-template></td>
+          <td><xsl:call-template name="insert">
+            <xsl:with-param name="day" select="5"/>
+          </xsl:call-template></td>
+          <td><xsl:call-template name="insert">
+            <xsl:with-param name="day" select="6"/>
+          </xsl:call-template></td>
+          <td id="rightBorder"><xsl:call-template name="insert">
+            <xsl:with-param name="day" select="0"/>
+          </xsl:call-template></td>
           </tr>
         </tbody>
     </table>
@@ -50,12 +66,50 @@
   </html>
 </xsl:template>
 
-</xsl:stylesheet>
-
-          <!-- <xsl:for-each select="calendar/items/appointments/appointment">
-            <td>
+<xsl:template name="insert">
+<xsl:param name="day"/>
+<xsl:for-each select="calendar/items/milestones/milestone">
+<xsl:sort select="duedate/@val" data-type="number"/>
+            <xsl:variable name="dayOfDate">
+              <xsl:call-template name="getDay">
+                <xsl:with-param name="date" select="duedate/@val"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:if test="$dayOfDate=$day">
               <div>
-                  <p class="appointment"><xsl:value-of select="name/@val"/></p>
+                  <p class="milestone"><xsl:value-of select="name/@val"/></p>
               </div>
-            </td>
-          </xsl:for-each> -->
+            </xsl:if>
+             </xsl:for-each>
+
+<xsl:for-each select="calendar/items/tasks/task">
+<xsl:sort select="duedate/@val" data-type="number"/>
+            <xsl:variable name="dayOfDate">
+              <xsl:call-template name="getDay">
+                <xsl:with-param name="date" select="duedate/@val"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:if test="$dayOfDate=$day">
+              <div>
+                  <p class="task"><xsl:value-of select="name/@val"/></p>
+              </div>
+            </xsl:if>
+             </xsl:for-each>
+</xsl:template>
+
+<xsl:template name="getDay">
+<xsl:param name="date"/>
+<xsl:param name="year" select="substring-before($date,'.')"/>
+    <xsl:param name="month" 
+          select="substring-before(substring-after($date,'.'),'.')"/>
+    <xsl:param name="day" select="substring-after(substring-after($date,'.'),'.')"/>
+    
+    <xsl:variable name="a" select="floor((14 - $month) div 12)"/>
+    <xsl:variable name="y" select="$year - $a"/>
+    <xsl:variable name="m" select="$month + 12 * $a - 2"/>
+   
+    <xsl:value-of select="($day + $y + floor($y div 4) - floor($y div 100) 
+    + floor($y div 400) + floor((31 * $m) div 12)) mod 7"/>
+</xsl:template>
+
+</xsl:stylesheet>
