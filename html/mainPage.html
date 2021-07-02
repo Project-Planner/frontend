@@ -9,6 +9,22 @@
   <link rel="stylesheet" href="../css/master.css">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <script>
+    n =  new Date();
+    function changeDate(val) {
+      n.setDate(n.getDate()+val);
+      y = n.getFullYear();
+      m = n.getMonth() + 1;
+      d = n.getDate();
+      document.getElementById("date").innerHTML = d+"."+m+"."+y;
+      if(val<0){
+        document.getElementById("redirectForward").href = "../data/calendar.xml?date=" + d+"."+m+"."+y;
+      }
+      else{
+        document.getElementById("redirectBack").href = "../data/calendar.xml?date=" + d+"."+m+"."+y;
+      }
+    }
+  </script>
 </head>
 
 <body>
@@ -78,8 +94,16 @@
     <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Meilenstein</a>
 
   </div>
-
-  <iframe class="calendarView" src="../data/calendar.xml" frameBorder="0"></iframe>
+  <a id="redirectBack" href="../data/calendar.xml?date=" target="calendarFrame">
+    <button class="goback" onClick="changeDate(-7)">&#60;</button>
+  </a>
+  <div id="date">
+    <script>changeDate(0);</script>
+  </div>
+  <a id="redirectForward" href="../data/calendar.xml?date=" target="calendarFrame">
+    <button class="goForward" onClick="changeDate(7)">&#62;</button>
+  </a>  
+  <iframe class="calendarView" name="calendarFrame" src="../data/calendar.xml" frameBorder="0"></iframe>
 
   <iframe class="footer" src="../html/footer.html" frameBorder="0"></iframe>
 

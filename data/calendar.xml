@@ -34,8 +34,8 @@
             <appointment>
                 <name val="appointment3"/>
                 <color val="#FF0000" />
-                <start val="5" />
-                <end val="6" />
+                <start val="5:00" />
+                <end val="6:00" />
                 <cat val="Leisure" />
                 <desc>desc ap3</desc> <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
             </appointment>

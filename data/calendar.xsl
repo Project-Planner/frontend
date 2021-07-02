@@ -1,30 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
-
+<xsl:variable name="weekDate" select="'1.1.1970'"/>
+<xsl:variable name="displayMode" select="'calender'"/> <!--displayModes: calender/project-->
+<xsl:variable name="calenderMode" select="'week'"/> <!--calenderModes: week/day/month-->
+  
   <xsl:template match="/">
     <html>
       <head>
         <link rel="stylesheet" href="../css/calendarView.css"/>
-        <script>
-          n =  new Date();
-          function changeDate(val) {
-            n.setDate(n.getDate()+val);
-            y = n.getFullYear();
-            m = n.getMonth() + 1;
-            d = n.getDate();
-            document.getElementById("date").innerHTML = d+"."+m+"."+y;
-          }
-        </script>
       </head>
       <body>
-
-        <button class="goback" onClick="changeDate(-7)">&#60;</button>
-        <div id="date">
-          <script>changeDate(0);</script>
-        </div>
-        <button class="goback" onClick="changeDate(7)">&#62;</button>
         <div class="tableDiv">
           <table>
             <thead>
@@ -143,5 +129,5 @@
     <xsl:value-of select="($day + $y + floor($y div 4) - floor($y div 100) 
     + floor($y div 400) + floor((31 * $m) div 12)) mod 7"/>
   </xsl:template>
-
+  
 </xsl:stylesheet>
