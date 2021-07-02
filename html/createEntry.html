@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>createEntry</title>
+  <title>Eintrag erstellen</title>
   <link rel="stylesheet" href="../css/mainPage.css">
   <link rel="stylesheet" href="../css/master.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
@@ -12,23 +12,36 @@
 </head>
 
 <body>
-
   <form class="" action="" method="post">
-    <div><label for="Typ">Typ: </label>
-    <input type="text" id="Typ" name="Typ"/></div>
-    <div><label for="Name">Name:</label>
-    <input type="text" id="Name" name="Name" /></div>
-    <div><label for="Date">Date:</label>
-    <input type="date" id="Date" name="Date" /></div>
-    <div><label for="Time">Time:</label>
-    <input type="time" id="Time" name="Time" /></div>
-    <div><label for="Desc">Desc:</label>
-    <input type="text" id="Desc" name="Desc" /></div>
-    <input type="submit" name="" value="Create">
-
+    <div><label for="typ">Typ wählen: </label>
+      <select name="typ" id="typ">
+        <!--Kalenderauswahl getrennt davon?-->
+        <option value="calendar">Kalender</option>
+        <option value="project">Projekt</option>
+        <option value="task">Aufgabe</option>
+        <option value="subtask">Unteraufgabe</option>
+        <option value="appointment">Termin</option>
+        <option value="milestone">Meilenstein</option>
+      </select></div>
+    <div><label for="relation">Zu Projekt hinzufügen: </label></div>
+    <!-- <select name="relation" id="relation">
+        <option value=""></option>
+      </select>-->
+    <div><label for="name">Name</label>
+      <input type="text" id="name" name="name" /></div>
+    <div><label for="datef">Datum von:</label>
+      <input type="date" id="datef" name="datef" /></div>
+    <div><label for="datet">Datum bis:</label>
+      <input type="date" id="datet" name="datet" /></div>
+    <div><label for="timef">Zeit von:</label>
+      <input type="time" id="timef" name="timef" /></div>
+    <div><label for="timet">Zeit bis:</label>
+      <input type="time" id="timet" name="timet"></div>
+    <div><label for="desc">Beschreibung:</label></div>
+    <div><textarea name="desc" rows="10" cols="30">Beschreibung</textarea></div>
+    <div><input type="submit" name="" value="Create"></div>
+    <!-- Abbrechen fehlt-->
   </form>
-
-
 </body>
 
 </html>
