@@ -2,8 +2,8 @@
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:variable name="weekDate" select="'5.7.2021'"/>
-<xsl:variable name="displayMode" select="'calender'"/> <!--displayModes: calender/project-->
-<xsl:variable name="calenderMode" select="'week'"/> <!--calenderModes: week/day/month-->
+<xsl:variable name="displayMode" select="'calendar'"/> <!--displayModes: calendar/project-->
+<xsl:variable name="calendarMode" select="'week'"/> <!--calendarModes: week/day/month-->
   
   <xsl:template match="/">
     <html>
@@ -11,7 +11,28 @@
         <link rel="stylesheet" href="../css/calendarView.css"/>
       </head>
       <body>
-        <div class="tableDiv">
+        <xsl:choose>
+          <xsl:when test="$calendarMode = 'day'">
+            <xsl:call-template name="dayCalendar"/>
+          </xsl:when>
+          <xsl:when test="$calendarMode = 'week'">
+            <xsl:call-template name="weekCalendar"/>
+          </xsl:when>
+          <xsl:when test="$calendarMode = 'month'">
+            <xsl:call-template name="monthCalendar"/>
+          </xsl:when>
+        </xsl:choose>
+      </body>
+    </html>
+  </xsl:template>
+
+  <xsl:template name="dayCalendar">
+  <!--This method generates the day based Calendar-->
+  </xsl:template>
+
+  <xsl:template name="weekCalendar">
+  <!--This method generates the week based Calendar-->
+    <div class="tableDiv">
           <table>
             <thead>
               <th>
@@ -77,9 +98,56 @@
             </tbody>
           </table>
         </div>
-      </body>
-    </html>
   </xsl:template>
+
+  <xsl:template name="monthCalendar">
+  <!--This method generates the month based Calendar-->
+  <div class="tableDiv">
+    <table>
+      <thead>
+        <th>
+          <p>Montag</p>
+        </th>
+        <th>
+          <p>Dienstag</p>
+        </th>
+        <th>
+          <p>Mittwoch</p>
+        </th>
+        <th>
+          <p>Donnerstag</p>
+        </th>
+        <th>
+          <p>Freitag</p>
+        </th>
+        <th>
+          <p>Samstag</p>
+        </th>
+        <th>
+          <p>Sonntag</p>
+        </th>
+      </thead>
+      <tbody>
+        <tr class="daydiv">
+          <td id="leftBorder"> 
+          </td>
+          <td>  
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>     
+          </td>
+          <td>  
+          </td>
+          <td id="rightBorder">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </xsl:template>  
 
   <xsl:template name="insert">
   <!--This method places the items based on their date and

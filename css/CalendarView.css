@@ -19,13 +19,13 @@ body {
 }
 
 .daydiv {
-  background-color: #EAEBEF;
+  background-color: #eaebef;
   height: 90%;
   width: 100%;
 }
 
 th {
-  background-color: #EAEBEF;
+  background-color: #eaebef;
   border-bottom: 1px solid black;
   border-bottom-width: 50%;
   border-spacing: 20px;
@@ -45,7 +45,7 @@ table {
   width: 98%;
   border-collapse: collapse;
   table-layout: fixed;
-  font-family:  "Source Code Pro", Arial, Helvetica, sans-serif;
+  font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
 }
 
 tbody {
@@ -59,7 +59,7 @@ tbody {
   align-items: center;
   display: flex;
   border-radius: 15px;
-  background-color: #EAEBEF;
+  background-color: #eaebef;
 }
 
 div.daydiv p {
