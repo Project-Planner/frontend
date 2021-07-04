@@ -18,24 +18,30 @@
             <appointment>
                 <name val="appointment1"/>
                 <color val="#FF0000" />
-                <start val="1" />
-                <end val="2" />
+                <startDate val="2.4.2021"/>
+                <startTime val="4:12" />
+                <endTime val="5:12" />
+                <endDate val="14.4.2021" />
                 <cat val="Leisure" />
                 <desc>desc ap1</desc> <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
             </appointment>
             <appointment>
                 <name val="appointment2"/>
                 <color val="#FF0000" />
-                <start val="3" />
-                <end val="4" />
+                <startDate val="1.4.2021"/>
+                <startTime val="4:12" />
+                <endTime val="5:12" />
+                <endDate val="14.4.2021" />
                 <cat val="Leisure" />
                 <desc>desc ap2</desc> <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
             </appointment>
             <appointment>
                 <name val="appointment3"/>
                 <color val="#FF0000" />
-                <start val="5:00" />
-                <end val="6:00" />
+                <startDate val="3.4.2021"/>
+                <startTime val="4:12" />
+                <endTime val="5:12" />
+                <endDate val="14.4.2021" />
                 <cat val="Leisure" />
                 <desc>desc ap3</desc> <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
             </appointment>

@@ -114,7 +114,24 @@
         </div>
       </xsl:if>
     </xsl:for-each>
+
+    <xsl:for-each select="calendar/items/appointments/appointment">
+      <xsl:sort select="startDate/@val" data-type="number"/>
+      <xsl:variable name="dayOfDate">
+        <xsl:call-template name="getDay">
+          <xsl:with-param name="date" select="startDate/@val"/>
+        </xsl:call-template>
+      </xsl:variable>
+      <xsl:if test="$dayOfDate=$day">
+        <div>
+          <p class="appointment">
+            <xsl:value-of select="name/@val"/>
+          </p>
+        </div>
+      </xsl:if>
+    </xsl:for-each>
   </xsl:template>
+
 
   <xsl:template name="getDay">
     <xsl:param name="date"/>
