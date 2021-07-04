@@ -13,11 +13,16 @@
     n =  new Date();
     function changeDate(val) {
       n.setDate(n.getDate()+val);
+      var day = n.getDay();
+      var diff = n.getDate() - day + (day == 0 ? -6:1);
+      n.setDate(diff);
+      var nLimit = new Date();
+      nLimit.setDate(diff + 6);
       y = n.getFullYear();
       m = n.getMonth() + 1;
       d = n.getDate();
-      document.getElementById("date").innerHTML = d+"."+m+"."+y;
-      if(val<0){
+      document.getElementById("date").innerHTML = d + "." + m +"."+ y + "\n - " + nLimit.getDate() + "." + (nLimit.getMonth()+1) + "." + nLimit.getFullYear();
+      if(val>0){
         document.getElementById("redirectForward").href = "../data/calendar.xml?date=" + d+"."+m+"."+y;
       }
       else{

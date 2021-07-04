@@ -18,10 +18,10 @@
             <appointment>
                 <name val="appointment1"/>
                 <color val="#FF0000" />
-                <startDate val="2.4.2021"/>
+                <startDate val="8.7.2021"/>
                 <startTime val="4:12" />
                 <endTime val="5:12" />
-                <endDate val="14.4.2021" />
+                <endDate val="10.7.2021" />
                 <cat val="Leisure" />
                 <desc>desc ap1</desc> <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
             </appointment>
@@ -50,63 +50,76 @@
             <milestone id="1">
                 <name val="milestone1"/>
                 <duedate val="03.01.2021"/>
+                <duetime val="5:34"/>
             </milestone>
             <milestone id="2">
                 <name val="milestone2"/>
                 <duedate val="2.2.2020"/>
+                <duetime val="5:35"/>
             </milestone>
             <milestone id="3">
                 <name val="milestone3"/>
-                <duedate val="5.5.2021"/>
+                <duedate val="5.7.2021"/>
+                <duetime val="5:34"/>
             </milestone>
             <milestone id="1">
-                <name val="milestone1"/>
-                <duedate val="04.01.2021"/>
+                <name val="milestone4"/>
+                <duedate val="5.7.2021"/>
+                <duetime val="5:35"/>
             </milestone>
             <milestone id="2">
-                <name val="milestone2"/>
+                <name val="milestone5"/>
                 <duedate val="3.2.2020"/>
+                <duetime val="5:34"/>
             </milestone>
             <milestone id="3">
-                <name val="milestone3"/>
+                <name val="milestone6"/>
                 <duedate val="6.5.2021"/>
+                <duetime val="5:34"/>
             </milestone>
             <milestone id="1">
-                <name val="milestone1"/>
+                <name val="milestone7"/>
                 <duedate val="05.01.2021"/>
+                <duetime val="5:34"/>
             </milestone>
             <milestone id="2">
-                <name val="milestone2"/>
+                <name val="milestone8"/>
                 <duedate val="4.2.2020"/>
+                <duetime val="5:32"/>
             </milestone>
             <milestone id="3">
-                <name val="milestone3"/>
-                <duedate val="7.5.2021"/>
+                <name val="milestone9"/>
+                <duedate val="7.7.2021"/>
+                <duetime val="5:34"/>
             </milestone>
         </milestones>
         <tasks>
             <task>
                 <name val="task1"/>
                 <milestone id="1"/>
-                <duedate val="20.6.2021"/>
+                <duedate val="5.7.2021"/>
+                <duetime val="5:34"/>
                 <desc>desc t1</desc>
                 <subtasks>
                     <subtask>
                         <name val="t1s1"/>
                         <duedate val="10.6.2021"/>
+                        <duetime val="5:34"/>
                         <desc>desc t1s1</desc>
                     </subtask>
                 </subtasks>
             </task>
             <task>
-                <name val="t2"/>
+                <name val="task2"/>
                 <milestone id="2"/>
-                <duedate val="9.10.2021"/>
+                <duedate val="6.7.2021"/>
+                <duetime val="5:34"/>
                 <desc>desc t2</desc>
                 <subtasks>
                     <subtask>
                         <name val="t2s1"/>
                         <duedate val="8.10.2021"/>
+                        <duetime val="5:34"/>
                         <desc>desc t2s1</desc>
                     </subtask>
                 </subtasks>
