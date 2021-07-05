@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="calendar.xsl"?>
+<?xml-stylesheet type="text/xsl" href="projectView.xsl"?>
 
 <calendar>
     <name val="Birthday Calendar" />
@@ -23,7 +23,7 @@
                 <endTime val="5:12" />
                 <endDate val="10.7.2021" />
                 <cat val="Leisure" />
-                <desc>desc ap1</desc> <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
+                <desc>desc ap1</desc>                <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
             </appointment>
             <appointment>
                 <name val="appointment2"/>
@@ -33,7 +33,7 @@
                 <endTime val="5:12" />
                 <endDate val="14.4.2021" />
                 <cat val="Leisure" />
-                <desc>desc ap2</desc> <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
+                <desc>desc ap2</desc>                <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
             </appointment>
             <appointment>
                 <name val="appointment3"/>
@@ -43,7 +43,7 @@
                 <endTime val="5:12" />
                 <endDate val="14.4.2021" />
                 <cat val="Leisure" />
-                <desc>desc ap3</desc> <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
+                <desc>desc ap3</desc>                <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
             </appointment>
         </appointments>
         <milestones>
