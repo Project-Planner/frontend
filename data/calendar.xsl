@@ -302,10 +302,6 @@
     <xsl:param name="month" select="substring-before(substring-after($date,'.'),'.')"/>
     <xsl:param name="year" select="substring-after(substring-after($date,'.'),'.')"/>
 
-    <xsl:variable name="year" select="substring-before($date,'.')"/>
-    <xsl:variable name="month" select="substring-before(substring-after($date,'.'),'.')"/>
-    <xsl:variable name="day" select="substring-after(substring-after($date,'.'),'.')"/>
-
     <xsl:variable name="a" select="floor((14 - $month) div 12)"/>
     <xsl:variable name="y" select="$year - $a"/>
     <xsl:variable name="m" select="$month + 12 * $a - 2"/>
