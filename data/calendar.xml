@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="projectView.xsl"?>
+<?xml-stylesheet type="text/xsl" href="calendar.xsl"?>
 
 <calendar>
     <name val="Birthday Calendar" />
@@ -58,6 +58,16 @@
                 <duetime val="5:35"/>
             </milestone>
             <milestone id="3">
+                <name val="milestone3"/>
+                <duedate val="5.7.2021"/>
+                <duetime val="5:34"/>
+            </milestone>
+            <milestone id="1">
+                <name val="milestone4"/>
+                <duedate val="5.7.2021"/>
+                <duetime val="5:35"/>
+            </milestone>
+             <milestone id="3">
                 <name val="milestone3"/>
                 <duedate val="5.7.2021"/>
                 <duetime val="5:34"/>
