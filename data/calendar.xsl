@@ -4,7 +4,7 @@
   <xsl:variable name="weekDate" select="'5.7.2021'"/>
   <xsl:variable name="displayMode" select="'calendar'"/>
   <!--displayModes: calendar/project-->
-  <xsl:variable name="calendarMode" select="'week'"/>
+  <xsl:variable name="calendarMode" select="'month'"/>
   <!--calendarModes: week/day/month-->
   <xsl:template match="/">
     <html>
@@ -107,48 +107,49 @@
       <table>
         <thead>
           <th>
-            <p>Montag</p>
+            <p>Mo</p>
           </th>
           <th>
-            <p>Dienstag</p>
+            <p>Di</p>
           </th>
           <th>
-            <p>Mittwoch</p>
+            <p>Mi</p>
           </th>
           <th>
-            <p>Donnerstag</p>
+            <p>Do</p>
           </th>
           <th>
-            <p>Freitag</p>
+            <p>Fr</p>
           </th>
           <th>
-            <p>Samstag</p>
+            <p>Sa</p>
           </th>
           <th>
-            <p>Sonntag</p>
+            <p>So</p>
           </th>
         </thead>
         <tbody>
-          <tr class="daydiv">
-            <td id="leftBorder">
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-            </td>
-            <td id="rightBorder">
-            </td>
-          </tr>
+        
+         <xsl:variable name = "firstDayOfMonth">
+           <xsl:call-template name="getFirstDayOfMonth">
+            <xsl:with-param name="date" select ="$weekDate"/>
+           </xsl:call-template>
+         </xsl:variable>
+
+         
+          <xsl:call-template name="createTable">
+          <xsl:with-param name="row" select="5"/>
+          <xsl:with-param name="i" select="1"/>
+          <xsl:with-param name="col" select="7"/>
+          <xsl:with-param name="j" select="1"/>
+          </xsl:call-template>
+
         </tbody>
       </table>
     </div>
   </xsl:template>
+
+
 
   <xsl:template name="insert">
     <!--This method places the items based on their date and
@@ -323,4 +324,57 @@
 
     <xsl:value-of select="$day + floor((153 * $m + 2) div 5) + $y * 365 + floor($y div 4) - floor($y div 100) + floor($y div 400) - 32045"/>
   </xsl:template>
+
+
+  <xsl:template name="getFirstDayOfMonth">
+    <!--method to get first day of month-->
+    <xsl:param name="date"/>
+    <xsl:param name="month" select="substring-before(substring-after($date,'.'),'.')"/>
+    <xsl:param name="year" select="substring-after(substring-after($date,'.'),'.')"/>
+    <xsl:call-template name="getDay">
+      <xsl:with-param name="date" select="concat('1.',$month, '.', $year)"/>
+    </xsl:call-template>
+    </xsl:template>
+
+
+  <xsl:template name="createTable">
+    <!--method to create month Table-->
+    <xsl:param name="row"/>
+    <xsl:param name="i"/>
+    <xsl:param name="col"/>
+    <xsl:param name="j"/>
+    <xsl:if test="$i &lt;= $row">
+    <tr>
+    <xsl:call-template name="createRows">
+    <xsl:with-param name="col" select="$col"/>
+    <xsl:with-param name="j" select="$j"/>
+    </xsl:call-template>
+    </tr>
+    </xsl:if>
+
+    <xsl:if test="$i &lt;= $row">
+      <xsl:call-template name="createTable">
+      <xsl:with-param name="row" select="$row"/>
+      <xsl:with-param name="i" select="$i + 1"/>
+      </xsl:call-template>
+    </xsl:if>  
+  </xsl:template>
+
+  <xsl:template name="createRows">
+    <!--method to create table row-->
+  <xsl:param name="col"/>
+  <xsl:param name="j"/>
+  <xsl:if test="$j &lt;= $col">
+    <td>
+    1
+    </td>
+  </xsl:if>
+  <xsl:if test="$j &lt;= $col">
+    <xsl:call-template name="createRows">
+    <xsl:with-param name="col" select="$col"/>
+    <xsl:with-param name="j" select="$j + 1"/>
+    </xsl:call-template>
+  </xsl:if>
+  </xsl:template>
+
 </xsl:stylesheet>
