@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main Page</title>
+  <link rel="stylesheet" href="../css/mainPage.css">
+  <link rel="stylesheet" href="../css/master.css">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+  <script>
+    n =  new Date();
+    function changeDate(val) {
+      n.setDate(n.getDate()+val);
+      var day = n.getDay();
+      var diff = n.getDate() - day + (day == 0 ? -6:1);
+      n.setDate(diff);
+      var nLimit = new Date();
+      nLimit.setDate(diff + 6);
+      y = n.getFullYear();
+      m = n.getMonth() + 1;
+      d = n.getDate();
+      document.getElementById("date").innerHTML = d + "." + m +"."+ y + "\n - " + nLimit.getDate() + "." + (nLimit.getMonth()+1) + "." + nLimit.getFullYear();
+      if(val>0){
+        document.getElementById("redirectForward").href = "../data/calendar.xml?date=" + d+"."+m+"."+y;
+      }
+      else{
+        document.getElementById("redirectBack").href = "../data/calendar.xml?date=" + d+"."+m+"."+y;
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="logo">
+    <img src="../ressources/plannet_logo_mitBack1.png" alt="">
+  </div>
+  <div class="viewToggle">
+
+    <p>Kalenderansicht</p>
+    <label class="switch">
+      <input type="checkbox">
+      <span class=" slider round"></span>
+    </label>
+    <p>Projektansicht</p>
+  </div>
+
+  <div class="timeToggle">
+    <p>Zeitraum</p>
+    <input type="radio" class="stv-radio-button" name="timeframeSelect" checked />
+    <input type="radio" class="stv-radio-button" name="timeframeSelect" />
+    <input type="radio" class="stv-radio-button" name="timeframeSelect" />
+  </div>
+
+  <input type="image" src="../ressources/user.png" class="userIcon"></input>
+  <form class="" action="login.html">
+    <input type="image" src="../ressources/logout.png" class="logoutIcon"></input>
+  </form>
+
+  <div class="dropdown">
+    <button class="dropbtn">Meine Kalender &#9660;</button>
+    <div class="dropdown-content">
+
+      <div class="dropdown-entry">
+        <p>Arbeit</p>
+
+        <input type="checkbox">
+      </div>
+
+      <div class="dropdown-entry">
+        <p>Privat</p>
+        <input type="checkbox">
+      </div>
+
+      <div class="dropdown-entry">
+        <p>DHBW</p>
+        <input type="checkbox">
+      </div>
+    </div>
+  </div>
+
+  <form class="search" action="mainPage.html" method="post">
+    <p>Andere Kalender</p>
+    <input type="search" name="Suche" value="Suche">
+  </form>
+
+  <div class="add">
+    <p>Hinzufügen</p>
+
+    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Kalender/Projekt</a>
+    <br>
+    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Aufgabe</a>
+    <br>
+    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Unteraufgabe</a>
+    <br>
+    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Termin</a>
+    <br>
+    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Meilenstein</a>
+
+  </div>
+  <a id="redirectBack" href="../data/calendar.xml?date=" target="calendarFrame">
+    <button class="goback" onClick="changeDate(-7)">&#60;</button>
+  </a>
+  <div id="date">
+    <script>changeDate(0);</script>
+  </div>
+  <a id="redirectForward" href="../data/calendar.xml?date=" target="calendarFrame">
+    <button class="goForward" onClick="changeDate(7)">&#62;</button>
+  </a>  
+  <iframe class="calendarView" name="calendarFrame" src="../data/calendar.xml" frameBorder="0"></iframe>
+
+  <iframe class="footer" src="../html/footer.html" frameBorder="0"></iframe>
+
+</body>
+
+</html>

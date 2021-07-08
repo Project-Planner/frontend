@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="../css/master.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+
+  <script>
+    //ToDo:
+    //Check if RPassword= Password (JavaScript)
+    //Bot-Protection (ReCaptcha) 
+    //Check for valid characters
+  </script>
+
+</head>
+
+<body>
+  <div class="mainView">
+    <h1>Plannet</h1>
+
+    <form action="mainPage.html">
+      <div class="userCol">
+        <label for="Username">Username:</label>
+        <input type="text" id="Username" name="username" />
+      </div>
+
+      <div class="pwCol">
+        <label for="Password">Password:</label>
+        <input type="password" id="Password" name="password" />
+      </div>
+      <div class="pwCol">
+        <label for="RPassword">Repeat Password:</label>
+        <input type="password" id="RPassword" name="password" />
+      </div>
+
+      <div class="btnCol">
+
+        <input type="submit" value="Register" />
+      </div>
+
+    </form>
+  </div>
+
+  <iframe class="footer" src="../html/footer.html" frameBorder="0"></iframe>
+</body>
+
+</html>

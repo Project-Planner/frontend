@@ -1,0 +1,75 @@
+body {
+  height: 100%;
+}
+
+.milestone {
+  background-color: green;
+}
+
+.appointment {
+  background-color: red;
+}
+
+.subtask {
+  background-color: blue;
+}
+
+.task {
+  background-color: purple;
+}
+
+.daydiv {
+  background-color: #eaebef;
+  height: 90%;
+  width: 100%;
+}
+
+th {
+  background-color: #eaebef;
+  border-bottom: 1px solid black;
+  border-bottom-width: 50%;
+  border-spacing: 20px;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+}
+
+td {
+  height: 100%;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  text-align: center;
+}
+
+table {
+  height: 98%;
+  width: 98%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
+}
+
+tbody {
+  border-left: transparent;
+}
+
+.tableDiv {
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 15px;
+  background-color: #eaebef;
+}
+
+div.daydiv p {
+  color: black;
+}
+
+#leftBorder {
+  border-left: transparent;
+}
+
+#rightBorder {
+  border-right: transparent;
+}

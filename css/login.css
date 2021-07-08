@@ -1,0 +1,30 @@
+body {
+  background: linear-gradient(#1E2125, #EAEBEF) no-repeat center center fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+input, button {
+  background-color: #F7BFBF;
+  border-radius: 25pt;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+  margin-top: 5%;
+}
+
+input[type="submit"] {
+  margin: auto;
+  width: min-content;
+  margin-top: 5%;
+  margin-right: 5%;
+  float: right;
+}
+
+div.mainView {
+  width: 50%;
+  padding: 10% 0;
+  white-space: nowrap;
+  width: min-content;
+  margin: auto;
+}
