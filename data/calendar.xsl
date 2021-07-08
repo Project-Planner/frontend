@@ -61,37 +61,37 @@
         <tbody>
           <tr class="daydiv">
             <td id="leftBorder">
-              <xsl:call-template name="insert">
+              <xsl:call-template name="insertWeek">
                 <xsl:with-param name="day" select="1"/>
               </xsl:call-template>
             </td>
             <td>
-              <xsl:call-template name="insert">
+              <xsl:call-template name="insertWeek">
                 <xsl:with-param name="day" select="2"/>
               </xsl:call-template>
             </td>
             <td>
-              <xsl:call-template name="insert">
+              <xsl:call-template name="insertWeek">
                 <xsl:with-param name="day" select="3"/>
               </xsl:call-template>
             </td>
             <td>
-              <xsl:call-template name="insert">
+              <xsl:call-template name="insertWeek">
                 <xsl:with-param name="day" select="4"/>
               </xsl:call-template>
             </td>
             <td>
-              <xsl:call-template name="insert">
+              <xsl:call-template name="insertWeek">
                 <xsl:with-param name="day" select="5"/>
               </xsl:call-template>
             </td>
             <td>
-              <xsl:call-template name="insert">
+              <xsl:call-template name="insertWeek">
                 <xsl:with-param name="day" select="6"/>
               </xsl:call-template>
             </td>
             <td id="rightBorder">
-              <xsl:call-template name="insert">
+              <xsl:call-template name="insertWeek">
                 <xsl:with-param name="day" select="0"/>
               </xsl:call-template>
             </td>
@@ -129,21 +129,12 @@
           </th>
         </thead>
         <tbody>
-        
-         <xsl:variable name = "firstDayOfMonth">
-           <xsl:call-template name="getFirstDayOfMonth">
-            <xsl:with-param name="date" select ="$weekDate"/>
-           </xsl:call-template>
-         </xsl:variable>
-
-         
           <xsl:call-template name="createTable">
-          <xsl:with-param name="row" select="5"/>
-          <xsl:with-param name="i" select="1"/>
-          <xsl:with-param name="col" select="7"/>
-          <xsl:with-param name="j" select="1"/>
+            <xsl:with-param name="row" select="5"/>
+            <xsl:with-param name="i" select="1"/>
+            <xsl:with-param name="col" select="7"/>
+            <xsl:with-param name="j" select="1"/>
           </xsl:call-template>
-
         </tbody>
       </table>
     </div>
@@ -151,9 +142,10 @@
 
 
 
-  <xsl:template name="insert">
+  <xsl:template name="insertWeek">
     <!--This method places the items based on their date and
-  filtered by a day (val 0-6) into the calendar -->
+    filtered by a day (val 0-6) into the calendar -->
+    <!--ToDo:Make 1 Method for every view-->
     <xsl:param name="day"/>
     <!--Add milestones to calendar-->
     <xsl:for-each select="calendar/items/milestones/milestone">
@@ -190,10 +182,10 @@
               <p>
                 <xsl:value-of select="duedate/@val"/>
               </p>
-              <p>
+              <!-- <p>
                 <xsl:value-of select="duetime/@val"/>
- Uhr
-              </p>
+                Uhr
+              </p> -->
             </div>
           </xsl:if>
         </xsl:if>
@@ -234,13 +226,13 @@
               <p>
                 <xsl:value-of select="duedate/@val"/>
               </p>
-              <p>
+              <!-- <p>
                 <xsl:value-of select="duetime/@val"/>
- Uhr
+    Uhr
               </p>
               <p>
                 <xsl:value-of select="desc"/>
-              </p>
+              </p> -->
             </div>
           </xsl:if>
         </xsl:if>
@@ -281,13 +273,13 @@
               <p>
                 <xsl:value-of select="startDate/@val"/>
               </p>
-              <p>
+              <!-- <p>
                 <xsl:value-of select="startTime/@val"/>
- Uhr
+    Uhr
               </p>
               <p>
                 <xsl:value-of select="desc"/>
-              </p>
+              </p> -->
             </div>
           </xsl:if>
         </xsl:if>
@@ -295,7 +287,146 @@
     </xsl:for-each>
   </xsl:template>
 
+  <xsl:template name="insertMonth">
+    <!--This method places the items based on their date and
+  filtered by a day (val 0-6) into the calendar -->
+  <!--ToDo:Make 1 Method for every view-->
+    <xsl:param name="day"/>
+    <xsl:param name="i"/>
+    <!--Add milestones to calendar-->
+    <xsl:for-each select="calendar/items/milestones/milestone">
+      <xsl:sort select="duetime/@val" data-type="number"/>
 
+      <xsl:variable name="dayOfDate">
+        <xsl:call-template name="getDay">
+          <xsl:with-param name="date" select="duedate/@val"/>
+        </xsl:call-template>
+      </xsl:variable>
+
+      <xsl:if test="$dayOfDate=$day">
+
+        <xsl:variable name="currentDateInt">
+          <xsl:call-template name="calculate-julian-day">
+            <xsl:with-param name="date" select="duedate/@val"/>
+          </xsl:call-template>
+        </xsl:variable>
+
+        <xsl:variable name="currentWeekInt">
+          <xsl:call-template name="calculate-julian-day">
+            <xsl:with-param name="date" select="$weekDate"/>
+          </xsl:call-template>
+        </xsl:variable>
+
+        <xsl:variable name="check" select="$currentDateInt - $currentWeekInt"/>
+
+        <xsl:if test="$check &lt; ($i - 1 ) *7">
+          <xsl:if test="$check >= ($i - 2 ) * 7">
+            <div class="milestone">
+              <p>
+                <xsl:value-of select="name/@val"/>
+              </p>
+              <p>
+                <xsl:value-of select="duedate/@val"/>
+              </p>
+              <!-- <p>
+                <xsl:value-of select="duetime/@val"/>
+ Uhr
+              </p> -->
+            </div>
+          </xsl:if>
+        </xsl:if>
+      </xsl:if>
+    </xsl:for-each>
+
+    <xsl:for-each select="calendar/items/appointments/appointment">
+      <xsl:sort select="startTime/@val" data-type="number"/>
+
+      <xsl:variable name="dayOfDate">
+        <xsl:call-template name="getDay">
+          <xsl:with-param name="date" select="startDate/@val"/>
+        </xsl:call-template>
+      </xsl:variable>
+
+      <xsl:if test="$dayOfDate=$day">
+
+        <xsl:variable name="currentDateInt">
+          <xsl:call-template name="calculate-julian-day">
+            <xsl:with-param name="date" select="startDate/@val"/>
+          </xsl:call-template>
+        </xsl:variable>
+
+        <xsl:variable name="currentWeekInt">
+          <xsl:call-template name="calculate-julian-day">
+            <xsl:with-param name="date" select="$weekDate"/>
+          </xsl:call-template>
+        </xsl:variable>
+
+        <xsl:variable name="check" select="$currentDateInt - $currentWeekInt"/>
+
+        <xsl:if test="$check &lt; ($i - 1 ) *7">
+          <xsl:if test="$check >= ($i - 2 ) * 7">
+            <div class="appointment">
+              <p>
+                <xsl:value-of select="name/@val"/>
+              </p>
+              <p>
+                <xsl:value-of select="startDate/@val"/>
+              </p>
+              <!-- <p>
+                <xsl:value-of select="duetime/@val"/>
+ Uhr
+              </p> -->
+            </div>
+          </xsl:if>
+        </xsl:if>
+      </xsl:if>
+    </xsl:for-each>
+
+    <xsl:for-each select="calendar/items/tasks/task">
+      <xsl:sort select="duetime/@val" data-type="number"/>
+
+      <xsl:variable name="dayOfDate">
+        <xsl:call-template name="getDay">
+          <xsl:with-param name="date" select="duedate/@val"/>
+        </xsl:call-template>
+      </xsl:variable>
+
+      <xsl:if test="$dayOfDate=$day">
+
+        <xsl:variable name="currentDateInt">
+          <xsl:call-template name="calculate-julian-day">
+            <xsl:with-param name="date" select="duedate/@val"/>
+          </xsl:call-template>
+        </xsl:variable>
+
+        <xsl:variable name="currentWeekInt">
+          <xsl:call-template name="calculate-julian-day">
+            <xsl:with-param name="date" select="$weekDate"/>
+          </xsl:call-template>
+        </xsl:variable>
+
+        <xsl:variable name="check" select="$currentDateInt - $currentWeekInt"/>
+
+        <xsl:if test="$check &lt; ($i - 1 ) *7">
+          <xsl:if test="$check >= ($i - 2 ) * 7">
+            <div class="task">
+              <p>
+                <xsl:value-of select="name/@val"/>
+              </p>
+              <p>
+                <xsl:value-of select="duedate/@val"/>
+              </p>
+              <!-- <p>
+                <xsl:value-of select="duetime/@val"/>
+ Uhr
+              </p> -->
+            </div>
+          </xsl:if>
+        </xsl:if>
+      </xsl:if>
+    </xsl:for-each>
+
+  </xsl:template>
   <xsl:template name="getDay">
     <!--This method takes a date and calculates the corresponding day of the week Sunday=0, Monday=1...Saturday=6-->
     <xsl:param name="date"/>
@@ -331,10 +462,11 @@
     <xsl:param name="date"/>
     <xsl:param name="month" select="substring-before(substring-after($date,'.'),'.')"/>
     <xsl:param name="year" select="substring-after(substring-after($date,'.'),'.')"/>
+
     <xsl:call-template name="getDay">
       <xsl:with-param name="date" select="concat('1.',$month, '.', $year)"/>
     </xsl:call-template>
-    </xsl:template>
+  </xsl:template>
 
 
   <xsl:template name="createTable">
@@ -343,38 +475,69 @@
     <xsl:param name="i"/>
     <xsl:param name="col"/>
     <xsl:param name="j"/>
+   
     <xsl:if test="$i &lt;= $row">
-    <tr>
-    <xsl:call-template name="createRows">
-    <xsl:with-param name="col" select="$col"/>
-    <xsl:with-param name="j" select="$j"/>
-    </xsl:call-template>
-    </tr>
+      <tr class="month"> 
+        <xsl:call-template name="createRows">
+          <xsl:with-param name="col" select="$col"/>
+          <xsl:with-param name="j" select="$j"/>
+          <xsl:with-param name="i" select="$i"/>
+        </xsl:call-template>
+      </tr>
     </xsl:if>
 
     <xsl:if test="$i &lt;= $row">
       <xsl:call-template name="createTable">
-      <xsl:with-param name="row" select="$row"/>
-      <xsl:with-param name="i" select="$i + 1"/>
+        <xsl:with-param name="row" select="$row"/>
+        <xsl:with-param name="i" select="$i + 1"/>
+        <xsl:with-param name="col" select="$col"/>
+        <xsl:with-param name="j" select="$j"/>
       </xsl:call-template>
     </xsl:if>  
   </xsl:template>
 
   <xsl:template name="createRows">
     <!--method to create table row-->
-  <xsl:param name="col"/>
-  <xsl:param name="j"/>
-  <xsl:if test="$j &lt;= $col">
-    <td>
-    1
-    </td>
-  </xsl:if>
-  <xsl:if test="$j &lt;= $col">
-    <xsl:call-template name="createRows">
-    <xsl:with-param name="col" select="$col"/>
-    <xsl:with-param name="j" select="$j + 1"/>
+    <xsl:param name="col"/>
+    <xsl:param name="j"/>
+    <xsl:param name="i"/>
+
+    <xsl:if test="$j &lt;= $col">
+      <xsl:call-template name="createCols">
+        <xsl:with-param name="j" select="$j"/>
+        <xsl:with-param name="i" select="$i"/>
+      </xsl:call-template>  
+    </xsl:if>
+
+    <xsl:if test="$j &lt;= $col">
+      <xsl:call-template name="createRows">
+        <xsl:with-param name="col" select="$col"/>
+        <xsl:with-param name="j" select="$j + 1"/>
+        <xsl:with-param name="i" select="$i"/>
+      </xsl:call-template>
+    </xsl:if>
+</xsl:template>
+  
+  <xsl:template name="createCols">
+    <!--method to create table col-->
+    <xsl:param name="j"/>
+    <xsl:param name="i"/>
+
+    <td class="month">
+
+    <xsl:variable name="currentDay">
+      <xsl:call-template name="getFirstDayOfMonth">
+        <xsl:with-param name="date" select="$weekDate"/>
+      </xsl:call-template>
+    </xsl:variable>
+
+    <xsl:call-template name="insertMonth">
+      <xsl:with-param name="day" select="($j) mod 7"/>
+      <xsl:with-param name="i" select="$i"/>
     </xsl:call-template>
-  </xsl:if>
+    
+    </td>
+
   </xsl:template>
 
 </xsl:stylesheet>

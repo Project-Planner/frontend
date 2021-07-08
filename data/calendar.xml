@@ -48,53 +48,28 @@
         </appointments>
         <milestones>
             <milestone id="1">
-                <name val="milestone1"/>
-                <duedate val="03.01.2021"/>
-                <duetime val="5:34"/>
-            </milestone>
-            <milestone id="2">
-                <name val="milestone2"/>
-                <duedate val="2.2.2020"/>
-                <duetime val="5:35"/>
-            </milestone>
-            <milestone id="3">
-                <name val="milestone3"/>
-                <duedate val="5.7.2021"/>
-                <duetime val="5:34"/>
-            </milestone>
-            <milestone id="1">
-                <name val="milestone4"/>
-                <duedate val="5.7.2021"/>
-                <duetime val="5:35"/>
-            </milestone>
-             <milestone id="3">
-                <name val="milestone3"/>
-                <duedate val="5.7.2021"/>
-                <duetime val="5:34"/>
-            </milestone>
-            <milestone id="1">
                 <name val="milestone4"/>
                 <duedate val="5.7.2021"/>
                 <duetime val="5:35"/>
             </milestone>
             <milestone id="2">
                 <name val="milestone5"/>
-                <duedate val="3.2.2020"/>
+                <duedate val="12.7.2021"/>
                 <duetime val="5:34"/>
             </milestone>
             <milestone id="3">
                 <name val="milestone6"/>
-                <duedate val="6.5.2021"/>
+                <duedate val="30.6.2021"/>
                 <duetime val="5:34"/>
             </milestone>
             <milestone id="1">
                 <name val="milestone7"/>
-                <duedate val="05.01.2021"/>
+                <duedate val="1.8.2021"/>
                 <duetime val="5:34"/>
             </milestone>
             <milestone id="2">
                 <name val="milestone8"/>
-                <duedate val="4.2.2020"/>
+                <duedate val="21.7.2021"/>
                 <duetime val="5:32"/>
             </milestone>
             <milestone id="3">

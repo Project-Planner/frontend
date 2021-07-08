@@ -24,6 +24,13 @@ body {
   width: 100%;
 }
 
+.month  {
+  height: 20%;
+  border-style: solid;
+  border-color: black;
+  border-radius: 20px;
+}
+
 th {
   background-color: #eaebef;
   border-bottom: 1px solid black;
