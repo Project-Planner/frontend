@@ -28,7 +28,7 @@
             <appointment>
                 <name val="appointment2"/>
                 <color val="#FF0000" />
-                <startDate val="1.4.2021"/>
+                <startDate val="1.6.2021"/>
                 <startTime val="4:12" />
                 <endTime val="5:12" />
                 <endDate val="14.4.2021" />
@@ -38,7 +38,7 @@
             <appointment>
                 <name val="appointment3"/>
                 <color val="#FF0000" />
-                <startDate val="3.4.2021"/>
+                <startDate val="30.6.2021"/>
                 <startTime val="4:12" />
                 <endTime val="5:12" />
                 <endDate val="14.4.2021" />

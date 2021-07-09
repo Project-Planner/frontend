@@ -289,10 +289,16 @@
 
   <xsl:template name="insertMonth">
     <!--This method places the items based on their date and
-  filtered by a day (val 0-6) into the calendar -->
-  <!--ToDo:Make 1 Method for every view-->
+    filtered by a day (val 0-6) into the calendar -->
+    <!--ToDo:Make 1 Method for every view-->
     <xsl:param name="day"/>
     <xsl:param name="i"/>
+
+    <xsl:variable name="monthDate">
+      <xsl:call-template name="getFirstDayOfMonth">
+        <xsl:with-param name="date" select="$weekDate"/>
+      </xsl:call-template>  
+    </xsl:variable>
     <!--Add milestones to calendar-->
     <xsl:for-each select="calendar/items/milestones/milestone">
       <xsl:sort select="duetime/@val" data-type="number"/>
@@ -311,9 +317,10 @@
           </xsl:call-template>
         </xsl:variable>
 
+
         <xsl:variable name="currentWeekInt">
           <xsl:call-template name="calculate-julian-day">
-            <xsl:with-param name="date" select="$weekDate"/>
+            <xsl:with-param name="date" select="$monthDate"/>
           </xsl:call-template>
         </xsl:variable>
 
@@ -330,7 +337,7 @@
               </p>
               <!-- <p>
                 <xsl:value-of select="duetime/@val"/>
- Uhr
+    Uhr
               </p> -->
             </div>
           </xsl:if>
@@ -355,16 +362,17 @@
           </xsl:call-template>
         </xsl:variable>
 
+
         <xsl:variable name="currentWeekInt">
           <xsl:call-template name="calculate-julian-day">
-            <xsl:with-param name="date" select="$weekDate"/>
+            <xsl:with-param name="date" select="$monthDate"/>
           </xsl:call-template>
         </xsl:variable>
 
         <xsl:variable name="check" select="$currentDateInt - $currentWeekInt"/>
 
-        <xsl:if test="$check &lt; ($i - 1 ) *7">
-          <xsl:if test="$check >= ($i - 2 ) * 7">
+        <xsl:if test="$check &lt; $i  *7">
+          <xsl:if test="$check >= ($i - 1 ) * 7">
             <div class="appointment">
               <p>
                 <xsl:value-of select="name/@val"/>
@@ -374,7 +382,7 @@
               </p>
               <!-- <p>
                 <xsl:value-of select="duetime/@val"/>
- Uhr
+    Uhr
               </p> -->
             </div>
           </xsl:if>
@@ -401,7 +409,7 @@
 
         <xsl:variable name="currentWeekInt">
           <xsl:call-template name="calculate-julian-day">
-            <xsl:with-param name="date" select="$weekDate"/>
+            <xsl:with-param name="date" select="$monthDate"/>
           </xsl:call-template>
         </xsl:variable>
 
@@ -418,7 +426,7 @@
               </p>
               <!-- <p>
                 <xsl:value-of select="duetime/@val"/>
- Uhr
+              Uhr
               </p> -->
             </div>
           </xsl:if>
@@ -427,6 +435,7 @@
     </xsl:for-each>
 
   </xsl:template>
+
   <xsl:template name="getDay">
     <!--This method takes a date and calculates the corresponding day of the week Sunday=0, Monday=1...Saturday=6-->
     <xsl:param name="date"/>
@@ -463,9 +472,7 @@
     <xsl:param name="month" select="substring-before(substring-after($date,'.'),'.')"/>
     <xsl:param name="year" select="substring-after(substring-after($date,'.'),'.')"/>
 
-    <xsl:call-template name="getDay">
-      <xsl:with-param name="date" select="concat('1.',$month, '.', $year)"/>
-    </xsl:call-template>
+    <xsl:value-of select="concat('1.',$month, '.', $year)"/>
   </xsl:template>
 
 
@@ -526,9 +533,11 @@
     <td class="month">
 
     <xsl:variable name="currentDay">
+    <xsl:call-template name="getDay">
       <xsl:call-template name="getFirstDayOfMonth">
         <xsl:with-param name="date" select="$weekDate"/>
       </xsl:call-template>
+    </xsl:call-template>  
     </xsl:variable>
 
     <xsl:call-template name="insertMonth">
