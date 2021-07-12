@@ -31,12 +31,13 @@ tr th {
   text-align: center;
   border-right: 1px solid white;
   border-collapse: collapse;
-  color: white;
   font-weight: normal;
+  padding: 10px;
 }
 td {
   border-right: 1px solid white;
   border-collapse: collapse;
+  padding: 10px;
 }
 ::-webkit-scrollbar {
   width: 12px;
