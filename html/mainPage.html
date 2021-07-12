@@ -10,34 +10,31 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
   <script>
-    n =  new Date();
+    var date =  new Date();
     window.onload=function(){
       changeDate(0);
     };
+    var mode = "calendar";
+    var period = "week";
     
     function changeDate(val) {
-      n.setDate(n.getDate()+val);
+      date.setDate(date.getDate()+val);
 
-      var day = n.getDay();
-      var diff = n.getDate() - day + (day == 0 ? -6:1);
+      var day = date.getDay();
+      var diff = date.getDate() - day + (day == 0 ? -6:1);
       var nLimit = new Date();
       var url_string = document.getElementById("calendarFrame").src
       var url = new URL(url_string);
       var mode = url.searchParams.get("mode");
       var period = url.searchParams.get("period");
       
-      n.setDate(diff);
+      date.setDate(diff);
       nLimit.setDate(diff + 6);
 
-      y = n.getFullYear();
-      m = n.getMonth() + 1;
-      d = n.getDate();
+      y = date.getFullYear();
+      m = date.getMonth() + 1;
+      d = date.getDate();
       
-      if(val==0){
-        mode = "calendar";
-        period = "week";
-      }
-
       document.getElementById("date").innerHTML = d + "." + m +"."+ y + "\n - " + nLimit.getDate() + "." + (nLimit.getMonth()+1) + "." + nLimit.getFullYear();
       document.getElementById("calendarFrame").src = "../data/calendar.xml?mode="+mode+"&period="+period+"&date="+d+"."+m+"."+y;
     }
@@ -45,8 +42,8 @@
     function changeCalendarMode(val) {
       var url_string = document.getElementById("calendarFrame").src
       var url = new URL(url_string);
-      var mode = url.searchParams.get("mode");
-      var date = url.searchParams.get("date");
+      mode = url.searchParams.get("mode");
+      date = url.searchParams.get("date");
       
       document.getElementById("calendarFrame").src = "../data/calendar.xml?mode="+mode+"&period="+val+"&date="+date;
     }
@@ -54,8 +51,8 @@
     function changeDisplayMode() {
       var url_string = document.getElementById("calendarFrame").src
       var url = new URL(url_string);
-      var period = url.searchParams.get("period");
-      var date = url.searchParams.get("date");
+      period = url.searchParams.get("period");
+      date = url.searchParams.get("date");
 
       if (document.getElementById("displayModeCheckbox").checked) {
         document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=project&period="+period+"&date="+date;
@@ -84,9 +81,9 @@
 
   <div class="timeToggle">
     <p>Zeitraum</p>
-      <input type="radio" class="stv-radio-button" id="day" name="timeframeSelect" value="day" onClick="changeCalendarMode('day')" checked/>
+      <input type="radio" class="stv-radio-button" id="day" name="timeframeSelect" value="day" onClick="changeCalendarMode('day')" />
       <label for="day">D</label>
-      <input type="radio" class="stv-radio-button" id="week" name="timeframeSelect" value="week" onClick="changeCalendarMode('week')"/>
+      <input type="radio" class="stv-radio-button" id="week" name="timeframeSelect" value="week" onClick="changeCalendarMode('week')"checked/>
       <label for="week">W</label>
       <input type="radio" class="stv-radio-button" id="month" name="timeframeSelect" value="month" onClick="changeCalendarMode('month')"/>
       <label for="month">M</label>
