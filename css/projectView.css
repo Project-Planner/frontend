@@ -5,3 +5,26 @@
 body {
   font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
 }
+.milestone {
+  background-color: green;
+}
+
+.appointment {
+  background-color: red;
+}
+
+.subtask {
+  background-color: blue;
+}
+
+.task {
+  background-color: purple;
+}
+
+.elementTD {
+  border-radius: 5px;
+}
+
+td {
+  border-right: solid 1px black;
+}
