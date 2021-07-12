@@ -69,7 +69,7 @@
     <xsl:template name="DrawBackgroundLinesAndHeadDate">
         <xsl:param name="iterationtimes"/>
         <xsl:param name="date"/>
-        <th style="border-right:1px solid black">
+        <th>
             <!--Insert Dates for header here-->
             <xsl:value-of select="concat(concat(substring-before($date, '.'), '.'), substring-before(substring-after($date, '.'), '.'))"/>
         </th>
@@ -130,7 +130,7 @@
                     <xsl:with-param name="length" select="$endDate - $startDate"/>
                     <xsl:with-param name="name" select="name/@val"/>
                     <xsl:with-param name="startJulian" select="$startJulian"/>
-                    <xsl:with-param name="endJulian" select="$startJulian"/>
+                    <xsl:with-param name="endJulian" select="$endJulian"/>
                 </xsl:call-template>
             </tr>
         </xsl:for-each>
@@ -163,8 +163,7 @@
             <xsl:value-of select="$name"></xsl:value-of>
         </td>
         <xsl:call-template name="insertEmptyTD">
-            <xsl:with-param name ="TDCount" select="500"></xsl:with-param>
-            <!--TODO-->
+            <xsl:with-param name ="TDCount" select="$endJulian - $startDivJulian - $length"></xsl:with-param>
         </xsl:call-template>
     </xsl:template>
     <xsl:template name="insertEmptyTD">

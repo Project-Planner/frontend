@@ -22,13 +22,19 @@ body {
 }
 
 .elementTD {
+  border: 1px solid black;
   border-radius: 5px;
+  border-collapse: separate;
 }
 
-td {
-  border-right: solid 1px black;
-}
-
-th td {
+tr th {
   text-align: center;
+  border-right: 1px solid white;
+  border-collapse: collapse;
+  color: white;
+  font-weight: normal;
+}
+td {
+  border-right: 1px solid white;
+  border-collapse: collapse;
 }
