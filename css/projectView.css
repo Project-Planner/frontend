@@ -28,3 +28,7 @@ body {
 td {
   border-right: solid 1px black;
 }
+
+th td {
+  text-align: center;
+}

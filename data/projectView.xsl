@@ -51,7 +51,7 @@
                     </xsl:call-template>
                 </xsl:variable>
                 <table>
-                    <tr >
+                    <tr>
                         <xsl:call-template name="DrawBackgroundLinesAndHeadDate">
                             <xsl:with-param name="iterationtimes" select="$latestEndJulian - $earliestStartJulian"/>
                             <xsl:with-param name="date" select="$start"/>
@@ -69,10 +69,10 @@
     <xsl:template name="DrawBackgroundLinesAndHeadDate">
         <xsl:param name="iterationtimes"/>
         <xsl:param name="date"/>
-        <td style="border-right:1px solid black">
+        <th style="border-right:1px solid black">
             <!--Insert Dates for header here-->
             <xsl:value-of select="concat(concat(substring-before($date, '.'), '.'), substring-before(substring-after($date, '.'), '.'))"/>
-        </td>
+        </th>
         <xsl:if test="$iterationtimes > 0">
             <xsl:variable name="nextdate">
                 <xsl:call-template name="next-day-date">
