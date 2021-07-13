@@ -4,7 +4,7 @@
   <xsl:variable name="weekDate" select="'5.7.2021'"/>
   <xsl:variable name="displayMode" select="'calendar'"/>
   <!--displayModes: calendar/project-->
-  <xsl:variable name="calendarMode" select="'month'"/>
+  <xsl:variable name="calendarMode" select="'day'"/>
   <!--calendarModes: week/day/month-->
   <xsl:template match="/">
     <html>
@@ -231,6 +231,7 @@
     <!--This method places the items based on their date and
     filtered by a day (val 0-6) into the calendar -->
     <!--ToDo:Make 1 Method for every view-->
+
     <xsl:param name="day"/>
     <!--Add milestones to calendar-->
     <xsl:for-each select="calendar/items/milestones/milestone">

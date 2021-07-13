@@ -36,7 +36,7 @@
       d = date.getDate();
       
       document.getElementById("date").innerHTML = d + "." + m +"."+ y + "\n - " + nLimit.getDate() + "." + (nLimit.getMonth()+1) + "." + nLimit.getFullYear();
-      document.getElementById("calendarFrame").src = "../data/calendar.xml?mode="+mode+"&period="+period+"&date="+d+"."+m+"."+y;
+      document.getElementById("calendarFrame").src = "/me/c?mode="+mode+"&period="+period+"&date="+d+"."+m+"."+y;
     }
 
     function changeCalendarMode(val) {
@@ -45,7 +45,7 @@
       mode = url.searchParams.get("mode");
       date = url.searchParams.get("date");
       
-      document.getElementById("calendarFrame").src = "../data/calendar.xml?mode="+mode+"&period="+val+"&date="+date;
+      document.getElementById("calendarFrame").src = "/me/c"+mode+"&period="+val+"&date="+date;
     }
 
     function changeDisplayMode() {
@@ -55,10 +55,10 @@
       date = url.searchParams.get("date");
 
       if (document.getElementById("displayModeCheckbox").checked) {
-        document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=project&period="+period+"&date="+date;
+        document.getElementById("calendarFrame").src = "/me/c?mode=project&period="+period+"&date="+date;
       }
       else{
-        document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=project&period="+period+"&date="+date;
+        document.getElementById("calendarFrame").src = "/me/c?mode=calendar&period="+period+"&date="+date;
       }
     }
 
@@ -139,7 +139,7 @@
   <div id="date">
   </div>
     <button class="goForward" onClick="changeDate(7)">&#62;</button>
-  <iframe class="calendarView" id="calendarFrame" name="calendarFrame" src="../data/calendar.xml" frameBorder="0"></iframe>
+  <iframe class="calendarView" id="calendarFrame" name="calendarFrame" src="/me/c" frameBorder="0"></iframe>
   <iframe class="footer" src="../html/footer.html" frameBorder="0"></iframe>
 
 </body>

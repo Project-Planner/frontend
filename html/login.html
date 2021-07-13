@@ -1,44 +1,51 @@
 <!DOCTYPE html>
 <html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/master.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Pacifico"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro"
+    />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="stylesheet" href="../css/login.css">
-  <link rel="stylesheet" href="../css/master.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
-</head>
+  <body>
+    <div class="mainView">
+      <h1>Plannet</h1>
+      <!--ToDo: action="/api/login" when Backend connection is established-->
+      <form action="/api/login" method="POST">
+        <div class="userCol">
+          <label for="Username">Username:</label>
+          <input type="text" id="Username" name="username" maxlength="250" />
+        </div>
 
-<body>
-  <div class="mainView">
-    <h1>Plannet</h1>
-    <!--ToDo: action="/api/login" when Backend connection is established-->
-    <form action="mainPage.html" method="POST">
-      <div class="userCol">
-        <label for="Username">Username:</label>
-        <input type="text" id="Username" name="username" maxlength="250"/>
-      </div>
+        <div class="pwCol">
+          <label for="Password">Password:</label>
+          <input
+            type="password"
+            id="Password"
+            name="password"
+            maxlength="250"
+          />
+        </div>
 
-      <div class="pwCol">
-        <label for="Password">Password:</label>
-        <input type="password" id="Password" name="password" maxlength="250"/>
-      </div>
+        <div class="btnCol">
+          <input type="submit" value="Login" />
+        </div>
+      </form>
 
-      <div class="btnCol">
-        <input type="submit" value="Login" />
-      </div>
+      <form action="register.html">
+        <input type="submit" value="Register" />
+      </form>
+    </div>
 
-    </form>
-    
-    <form action="register.html">
-
-      <input type="submit" value="Register" />
-    </form>
-  </div>
-
-  <iframe class="footer" src="../html/footer.html" frameBorder="0"></iframe>
-</body>
-
+    <iframe class="footer" src="../html/footer.html" frameborder="0"></iframe>
+  </body>
 </html>
