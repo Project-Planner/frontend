@@ -10,6 +10,7 @@
         <html>
             <head>
                 <link rel="stylesheet" href="../css/projectView.css"/>
+                <link rel="stylesheet" href="../css/master.css"/>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro"/>
             </head>
             <body>
@@ -22,13 +23,13 @@
                     <xsl:choose>
                         <!--koennte man das mit nur zwei "when" testen einmal fuer monat und einmal fuer tag?-->
                         <xsl:when test="string-length(substring-before($startwithoutzeros, '.'))=1 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.'))=1">
-                            <xsl:value-of select="concat(concat(concat(concat(concat(0, substring-before($startwithoutzeros, '.')), '.'), concat(0, substring-before(substring-after($startwithoutzeros, '.'), '.'))), '.'), substring-after(substring-after($startwithoutzeros, '.'), '.'))"/>
+                            <xsl:value-of select="concat(0,substring-before($startwithoutzeros, '.'),'.',0,substring-after($startwithoutzeros, '.'))"/>
                         </xsl:when>
                         <xsl:when test="string-length(substring-before($startwithoutzeros, '.')) = 1 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.')) = 2">
                             <xsl:value-of select="concat(0, $startwithoutzeros)"/>
                         </xsl:when>
                         <xsl:when test="string-length(substring-before($startwithoutzeros, '.')) = 2 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.')) = 1">
-                            <xsl:value-of select="concat(concat(concat(substring-before($startwithoutzeros, '.'), '.'), concat(0, substring-before(substring-after($startwithoutzeros, '.'), '.'))), substring-after(substring-after($startwithoutzeros, '.'), '.'))"/>
+                            <xsl:value-of select="concat(substring-before($startwithoutzeros, '.'), '.',0,substring-after($startwithoutzeros, '.'))"/>
                         </xsl:when>
                         <xsl:when test="string-length(substring-before($startwithoutzeros, '.')) = 2 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.')) = 2">
                             <xsl:value-of select="$startwithoutzeros"/>
@@ -160,7 +161,9 @@
             <xsl:attribute name="colspan" >
                 <xsl:value-of select="$length+1"></xsl:value-of>
             </xsl:attribute>
-            <xsl:value-of select="$name"></xsl:value-of>
+            <a href="calendar.xml" target="popup" onclick="window.open('calendar.xml','popup','width=600,height=600'); return false;">
+                <xsl:value-of select="$name"></xsl:value-of>
+            </a>
         </td>
         <xsl:call-template name="insertEmptyTD">
             <xsl:with-param name ="TDCount" select="$endJulian - $startDivJulian - $length"></xsl:with-param>
