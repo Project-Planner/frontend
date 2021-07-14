@@ -324,3 +324,16 @@ input:checked + .slider:before {
     background-position: 0 0;
   }
 }
+
+
+.entry{
+  white-space: pre-line;
+}
+
+.entry input, select{
+  font-size: 3.2vw;
+}
+
+.entry label{
+  font-size: 3vw;
+}
