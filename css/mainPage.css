@@ -53,6 +53,7 @@ div.logo {
   width: 20%;
 }
 
+/*Dropdown zu "Meine Kalender"*/
 .dropbtn {
   border-radius: 50px;
   margin-top: 20%;
@@ -85,6 +86,8 @@ div.dropdown:hover div.dropdown-content {
   display: inline;
 }*/
 
+
+/*Suchfeld*/
 .search p {
   display: flex;
 }

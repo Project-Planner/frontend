@@ -10,36 +10,38 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
   <script>
-    n =  new Date();
-    window.onload=function(){
+    n = new Date();
+    window.onload = function () {
       changeDate(0);
     };
-    
+
     function changeDate(val) {
-      n.setDate(n.getDate()+val);
+      n.setDate(n.getDate() + val);
 
       var day = n.getDay();
-      var diff = n.getDate() - day + (day == 0 ? -6:1);
+      var diff = n.getDate() - day + (day == 0 ? -6 : 1);
       var nLimit = new Date();
       var url_string = document.getElementById("calendarFrame").src
       var url = new URL(url_string);
       var mode = url.searchParams.get("mode");
       var period = url.searchParams.get("period");
-      
+
       n.setDate(diff);
       nLimit.setDate(diff + 6);
 
       y = n.getFullYear();
       m = n.getMonth() + 1;
       d = n.getDate();
-      
-      if(val==0){
+
+      if (val == 0) {
         mode = "calendar";
         period = "week";
       }
 
-      document.getElementById("date").innerHTML = d + "." + m +"."+ y + "\n - " + nLimit.getDate() + "." + (nLimit.getMonth()+1) + "." + nLimit.getFullYear();
-      document.getElementById("calendarFrame").src = "../data/calendar.xml?mode="+mode+"&period="+period+"&date="+d+"."+m+"."+y;
+      document.getElementById("date").innerHTML = d + "." + m + "." + y + "\n - " + nLimit.getDate() + "." + (nLimit
+        .getMonth() + 1) + "." + nLimit.getFullYear();
+      document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=" + mode + "&period=" + period +
+        "&date=" + d + "." + m + "." + y;
     }
 
     function changeCalendarMode(val) {
@@ -47,8 +49,9 @@
       var url = new URL(url_string);
       var mode = url.searchParams.get("mode");
       var date = url.searchParams.get("date");
-      
-      document.getElementById("calendarFrame").src = "../data/calendar.xml?mode="+mode+"&period="+val+"&date="+date;
+
+      document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=" + mode + "&period=" + val + "&date=" +
+        date;
     }
 
     function changeDisplayMode() {
@@ -58,17 +61,17 @@
       var date = url.searchParams.get("date");
 
       if (document.getElementById("displayModeCheckbox").checked) {
-        document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=project&period="+period+"&date="+date;
-      }
-      else{
-        document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=project&period="+period+"&date="+date;
+        document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=project&period=" + period + "&date=" +
+          date;
+      } else {
+        document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=project&period=" + period + "&date=" +
+          date;
       }
     }
 
-    function setVisibilityTrue(){
-      document.getElementById("dropdown-content").style.display="block";
+    function setVisibilityTrue() {
+      document.getElementById("dropdown-content").style.display = "block";
     }
-
   </script>
 </head>
 
@@ -88,12 +91,15 @@
 
   <div class="timeToggle">
     <p>Zeitraum</p>
-      <input type="radio" class="stv-radio-button" id="day" name="timeframeSelect" value="day" onClick="changeCalendarMode('day')" checked/>
-      <label for="day">D</label>
-      <input type="radio" class="stv-radio-button" id="week" name="timeframeSelect" value="week" onClick="changeCalendarMode('week')"/>
-      <label for="week">W</label>
-      <input type="radio" class="stv-radio-button" id="month" name="timeframeSelect" value="month" onClick="changeCalendarMode('month')"/>
-      <label for="month">M</label>
+    <input type="radio" class="stv-radio-button" id="day" name="timeframeSelect" value="day"
+      onClick="changeCalendarMode('day')" checked />
+    <label for="day">D</label>
+    <input type="radio" class="stv-radio-button" id="week" name="timeframeSelect" value="week"
+      onClick="changeCalendarMode('week')" />
+    <label for="week">W</label>
+    <input type="radio" class="stv-radio-button" id="month" name="timeframeSelect" value="month"
+      onClick="changeCalendarMode('month')" />
+    <label for="month">M</label>
   </div>
 
   <input type="image" src="../ressources/user.png" class="userIcon"></input>
@@ -129,19 +135,21 @@
 
   <form class="search" action="mainPage.html" method="post">
     <p>Andere Kalender</p>
-    <input type="search" name="Suche" value="Suche">
+    <input type="search" name="Suche" placeholder="Suche">
   </form>
 
   <div class="add">
     <br>
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Hinzufügen</a>
+    <a href="createEntry.html" target="popup"
+      onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Hinzufügen</a>
     <br>
   </div>
-    <button class="goback" onClick="changeDate(-7)">&loarr;</button>
+  <button class="goback" onClick="changeDate(-7)">&loarr;</button>
   <div id="date">
   </div>
-    <button class="goForward" onClick="changeDate(7)">&roarr;</button>
-  <iframe class="calendarView" id="calendarFrame" name="calendarFrame" src="../data/calendar.xml" frameBorder="0"></iframe>
+  <button class="goForward" onClick="changeDate(7)">&roarr;</button>
+  <iframe class="calendarView" id="calendarFrame" name="calendarFrame" src="../data/calendar.xml"
+    frameBorder="0"></iframe>
   <iframe class="footer" src="../html/footer.html" frameBorder="0"></iframe>
 </body>
 
