@@ -1,147 +1,156 @@
 <!DOCTYPE html>
 <html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Page</title>
+    <link rel="stylesheet" href="../css/mainPage.css" />
+    <link rel="stylesheet" href="../css/master.css" />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Main Page</title>
-  <link rel="stylesheet" href="../css/mainPage.css">
-  <link rel="stylesheet" href="../css/master.css">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro"
+    />
+    <script src="../js/main.js"></script>
+  </head>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
-  <script>
-    var date =  new Date();
-    window.onload=function(){
-      changeDate(0);
-    };
-    var mode = "calendar";
-    var period = "week";
-    
-    function changeDate(val) {
-      date.setDate(date.getDate()+val);
+  <body>
+    <div class="logo">
+      <img src="../ressources/plannet_logo_mitBack1.png" alt="" />
+    </div>
+    <div class="viewToggle">
+      <p>Kalenderansicht</p>
+      <label class="switch">
+        <input
+          type="checkbox"
+          id="displayModeCheckbox"
+          onclick="changeDisplayMode()"
+        />
+        <span class="slider round"></span>
+      </label>
+      <p>Projektansicht</p>
+    </div>
 
-      var day = date.getDay();
-      var diff = date.getDate() - day + (day == 0 ? -6:1);
-      var nLimit = new Date();
-      var url_string = document.getElementById("calendarFrame").src
-      var url = new URL(url_string);
-      var mode = url.searchParams.get("mode");
-      var period = url.searchParams.get("period");
-      
-      date.setDate(diff);
-      nLimit.setDate(diff + 6);
-
-      y = date.getFullYear();
-      m = date.getMonth() + 1;
-      d = date.getDate();
-      
-      document.getElementById("date").innerHTML = d + "." + m +"."+ y + "\n - " + nLimit.getDate() + "." + (nLimit.getMonth()+1) + "." + nLimit.getFullYear();
-      document.getElementById("calendarFrame").src = "/me/c?mode="+mode+"&period="+period+"&date="+d+"."+m+"."+y;
-    }
-
-    function changeCalendarMode(val) {
-      var url_string = document.getElementById("calendarFrame").src
-      var url = new URL(url_string);
-      mode = url.searchParams.get("mode");
-      date = url.searchParams.get("date");
-      
-      document.getElementById("calendarFrame").src = "/me/c"+mode+"&period="+val+"&date="+date;
-    }
-
-    function changeDisplayMode() {
-      var url_string = document.getElementById("calendarFrame").src
-      var url = new URL(url_string);
-      period = url.searchParams.get("period");
-      date = url.searchParams.get("date");
-
-      if (document.getElementById("displayModeCheckbox").checked) {
-        document.getElementById("calendarFrame").src = "/me/c?mode=project&period="+period+"&date="+date;
-      }
-      else{
-        document.getElementById("calendarFrame").src = "/me/c?mode=calendar&period="+period+"&date="+date;
-      }
-    }
-
-  </script>
-</head>
-
-<body>
-  <div class="logo">
-    <img src="../ressources/plannet_logo_mitBack1.png" alt="">
-  </div>
-  <div class="viewToggle">
-
-    <p>Kalenderansicht</p>
-    <label class="switch">
-      <input type="checkbox" id="displayModeCheckbox" onclick="changeDisplayMode()">
-      <span class=" slider round"></span>
-    </label>
-    <p>Projektansicht</p>
-  </div>
-
-  <div class="timeToggle">
-    <p>Zeitraum</p>
-      <input type="radio" class="stv-radio-button" id="day" name="timeframeSelect" value="day" onClick="changeCalendarMode('day')" />
+    <div class="timeToggle">
+      <p>Zeitraum</p>
+      <input
+        type="radio"
+        class="stv-radio-button"
+        id="day"
+        name="timeframeSelect"
+        value="day"
+        onClick="changeCalendarMode('day')"
+      />
       <label for="day">D</label>
-      <input type="radio" class="stv-radio-button" id="week" name="timeframeSelect" value="week" onClick="changeCalendarMode('week')"checked/>
+      <input
+        type="radio"
+        class="stv-radio-button"
+        id="week"
+        name="timeframeSelect"
+        value="week"
+        onClick="changeCalendarMode('week')"
+        checked
+      />
       <label for="week">W</label>
-      <input type="radio" class="stv-radio-button" id="month" name="timeframeSelect" value="month" onClick="changeCalendarMode('month')"/>
+      <input
+        type="radio"
+        class="stv-radio-button"
+        id="month"
+        name="timeframeSelect"
+        value="month"
+        onClick="changeCalendarMode('month')"
+      />
       <label for="month">M</label>
-  </div>
+    </div>
 
-  <input type="image" src="../ressources/user.png" class="userIcon"></input>
-  <form class="" action="login.html">
-    <input type="image" src="../ressources/logout.png" class="logoutIcon"></input>
-  </form>
+    <input
+      type="image"
+      src="../ressources/user.png"
+      class="userIcon"
+      alt="Benutzer Bild"
+    />
+    <form class="" action="login.html">
+      <input
+        type="image"
+        src="../ressources/logout.png"
+        class="logoutIcon"
+        alt="Logout Pfeil"
+      />
+    </form>
 
-  <div class="dropdown">
-    <button class="dropbtn">Meine Kalender &#9660;</button>
-    <div class="dropdown-content">
+    <div class="dropdown">
+      <button class="dropbtn">Meine Kalender &#9660;</button>
+      <div class="dropdown-content">
+        <div class="dropdown-entry">
+          <p>Arbeit</p>
 
-      <div class="dropdown-entry">
-        <p>Arbeit</p>
+          <input type="checkbox" />
+        </div>
 
-        <input type="checkbox">
-      </div>
+        <div class="dropdown-entry">
+          <p>Privat</p>
+          <input type="checkbox" />
+        </div>
 
-      <div class="dropdown-entry">
-        <p>Privat</p>
-        <input type="checkbox">
-      </div>
-
-      <div class="dropdown-entry">
-        <p>DHBW</p>
-        <input type="checkbox">
+        <div class="dropdown-entry">
+          <p>DHBW</p>
+          <input type="checkbox" />
+        </div>
       </div>
     </div>
-  </div>
 
-  <form class="search" action="mainPage.html" method="post">
-    <p>Andere Kalender</p>
-    <input type="search" name="Suche" value="Suche" maxlength="250">
-  </form>
+    <form class="search" action="mainPage.html" method="post">
+      <p>Andere Kalender</p>
+      <input type="search" name="Suche" value="Suche" maxlength="250" />
+    </form>
 
-  <div class="add">
-    <p>Hinzufügen</p>
+    <div class="add">
+      <p>Hinzufügen</p>
 
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Kalender/Projekt</a>
-    <br>
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Aufgabe</a>
-    <br>
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Unteraufgabe</a>
-    <br>
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Termin</a>
-    <br>
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Meilenstein</a>
-
-  </div>
-    <button class="goback" onClick="changeDate(-7)">&#60;</button>
-  <div id="date">
-  </div>
-    <button class="goForward" onClick="changeDate(7)">&#62;</button>
-  <iframe class="calendarView" id="calendarFrame" name="calendarFrame" src="/me/c" frameBorder="0"></iframe>
-  <iframe class="footer" src="../html/footer.html" frameBorder="0"></iframe>
-
-</body>
-
+      <a
+        href="createEntry.html"
+        target="popup"
+        onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;"
+        >Kalender/Projekt</a
+      >
+      <br />
+      <a
+        href="createEntry.html"
+        target="popup"
+        onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;"
+        >Aufgabe</a
+      >
+      <br />
+      <a
+        href="createEntry.html"
+        target="popup"
+        onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;"
+        >Unteraufgabe</a
+      >
+      <br />
+      <a
+        href="createEntry.html"
+        target="popup"
+        onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;"
+        >Termin</a
+      >
+      <br />
+      <a
+        href="createEntry.html"
+        target="popup"
+        onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;"
+        >Meilenstein</a
+      >
+    </div>
+    <button class="goback" onClick="changeDate(-add)">&#60;</button>
+    <div id="date"></div>
+    <button class="goForward" onClick="changeDate(add)">&#62;</button>
+    <iframe
+      class="calendarView"
+      id="calendarFrame"
+      name="calendarFrame"
+      src="/me/c"
+    ></iframe>
+    <iframe class="footer" src="../html/footer.html"></iframe>
+  </body>
 </html>

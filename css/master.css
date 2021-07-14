@@ -5,7 +5,7 @@ body {
 }
 
 input[type="submit"] {
-  background-color: #ADD3F7;
+  background-color: #add3f7;
   font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
   border-radius: 25pt;
   border-color: white;
@@ -16,7 +16,7 @@ input[type="submit"] {
 h1 {
   font-family: "Pacifico", Arial, Helvetica, sans-serif;
   font-weight: normal;
-  color: #ADD3F7;
+  color: #add3f7;
   width: min-content;
   margin: auto;
 }
@@ -27,6 +27,7 @@ h1 {
   left: 0;
   width: 99%;
   height: 5%;
+  border: 0px transparent;
 }
 
 .footerBody {
