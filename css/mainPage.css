@@ -96,6 +96,7 @@ div.dropdown:hover div.dropdown-content {
   display: flex;
   border: solid black 1px;
   border-radius: 50px;
+  max-width: 10vw;
 }
 
 .add a {
