@@ -55,12 +55,12 @@
             <milestone id="1">
                 <name val="milestone4"/>
                 <duedate val="5.7.2021"/>
-                <duetime val="5:35"/>
+                <duetime val="6:35"/>
             </milestone>
             <milestone id="1">
                 <name val="milestone4"/>
                 <duedate val="5.7.2021"/>
-                <duetime val="5:35"/>
+                <duetime val="24:01"/>
             </milestone>
             <milestone id="2">
                 <name val="milestone5"/>
