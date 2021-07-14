@@ -32,62 +32,6 @@
             </body>
         </html>
     </xsl:template>
-    <xsl:template name = "getName">
-        <xsl:for-each select="calendar/items/appointments/appointment | calendar/items/milestones/milestone | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
-            <xsl:if test="@id = $id">
-                <xsl:value-of select="name/@val"></xsl:value-of>
-            </xsl:if>
-        </xsl:for-each>
-    </xsl:template>
-    <xsl:template name = "getDesc">
-        <xsl:for-each select="calendar/items/appointments/appointment | calendar/items/milestones/milestone | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
-            <xsl:if test="@id = $id">
-                <xsl:value-of select="desc"></xsl:value-of>
-            </xsl:if>
-        </xsl:for-each>
-    </xsl:template>
-    <xsl:template name = "getDueDate">
-        <xsl:for-each select="calendar/items/appointments/appointment | calendar/items/milestones/milestone | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
-            <xsl:if test="@id = $id">
-                <xsl:value-of select="duedate/@val"></xsl:value-of>
-            </xsl:if>
-        </xsl:for-each>
-    </xsl:template>
-    <xsl:template name = "getStartDate">
-        <xsl:for-each select="calendar/items/appointments/appointment | calendar/items/milestones/milestone | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
-            <xsl:if test="@id = $id">
-                <xsl:value-of select="startDate/@val"></xsl:value-of>
-            </xsl:if>
-        </xsl:for-each>
-    </xsl:template>
-    <xsl:template name = "getEndDate">
-        <xsl:for-each select="calendar/items/appointments/appointment | calendar/items/milestones/milestone | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
-            <xsl:if test="@id = $id">
-                <xsl:value-of select="endDate/@val"></xsl:value-of>
-            </xsl:if>
-        </xsl:for-each>
-    </xsl:template>
-    <xsl:template name = "getEndTime">
-        <xsl:for-each select="calendar/items/appointments/appointment | calendar/items/milestones/milestone | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
-            <xsl:if test="@id = $id">
-                <xsl:value-of select="endTime/@val"></xsl:value-of>
-            </xsl:if>
-        </xsl:for-each>
-    </xsl:template>
-    <xsl:template name = "getStartTime">
-        <xsl:for-each select="calendar/items/appointments/appointment | calendar/items/milestones/milestone | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
-            <xsl:if test="@id = $id">
-                <xsl:value-of select="startTime/@val"></xsl:value-of>
-            </xsl:if>
-        </xsl:for-each>
-    </xsl:template>
-    <xsl:template name = "getDueTime">
-        <xsl:for-each select="calendar/items/appointments/appointment | calendar/items/milestones/milestone | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
-            <xsl:if test="@id = $id">
-                <xsl:value-of select="duetime/@val"></xsl:value-of>
-            </xsl:if>
-        </xsl:for-each>
-    </xsl:template>
     <xsl:template name = "formatDate">
         <xsl:param name="date"></xsl:param>
         <xsl:variable name = "dateWithZeros">
@@ -146,176 +90,165 @@
         </xsl:for-each>
     </xsl:template>
     <xsl:template name="showNormalview">
-        <form class="" action="" method="post">
-            <div>
-                <label for="relation">Zu Projekt hinzufügen: </label>
-            </div>
-            <div>
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" maxlength="250">
-                    <xsl:attribute name ="value">
-                        <xsl:call-template name= "getName">
-                            <xsl:with-param name ="id" select="$id"></xsl:with-param>
-                        </xsl:call-template>
-                    </xsl:attribute>
-                </input>
-            </div>
-            <div>
-                <label for="datef">Datum von:</label>
-                <input type="date" id="datef" name="datef">
-                    <xsl:variable name="date">
-                        <xsl:call-template name="getStartDate">
-                           
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <xsl:variable name="dateFormated">
-                        <xsl:call-template name="formatDate">
-                            <xsl:with-param name="date" select="$date"></xsl:with-param>
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <xsl:attribute name="value">
-                        <xsl:value-of select="$dateFormated"></xsl:value-of>
-                    </xsl:attribute>
-                </input>
-            </div>
-            <div>
-                <label for="datet">Datum bis:</label>
-                <input type="date" id="datet" name="datet">
-                    <xsl:variable name="date">
-                        <xsl:call-template name="getEndDate">
-                           
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <xsl:variable name="dateFormated">
-                        <xsl:call-template name="formatDate">
-                            <xsl:with-param name="date" select="$date"></xsl:with-param>
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <xsl:attribute name="value">
-                        <xsl:value-of select="$dateFormated"></xsl:value-of>
-                    </xsl:attribute>
-                </input>
-            </div>
-            <div>
-                <label for="timef">Zeit von:</label>
-                <input type="time" id="timef" name="timef" >
-                    <xsl:attribute name="value">
-                        <xsl:variable name="timeWithoutZeros">
-                            <xsl:call-template name="getStartTime">
-                               
-                            </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:variable name="timeWithZeros">
-                            <xsl:call-template name="addZerosToTime">
-                                <xsl:with-param name="time" select="$timeWithoutZeros">
+        <xsl:for-each select="calendar/items/appointments/appointment  | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
+            <xsl:if test="@id = $id">
+                <xsl:value-of select="duetime/@val"></xsl:value-of>
+                <form class="" action="" method="post">
+                    <div>
+                        <label for="relation">Zu Projekt hinzufügen: </label>
+                    </div>
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" maxlength="250">
+                            <xsl:attribute name ="value">
+                                <xsl:value-of select="name/@val"></xsl:value-of>
+                            </xsl:attribute>
+                        </input>
+                    </div>
+                    <div>
+                        <label for="datef">Datum von:</label>
+                        <input type="date" id="datef" name="datef">
+                            <xsl:variable name="date">
+                                <xsl:value-of select="startDate/@val"></xsl:value-of>
+                            </xsl:variable>
+                            <xsl:variable name="dateFormated">
+                                <xsl:call-template name="formatDate">
+                                    <xsl:with-param name="date" select="$date"></xsl:with-param>
+                                </xsl:call-template>
+                            </xsl:variable>
+                            <xsl:attribute name="value">
+                                <xsl:value-of select="$dateFormated"></xsl:value-of>
+                            </xsl:attribute>
+                        </input>
+                    </div>
+                    <div>
+                        <label for="datet">Datum bis:</label>
+                        <input type="date" id="datet" name="datet">
+                            <xsl:variable name="date">
+                                <xsl:value-of select="endDate/@val"></xsl:value-of>
+                            </xsl:variable>
+                            <xsl:variable name="dateFormated">
+                                <xsl:call-template name="formatDate">
+                                    <xsl:with-param name="date" select="$date"></xsl:with-param>
+                                </xsl:call-template>
+                            </xsl:variable>
+                            <xsl:attribute name="value">
+                                <xsl:value-of select="$dateFormated"></xsl:value-of>
+                            </xsl:attribute>
+                        </input>
+                    </div>
+                    <div>
+                        <label for="timef">Zeit von:</label>
+                        <input type="time" id="timef" name="timef" >
+                            <xsl:attribute name="value">
+                                <xsl:variable name="timeWithoutZeros">
+                                    <xsl:value-of select="startTime/@val"></xsl:value-of>
+                                </xsl:variable>
+                                <xsl:variable name="timeWithZeros">
+                                    <xsl:call-template name="addZerosToTime">
+                                        <xsl:with-param name="time" select="$timeWithoutZeros">
                                         </xsl:with-param>
-                            </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:value-of select="$timeWithZeros"></xsl:value-of>
-                    </xsl:attribute>
-                </input>
-            </div>
-            <div>
-                <label for="timet">Zeit bis:</label>
-                <input type="time" id="timet" name="timet">
-                    <xsl:attribute name="value">
-                        <xsl:variable name="timeWithoutZeros">
-                            <xsl:call-template name="getEndTime">
-                               
-                            </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:variable name="timeWithZeros">
-                            <xsl:call-template name="addZerosToTime">
-                                <xsl:with-param name="time" select="$timeWithoutZeros">
+                                    </xsl:call-template>
+                                </xsl:variable>
+                                <xsl:value-of select="$timeWithZeros"></xsl:value-of>
+                            </xsl:attribute>
+                        </input>
+                    </div>
+                    <div>
+                        <label for="timet">Zeit bis:</label>
+                        <input type="time" id="timet" name="timet">
+                            <xsl:attribute name="value">
+                                <xsl:variable name="timeWithoutZeros">
+                                    <xsl:value-of select="endTime/@val"></xsl:value-of>
+                                </xsl:variable>
+                                <xsl:variable name="timeWithZeros">
+                                    <xsl:call-template name="addZerosToTime">
+                                        <xsl:with-param name="time" select="$timeWithoutZeros">
                                         </xsl:with-param>
-                            </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:value-of select="$timeWithZeros"></xsl:value-of>
-                    </xsl:attribute>
-                </input>
-                <div>
-                    <label for="desc">Beschreibung:</label>
-                </div>
-                <div>
-                    <textarea name="desc" rows="10" cols="30" maxlength="250">
-                        <xsl:call-template name= "getDesc">
-                            <xsl:with-param name ="id" select="$id"></xsl:with-param>
-                        </xsl:call-template>
-                    </textarea>
-                </div>
-                <div>
-                    <input type="submit" name="" value="Create"/>
-                </div>
-                <!-- Abbrechen fehlt-->
-            </div>
-        </form>
+                                    </xsl:call-template>
+                                </xsl:variable>
+                                <xsl:value-of select="$timeWithZeros"></xsl:value-of>
+                            </xsl:attribute>
+                        </input>
+                        <div>
+                            <label for="desc">Beschreibung:</label>
+                        </div>
+                        <div>
+                            <textarea name="desc" rows="10" cols="30" maxlength="250">
+                                <xsl:value-of select="desc"></xsl:value-of>
+                            </textarea>
+                        </div>
+                        <div>
+                            <input type="submit" name="" value="Create"/>
+                        </div>
+                        <!-- Abbrechen fehlt-->
+                    </div>
+                </form>
+            </xsl:if>
+        </xsl:for-each>
     </xsl:template>
     <xsl:template name="showMilestoneView">
-        <form class="" action="" method="post">
-            <div>
-                <label for="relation">Zu Projekt hinzufügen: </label>
-            </div>
-            <div>
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" maxlength="250">
-                    <xsl:attribute name ="value">
-                        <xsl:call-template name= "getName">
-                            <xsl:with-param name ="id" select="$id"></xsl:with-param>
-                        </xsl:call-template>
-                    </xsl:attribute>
-                </input>
-            </div>
-            <div>
-                <label for="datef">Datum:</label>
-                <input type="date" id="datef" name="datef">
-                    <xsl:variable name="date">
-                        <xsl:call-template name="getDueDate">
-                           
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <xsl:variable name="dateFormated">
-                        <xsl:call-template name="formatDate">
-                            <xsl:with-param name="date" select="$date"></xsl:with-param>
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <xsl:attribute name="value">
-                        <xsl:value-of select="$dateFormated"></xsl:value-of>
-                    </xsl:attribute>
-                </input>
-            </div>
-            <div>
-                <label for="timef">Zeit:</label>
-                <input type="time" id="timef" name="timef" >
-                    <xsl:attribute name="value">
-                        <xsl:variable name="timeWithoutZeros">
-                            <xsl:call-template name="getDueTime">
-                               
-                            </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:variable name="timeWithZeros">
-                            <xsl:call-template name="addZerosToTime">
-                                <xsl:with-param name="time" select="$timeWithoutZeros">
+        <xsl:for-each select=" calendar/items/milestones/milestone">
+            <xsl:if test="@id = $id">
+                <form class="" action="" method="post">
+                    <div>
+                        <label for="relation">Zu Projekt hinzufügen: </label>
+                    </div>
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" maxlength="250">
+                            <xsl:attribute name ="value">
+                                <xsl:value-of select="name/@val"></xsl:value-of>
+                            </xsl:attribute>
+                        </input>
+                    </div>
+                    <div>
+                        <label for="datef">Datum:</label>
+                        <input type="date" id="datef" name="datef">
+                            <xsl:variable name="date">
+                                <xsl:value-of select="duedate/@val"></xsl:value-of>
+                            </xsl:variable>
+                            <xsl:variable name="dateFormated">
+                                <xsl:call-template name="formatDate">
+                                    <xsl:with-param name="date" select="$date"></xsl:with-param>
+                                </xsl:call-template>
+                            </xsl:variable>
+                            <xsl:attribute name="value">
+                                <xsl:value-of select="$dateFormated"></xsl:value-of>
+                            </xsl:attribute>
+                        </input>
+                    </div>
+                    <div>
+                        <label for="timef">Zeit:</label>
+                        <input type="time" id="timef" name="timef" >
+                            <xsl:attribute name="value">
+                                <xsl:variable name="timeWithoutZeros">
+                                    <xsl:value-of select="duetime/@val"></xsl:value-of>
+                                </xsl:variable>
+                                <xsl:variable name="timeWithZeros">
+                                    <xsl:call-template name="addZerosToTime">
+                                        <xsl:with-param name="time" select="$timeWithoutZeros">
                                         </xsl:with-param>
-                            </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:value-of select="$timeWithZeros"></xsl:value-of>
-                    </xsl:attribute>
-                </input>
-            </div>
-            <div>
-                <label for="desc">Beschreibung:</label>
-            </div>
-            <div>
-                <textarea name="desc" rows="10" cols="30" maxlength="250">
-                    <xsl:call-template name= "getDesc">
-                        <xsl:with-param name ="id" select="$id"></xsl:with-param>
-                    </xsl:call-template>
-                </textarea>
-            </div>
-            <div>
-                <input type="submit" name="" value="Create"/>
-                <!-- Abbrechen fehlt-->
-            </div>
-        </form>
+                                    </xsl:call-template>
+                                </xsl:variable>
+                                <xsl:value-of select="$timeWithZeros"></xsl:value-of>
+                            </xsl:attribute>
+                        </input>
+                    </div>
+                    <div>
+                        <label for="desc">Beschreibung:</label>
+                    </div>
+                    <div>
+                        <textarea name="desc" rows="10" cols="30" maxlength="250">
+                            <xsl:value-of select="desc"></xsl:value-of>
+                        </textarea>
+                    </div>
+                    <div>
+                        <input type="submit" name="" value="Create"/>
+                        <!-- Abbrechen fehlt-->
+                    </div>
+                </form>
+            </xsl:if>
+        </xsl:for-each>
     </xsl:template>
 </xsl:stylesheet>
