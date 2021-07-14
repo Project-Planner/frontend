@@ -63,10 +63,14 @@ div.logo {
   width: min-content;
 }
 
+#dropdown-content{
+  display: none;
+}
+
 button.dropbtn {
   white-space: nowrap;
 }
-
+/*
 div.dropdown-content {
   display: none;
   color: white;
@@ -79,7 +83,7 @@ div.dropdown-content {
 
 div.dropdown:hover div.dropdown-content {
   display: inline;
-}
+}*/
 
 .search p {
   display: flex;

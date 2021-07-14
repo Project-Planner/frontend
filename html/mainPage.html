@@ -65,12 +65,16 @@
       }
     }
 
+    function setVisibilityTrue(){
+      document.getElementById("dropdown-content").style.display="block";
+    }
+
   </script>
 </head>
 
 <body>
   <div class="logo">
-    <img src="../ressources/plannet_logo_lightblue.png" alt="">
+    <img src="../ressources/plannet_logo_lightblue.png" alt="Logo plannet_logo_lightblue">
   </div>
   <div class="viewToggle">
 
@@ -97,25 +101,29 @@
     <input type="image" src="../ressources/logout.png" class="logoutIcon"></input>
   </form>
 
+  <!--muss noch korrekt aus der HTML geladen werden-->
   <div class="dropdown">
-    <button class="dropbtn">Meine Kalender &#9660;</button>
-    <div class="dropdown-content">
-
+    <button class="dropbtn" onclick="setVisibilityTrue()">Meine Kalender &#9660;</button>
+    <div class="dropdown-content" id="dropdown-content">
+      <div>
+        <input type="checkbox" id="calendar1" name="calendar1" value="work">
+        <label for="calendar1">Arbeit</label>
+      </div>
+      <div>
+        <input type="checkbox" id="calendar2" name="calendar2" value="private">
+        <label for="calendar2">Privat</label>
+      </div>
+      <div>
+        <input type="checkbox" id="calendar3" name="calendar3" value="dhbw">
+        <label for="calendar3">DHBW</label>
+      </div>
+      <!--
       <div class="dropdown-entry">
         <p>Arbeit</p>
 
         <input type="checkbox">
       </div>
-
-      <div class="dropdown-entry">
-        <p>Privat</p>
-        <input type="checkbox">
-      </div>
-
-      <div class="dropdown-entry">
-        <p>DHBW</p>
-        <input type="checkbox">
-      </div>
+      -->
     </div>
   </div>
 
@@ -125,18 +133,9 @@
   </form>
 
   <div class="add">
-    <p>Hinzufügen</p>
-
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Kalender/Projekt</a>
     <br>
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Aufgabe</a>
+    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Hinzufügen</a>
     <br>
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Unteraufgabe</a>
-    <br>
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Termin</a>
-    <br>
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Meilenstein</a>
-
   </div>
     <button class="goback" onClick="changeDate(-7)">&loarr;</button>
   <div id="date">
