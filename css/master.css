@@ -38,6 +38,7 @@ h2 {
   height: 6%;
   overflow: hidden;
   background-color: #5a5c5f;
+  border: none;
 }
 
 .footerLogin {
@@ -48,6 +49,7 @@ h2 {
   height: 6%;
   overflow: hidden;
   background-color: transparent;
+  border: none;
 }
 
 .footerBody {

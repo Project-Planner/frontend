@@ -3,6 +3,7 @@ var dateJs = new Date();
 var mode = "calendar";
 let period = "week";
 var add = 7;
+var showCalendars = false;
 
 window.onload = function () {
   document.getElementById("calendarFrame").src =
@@ -17,6 +18,7 @@ window.onload = function () {
     "." +
     date.getFullYear();
   changeDate(0);
+  setVisibilityTrue();
 };
 
 function changeDate(val) {
@@ -172,5 +174,15 @@ function changeDisplayMode() {
   } else {
     document.getElementById("calendarFrame").src =
       "/me/c?mode=calendar&period=" + period + "&date=" + date;
+  }
+}
+
+function setVisibilityTrue() {
+  if (showCalendars) {
+    document.getElementById("dropdown-content").style.display = "block";
+    showCalendars = false;
+  } else {
+    document.getElementById("dropdown-content").style.display = "none";
+    showCalendars = true;
   }
 }
