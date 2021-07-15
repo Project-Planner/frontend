@@ -5,97 +5,87 @@
     <xsl:variable name="weekDate" select="'1.1.1970'"/>
     <xsl:variable name="displayMode" select="'calender'"/>
     <!--displayModes: calender/project-->
-    <xsl:variable name="calenderMode" select="'week'"/>
-    <!--calenderModes: week/day/month-->
-    <xsl:output method="html" encoding="utf-8" indent="yes"/>
+    <xsl:output method="XML" encoding="utf-8" indent="yes"/>
     <xsl:template match="/">
         <html>
             <head>
                 <link rel="stylesheet" href="../css/projectView.css"/>
+                <link rel="stylesheet" href="../css/master.css"/>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro"/>
-                
             </head>
             <body>
-                <div>
-                    <xsl:variable name="startwithoutzeros">
-                        <xsl:call-template name="erliestStart">
-                            <xsl:with-param name="path" select="calendar/items"/>
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <xsl:variable name="start">
+                <xsl:variable name="startwithoutzeros">
+                    <xsl:call-template name="erliestStart">
+                        <xsl:with-param name="path" select="calendar/items"/>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="start">
                     <xsl:choose>
+                        <!--koennte man das mit nur zwei "when" testen einmal fuer monat und einmal fuer tag?-->
                         <xsl:when test="string-length(substring-before($startwithoutzeros, '.'))=1 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.'))=1">
-                            <xsl:value-of select="concat(concat(concat(concat(concat(0, substring-before($startwithoutzeros, '.')), '.'), concat(0, substring-before(substring-after($startwithoutzeros, '.'), '.'))), '.'), substring-after(substring-after($startwithoutzeros, '.'), '.'))"/>
+                            <xsl:value-of select="concat(0,substring-before($startwithoutzeros, '.'),'.',0,substring-after($startwithoutzeros, '.'))"/>
                         </xsl:when>
                         <xsl:when test="string-length(substring-before($startwithoutzeros, '.')) = 1 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.')) = 2">
                             <xsl:value-of select="concat(0, $startwithoutzeros)"/>
                         </xsl:when>
                         <xsl:when test="string-length(substring-before($startwithoutzeros, '.')) = 2 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.')) = 1">
-                        <xsl:value-of select="concat(concat(concat(substring-before($startwithoutzeros, '.'), '.'), concat(0, substring-before(substring-after($startwithoutzeros, '.'), '.'))), substring-after(substring-after($startwithoutzeros, '.'), '.'))"/>
+                            <xsl:value-of select="concat(substring-before($startwithoutzeros, '.'), '.',0,substring-after($startwithoutzeros, '.'))"/>
                         </xsl:when>
                         <xsl:when test="string-length(substring-before($startwithoutzeros, '.')) = 2 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.')) = 2">
-                        <xsl:value-of select="$startwithoutzeros"/>
+                            <xsl:value-of select="$startwithoutzeros"/>
                         </xsl:when>
                     </xsl:choose>
-                    </xsl:variable>
-                    <xsl:variable name="end">
-                        <xsl:call-template name="latestEnd">
-                            <xsl:with-param name="path" select="calendar/items"/>
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <xsl:variable name="earliestStartJulian">
-                        <xsl:call-template name="calculate-julian-day">
-                            <xsl:with-param name="date" select="$start"/>
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <xsl:variable name="latestEndJulian">
-                        <xsl:call-template name="calculate-julian-day">
-                            <xsl:with-param name="date" select="$end"/>
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <div>
-                    <xsl:attribute name="style">
-                        <xsl:variable name="diff" select="$latestEndJulian - $earliestStartJulian"/>
-                        <xsl:variable name="testit">height: 100vh; width: <xsl:value-of select="68.3 * ($diff + 1)"/>;</xsl:variable>
-                        <xsl:value-of select="$testit"/>
-                    </xsl:attribute>
-                    <xsl:call-template name="DrawBackgroundLinesAndHeadDate">
-                        <xsl:with-param name="iterationtimes" select="$latestEndJulian - $earliestStartJulian"/>
+                </xsl:variable>
+                <xsl:variable name="end">
+                    <xsl:call-template name="latestEnd">
+                        <xsl:with-param name="path" select="calendar/items"/>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="earliestStartJulian">
+                    <xsl:call-template name="calculate-julian-day">
                         <xsl:with-param name="date" select="$start"/>
                     </xsl:call-template>
-                    </div>
+                </xsl:variable>
+                <xsl:variable name="latestEndJulian">
+                    <xsl:call-template name="calculate-julian-day">
+                        <xsl:with-param name="date" select="$end"/>
+                    </xsl:call-template>
+                </xsl:variable>
+                <table>
+                    <tr>
+                        <xsl:call-template name="DrawBackgroundLinesAndHeadDate">
+                            <xsl:with-param name="iterationtimes" select="$latestEndJulian - $earliestStartJulian"/>
+                            <xsl:with-param name="date" select="$start"/>
+                        </xsl:call-template>
+                    </tr>
                     <xsl:call-template name="DrawDivsInLines">
                         <xsl:with-param name="path" select="calendar/items"/>
                         <xsl:with-param name="startJulian" select="$earliestStartJulian"/>
+                        <xsl:with-param name="endJulian" select="$latestEndJulian"/>
                     </xsl:call-template>
-                </div>
+                </table>
             </body>
         </html>
     </xsl:template>
-
-
     <xsl:template name="DrawBackgroundLinesAndHeadDate">
         <xsl:param name="iterationtimes"/>
         <xsl:param name="date"/>
-        <div style="display: inline-block; align-self: auto; vertical-align: top;">
+        <th>
             <!--Insert Dates for header here-->
             <xsl:value-of select="concat(concat(substring-before($date, '.'), '.'), substring-before(substring-after($date, '.'), '.'))"/>
-        </div>
-        <div style="border-left: 1px solid black; height: 100vh; display: inline-block;"></div>        <!--Vertical Seperation Lines-->
+        </th>
         <xsl:if test="$iterationtimes > 0">
-        <xsl:variable name="nextdatewrongformat">
-            <xsl:call-template name="next-day-date">
-            <xsl:with-param name="date" select="$date"/>
-            </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="nextdate" select="concat(concat(concat(concat(substring-after(substring-after($nextdatewrongformat,'-'),'-'), '.'), substring-before(substring-after($nextdatewrongformat, '-'),'-')),'.'), substring-before($nextdatewrongformat, '-'))"/>
+            <xsl:variable name="nextdate">
+                <xsl:call-template name="next-day-date">
+                    <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+            </xsl:variable>
             <xsl:call-template name="DrawBackgroundLinesAndHeadDate">
                 <xsl:with-param name="iterationtimes" select="$iterationtimes -1"/>
                 <xsl:with-param name="date" select="$nextdate"/>
             </xsl:call-template>
         </xsl:if>
     </xsl:template>
-
     <xsl:template name="erliestStart">
         <xsl:param name="path"/>
         <xsl:for-each select="$path/appointments/appointment | $path/milestones/milestone | $path/tasks/task | $path/tasks/task/subtasks/subtask">
@@ -107,7 +97,6 @@
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
-
     <xsl:template name="latestEnd">
         <xsl:param name="path"/>
         <xsl:for-each select="$path/appointments/appointment | $path/milestones/milestone | $path/tasks/task | $path/tasks/task/subtasks/subtask">
@@ -119,192 +108,89 @@
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
-
-    <!-->
-    <xsl:template name="listing">
-        <xsl:for-each select="calendar/items/appointments/appointment">
-            <xsl:sort order="ascending" select="startDate/@val" data-type="date"/>
-            <xsl:value-of select="startDate/@val"/>
-            <xsl:text>___</xsl:text>
-        </xsl:for-each>
-        <xsl:for-each select="calendar/items/milestones/milestone">
-            <xsl:sort order="ascending" select="duedate/@val" data-type="date"/>
-            <xsl:value-of select="duedate/@val"/>
-            <xsl:text>___</xsl:text>
-        </xsl:for-each>
-        <xsl:for-each select="calendar/items/tasks/task">
-            <xsl:sort order="ascending" select="startdate/@val" data-type="date"/>
-            <xsl:value-of select="startdate/@val"/>
-            <xsl:text>___</xsl:text>
-        </xsl:for-each>
-    </xsl:template>
-    <-->
-
-
-
-        <xsl:template name="DrawDivsInLines">
-            <xsl:param name="path"/>
-            <xsl:param name="startJulian"/>
-            <table style="width: 100vw; height: 100vh;  display: inline-block; left: 0; top: 0; margin: -98vh 0 0 0;">
-                <xsl:for-each select="$path/appointments/appointment | $path/milestones/milestone | $path/tasks/task | $path/tasks/task/subtasks/subtask">
-                    <xsl:sort order="ascending" select="substring-after(substring-after(startDate/@val | duedate/@val, '.'), '.')" data-type="number"/>
-                    <xsl:sort order="ascending" select="substring-before(substring-after(startDate/@val | duedate/@val, '.'), '.')" data-type="number"/>
-                    <xsl:sort order="ascending" select="substring-before(startDate/@val | duedate/@val, '.')" data-type="number"/>
-                    <xsl:variable name="startDate">
-                        <xsl:call-template name="calculate-julian-day">
-                            <xsl:with-param name="date" select="startDate/@val | duedate/@val"/>
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <xsl:variable name="endDate">
-                        <xsl:call-template name="calculate-julian-day">
-                            <xsl:with-param name="date" select="endDate/@val | duedate/@val"/>
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <tr style="height: 50px;">
-                        <td>
-                            <xsl:call-template name="drawDivsInOneLine">
-                                <xsl:with-param name="length" select="$endDate - $startDate"/>
-                                <xsl:with-param name="name" select="name/@val"/>
-                                <xsl:with-param name="startJulian" select="$startJulian"/>
-                            </xsl:call-template>
-                        </td>
-                    </tr>
-                </xsl:for-each>
-            </table>
-        </xsl:template>
-
-
-<!--Old sort function-->
-<!--<xsl:template name="DrawDivsInLines">
-            <xsl:param name="path"/>
-            <xsl:param name="startJulian"/>
-            <table style="width: 100vw; height: 100vh;  display: inline-block; left: 0; top: 0; margin: -98vh 0 0 0;">
-                <xsl:for-each select="$path/appointments/appointment | $path/milestones/milestone | $path/tasks/task | $path/tasks/task/subtasks/subtask">
-                    <xsl:sort order="ascending" select="concat(substring-after(substring-after(startDate/@val | duedate/@val,'.'),'.'),concat(substring-before(substring-after(startDate/@val | duedate/@val, '.'), '.'),concat(substring-before(startDate/@val | duedate/@val, '.'),'0')))" data-type="number"/>
-                    <xsl:variable name="startDate">
-                        <xsl:call-template name="calculate-julian-day">
-                            <xsl:with-param name="date" select="startDate/@val | duedate/@val"/>
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <xsl:variable name="endDate">
-                        <xsl:call-template name="calculate-julian-day">
-                            <xsl:with-param name="date" select="endDate/@val | duedate/@val"/>
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <tr style="height: 50px;">
-                        <td>
-                            <xsl:call-template name="drawDivsInOneLine">
-                                <xsl:with-param name="length" select="$endDate - $startDate"/>
-                                <xsl:with-param name="name" select="name/@val"/>
-                                <xsl:with-param name="startJulian" select="$startJulian"/>
-                            </xsl:call-template>
-                        </td>
-                    </tr>
-                </xsl:for-each>
-            </table>
-        </xsl:template>-->
-
-        <xsl:template name="drawDivsInOneLine">
-            <xsl:param name="length"/>
-            <xsl:param name="name"/>
-            <xsl:param name="startJulian"/>
-            <xsl:choose>
-            <xsl:when test="$length>0">
-            <div style="background-color: red;">
-            <xsl:variable name="startDivJulian">
-                    <xsl:call-template name="calculate-julian-day">
-                        <xsl:with-param name="date" select="startDate/@val"/>
-                    </xsl:call-template>
-                </xsl:variable>
-                <xsl:variable name="diff">
-                    <xsl:value-of select="$startDivJulian - $startJulian"/>
-                </xsl:variable>
-                <xsl:choose>
-                <xsl:when test="$diff = 0">
-                    <xsl:attribute name="style">
-                        <xsl:variable name="testit">color: #5a5c5f; border-radius: 5px;width: calc(<xsl:value-of select="$length"/> * 56.12px + (<xsl:value-of select="$length"/> - 1) * 12.05px); background-color: #F7BFBF; margin-left: calc(<xsl:value-of select="$diff"/> * 56.12px + (<xsl:value-of select="$diff"/>) * 12.05px);</xsl:variable>
-                        <xsl:value-of select="$testit"/>
-                    </xsl:attribute>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:attribute name="style">
-                        <xsl:variable name="testit">color: #5a5c5f; border-radius: 5px;width: calc(<xsl:value-of select="$length"/> * 56.12px + (<xsl:value-of select="$length"/>) * 12.05px); background-color: #F7BFBF; margin-left: calc(<xsl:value-of select="$diff"/> * 56.12px + (<xsl:value-of select="$diff"/> - 1) * 12.08px);</xsl:variable>
-                        <xsl:value-of select="$testit"/>
-                    </xsl:attribute>
-                </xsl:otherwise>
-                </xsl:choose>
-                <xsl:value-of select="$name"/>
-            </div>
-            </xsl:when>
-            <xsl:otherwise>
-            <div>
-            <xsl:variable name="startDivJulianDuedate">
+    <xsl:template name="DrawDivsInLines">
+        <xsl:param name="path"/>
+        <xsl:param name="startJulian"/>
+        <xsl:param name="endJulian"/>
+        <xsl:for-each select="$path/appointments/appointment | $path/milestones/milestone | $path/tasks/task | $path/tasks/task/subtasks/subtask">
+            <xsl:sort order="ascending" select="substring-after(substring-after(startDate/@val | duedate/@val, '.'), '.')" data-type="number"/>
+            <xsl:sort order="ascending" select="substring-before(substring-after(startDate/@val | duedate/@val, '.'), '.')" data-type="number"/>
+            <xsl:sort order="ascending" select="substring-before(startDate/@val | duedate/@val, '.')" data-type="number"/>
+            <xsl:variable name="startDate">
                 <xsl:call-template name="calculate-julian-day">
-                    <xsl:with-param name="date"><xsl:value-of select="duedate/@val"/></xsl:with-param>
+                    <xsl:with-param name="date" select="startDate/@val | duedate/@val"/>
                 </xsl:call-template>
             </xsl:variable>
-            <xsl:variable name="offset" select="$startDivJulianDuedate - $startJulian"/>
-
-
-                <xsl:choose>
-                <xsl:when test="$offset = 0">
-                    <xsl:attribute name="style">
-                        <xsl:variable name="testit">border-radius: 5px;background-color: #ADD3F7; color: #5a5c5f; width: 56.12px; text-align: center; margin-left: calc(<xsl:value-of select="$offset"/> * 56.12px + (<xsl:value-of select="$offset"/>) * 12.05px);</xsl:variable>
-                        <xsl:value-of select="$testit"/>
-                    </xsl:attribute>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:attribute name="style">
-                        <xsl:variable name="testit">border-radius: 5px;background-color: #ADD3F7; color: #5a5c5f; width: 68px; text-align: center; margin-left: calc(<xsl:value-of select="$offset"/> * 56.12px + (<xsl:value-of select="$offset"/> - 1) * 12.08px);</xsl:variable>
-                        <xsl:value-of select="$testit"/>
-                    </xsl:attribute>
-                </xsl:otherwise>
-                </xsl:choose>
-
-                    
-                <xsl:value-of select="$name"/>
-            </div>
-            </xsl:otherwise>
-            </xsl:choose>
-        </xsl:template>
-
-
-        <!--Mit Rekursivem Aufruf-->
-        <!--<xsl:template name="drawDivsInOneLine">
-            <xsl:param name="length"/>
-            <xsl:param name="maxlength"/>
-            <xsl:param name="name"/>
-            <div style="width: 57px; height: 30px; background-color: red; display: inline-block; font-size: 15px; margin-left: -10px;">
-                <xsl:if test="$length = $maxlength">
-                    <xsl:value-of select="$name"/>
-                </xsl:if>
-            </div>
-            <xsl:if test="$length > 0">
-                <xsl:call-template name="drawDivsInOneLine">
-                    <xsl:with-param name="length" select="$length - 1"/>
+            <xsl:variable name="endDate">
+                <xsl:call-template name="calculate-julian-day">
+                    <xsl:with-param name="date" select="endDate/@val | duedate/@val"/>
                 </xsl:call-template>
-            </xsl:if>
-        </xsl:template>-->
-
-
-        <xsl:template name="calculate-julian-day">
-            <!--This method converts a date into an int in order to get the days between to dates-->
-            <xsl:param name="date"/>
-            <xsl:param name="day" select="substring-before($date,'.')"/>
-            <xsl:param name="month" select="substring-before(substring-after($date,'.'),'.')"/>
-            <xsl:param name="year" select="substring-after(substring-after($date,'.'),'.')"/>
-
-            <xsl:variable name="a" select="floor((14 - $month) div 12)"/>
-            <xsl:variable name="y" select="$year + 4800 - $a"/>
-            <xsl:variable name="m" select="$month + 12 * $a - 3"/>
-
-            <xsl:value-of select="$day + floor((153 * $m + 2) div 5) + $y * 365 + floor($y div 4) - floor($y div 100) + floor($y div 400) - 32045"/>
-        </xsl:template>
-
-
-
-
-        <xsl:template name="next-day-date">
+            </xsl:variable>
+            <tr>
+                <xsl:call-template name="drawDivsInOneLine">
+                    <xsl:with-param name="length" select="$endDate - $startDate"/>
+                    <xsl:with-param name="name" select="name/@val"/>
+                    <xsl:with-param name="startJulian" select="$startJulian"/>
+                    <xsl:with-param name="endJulian" select="$endJulian"/>
+                </xsl:call-template>
+            </tr>
+        </xsl:for-each>
+    </xsl:template>
+    <xsl:template name="drawDivsInOneLine">
+        <xsl:param name="length"/>
+        <xsl:param name="name"/>
+        <xsl:param name="startJulian"/>
+        <xsl:param name="endJulian"/>
+        <xsl:variable name="startDivJulian">
+            <xsl:call-template name="calculate-julian-day">
+                <xsl:with-param name="date" select="startDate/@val | duedate/@val"/>
+            </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="offsetToBeginnig">
+            <xsl:value-of select="$startDivJulian - $startJulian"/>
+        </xsl:variable>
+        <xsl:call-template name="insertEmptyTD">
+            <xsl:with-param name ="TDCount" select="$offsetToBeginnig"></xsl:with-param>
+        </xsl:call-template>
+        <td>
+            <xsl:variable name="type" select="name()"></xsl:variable>
+            <xsl:attribute name="class" >
+                <xsl:value-of select="$type"></xsl:value-of>
+                <xsl:text > elementTD</xsl:text>
+            </xsl:attribute>
+            <xsl:attribute name="colspan" >
+                <xsl:value-of select="$length+1"></xsl:value-of>
+            </xsl:attribute>
+            <a href="calendar.xml" target="popup" onclick="window.open('calendar.xml','popup','width=600,height=600'); return false;">
+                <xsl:value-of select="$name"></xsl:value-of>
+            </a>
+        </td>
+        <xsl:call-template name="insertEmptyTD">
+            <xsl:with-param name ="TDCount" select="$endJulian - $startDivJulian - $length"></xsl:with-param>
+        </xsl:call-template>
+    </xsl:template>
+    <xsl:template name="insertEmptyTD">
+        <xsl:param name="TDCount"/>
+        <xsl:if test="$TDCount > 0">
+            <td>
+        </td>
+            <xsl:call-template name="insertEmptyTD">
+                <xsl:with-param name="TDCount" select="$TDCount -1"/>
+            </xsl:call-template>
+        </xsl:if>
+    </xsl:template>
+    <xsl:template name="calculate-julian-day">
+        <!--This method converts a date into an int in order to get the days between to dates-->
+        <xsl:param name="date"/>
+        <xsl:param name="day" select="substring-before($date,'.')"/>
+        <xsl:param name="month" select="substring-before(substring-after($date,'.'),'.')"/>
+        <xsl:param name="year" select="substring-after(substring-after($date,'.'),'.')"/>
+        <xsl:variable name="a" select="floor((14 - $month) div 12)"/>
+        <xsl:variable name="y" select="$year + 4800 - $a"/>
+        <xsl:variable name="m" select="$month + 12 * $a - 3"/>
+        <xsl:value-of select="$day + floor((153 * $m + 2) div 5) + $y * 365 + floor($y div 4) - floor($y div 100) + floor($y div 400) - 32045"/>
+    </xsl:template>
+    <xsl:template name="next-day-date">
         <xsl:param name="date"/>
         <xsl:variable name="old_year" select="substring-after(substring-after($date,'.'),'.')"/>
         <xsl:variable name="old_month" select="substring-before(substring-after($date,'.'),'.')"/>
@@ -343,9 +229,9 @@
                 <xsl:when test="$old_day='30'">
                     <xsl:choose>
                         <xsl:when test="$old_month=4 or $old_month=6 or $old_month=9">
-                        <xsl:if test="$old_month!=9">
-                            <xsl:text>0</xsl:text>
-                        </xsl:if>
+                            <xsl:if test="$old_month!=9">
+                                <xsl:text>0</xsl:text>
+                            </xsl:if>
                             <xsl:value-of select="$old_month+1"/>
                         </xsl:when>
                         <!-- november -->
@@ -361,20 +247,14 @@
                     <xsl:text>03</xsl:text>
                 </xsl:when>
                 <xsl:otherwise>
-
-
-
-                <xsl:choose>
-                <xsl:when test="string-length($old_month)=1">
-                <xsl:value-of select="concat(0,$old_month)"/>
-                </xsl:when>
-                <xsl:otherwise>
-                <xsl:value-of select="$old_month"/>
-                </xsl:otherwise>
-                </xsl:choose>
-                    
-
-                    
+                    <xsl:choose>
+                        <xsl:when test="string-length($old_month)=1">
+                            <xsl:value-of select="concat(0,$old_month)"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="$old_month"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
@@ -392,14 +272,10 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        <xsl:value-of select="$year"/>
-        <xsl:text>-</xsl:text>
-        <xsl:value-of select="$month"/>
-        <xsl:text>-</xsl:text>
         <xsl:value-of select="$day"/>
+        <xsl:text>.</xsl:text>
+        <xsl:value-of select="$month"/>
+        <xsl:text>.</xsl:text>
+        <xsl:value-of select="$year"/>
     </xsl:template>
-
-
-
-
-    </xsl:stylesheet>
+</xsl:stylesheet>

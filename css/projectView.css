@@ -5,3 +5,47 @@
 body {
   font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
 }
+.milestone {
+  background-color: green;
+}
+
+.appointment {
+  background-color: red;
+}
+
+.subtask {
+  background-color: blue;
+}
+
+.task {
+  background-color: purple;
+}
+
+.elementTD {
+  border: 1px solid black;
+  border-radius: 5px;
+  border-collapse: separate;
+}
+
+tr th {
+  text-align: center;
+  border-right: 1px solid white;
+  border-collapse: collapse;
+  font-weight: normal;
+  padding: 10px;
+}
+td {
+  border-right: 1px solid white;
+  border-collapse: collapse;
+  padding: 10px;
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: #add3f7;
+  border-radius: 25pt;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+}
