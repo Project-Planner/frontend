@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:css="http://www.w3.org/TR/XSL-for-CSS">
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:variable name="displayMode" select="'calender'"/>
     <!--displayModes: calender/project-->
-    <xsl:variable name="id" select="33"/>
+    <xsl:variable name="id" select="22"/>
     <!--hier id des anzuzeigenden Elements setzen-->
-    <xsl:output method="XML" encoding="utf-8" indent="yes"/>
+    <xsl:output method="XML" encoding="utf-8"/>
     <xsl:template match="/">
         <html>
             <head>
-                <link rel="stylesheet" href="../css/projectView.css"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <link rel="stylesheet" href="../css/mainPage.css"/>
                 <link rel="stylesheet" href="../css/master.css"/>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro"/>
             </head>
@@ -93,7 +93,7 @@
         <xsl:for-each select="calendar/items/appointments/appointment  | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
             <xsl:if test="@id = $id">
                 <xsl:value-of select="duetime/@val"></xsl:value-of>
-                <form class="" action="" method="post">
+                <form class="entry" action="" method="post">
                     <div>
                         <label for="relation">Zu Projekt hinzufügen: </label>
                     </div>
@@ -170,16 +170,19 @@
                                 <xsl:value-of select="$timeWithZeros"></xsl:value-of>
                             </xsl:attribute>
                         </input>
+                    </div>
+                    <div>
                         <div>
                             <label for="desc">Beschreibung:</label>
-                        </div>
-                        <div>
-                            <textarea name="desc" rows="10" cols="30" maxlength="250">
+                            <textarea name="desc" rows="8" cols="40" placeholder="max 250 Zeichen">
                                 <xsl:value-of select="desc"></xsl:value-of>
                             </textarea>
                         </div>
                         <div>
-                            <input type="submit" name="" value="Create"/>
+                            <input type="submit" name="" value="Save"/>
+                        </div>
+                        <div>
+                            <input type="submit" name="" value="Delete"/>
                         </div>
                         <!-- Abbrechen fehlt-->
                     </div>
@@ -190,7 +193,7 @@
     <xsl:template name="showMilestoneView">
         <xsl:for-each select=" calendar/items/milestones/milestone">
             <xsl:if test="@id = $id">
-                <form class="" action="" method="post">
+                <form class="entry" action="" method="post">
                     <div>
                         <label for="relation">Zu Projekt hinzufügen: </label>
                     </div>
@@ -239,13 +242,16 @@
                         <label for="desc">Beschreibung:</label>
                     </div>
                     <div>
-                        <textarea name="desc" rows="10" cols="30" maxlength="250">
+                        <textarea name="desc" rows="8" cols="40" placeholder="max 250 Zeichen">
                             <xsl:value-of select="desc"></xsl:value-of>
                         </textarea>
                     </div>
                     <div>
-                        <input type="submit" name="" value="Create"/>
+                        <input type="submit" name="" value="Save"/>
                         <!-- Abbrechen fehlt-->
+                    </div>
+                    <div>
+                        <input type="submit" name="" value="Delete"/>
                     </div>
                 </form>
             </xsl:if>
