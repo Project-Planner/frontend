@@ -64,7 +64,7 @@ div.logo {
   width: min-content;
 }
 
-#dropdown-content{
+#dropdown-content {
   display: none;
 }
 
@@ -85,7 +85,6 @@ div.dropdown-content {
 div.dropdown:hover div.dropdown-content {
   display: inline;
 }*/
-
 
 /*Suchfeld*/
 .search p {
@@ -110,6 +109,7 @@ iframe.calendarView {
   position: absolute;
   top: 9%;
   left: 15%;
+  border: 0px transparent;
 }
 
 /* The switch - the box around the slider */
@@ -326,15 +326,15 @@ input:checked + .slider:before {
   }
 }
 
-
-.entry{
+.entry {
   white-space: pre-line;
 }
 
-.entry input, select{
+.entry input,
+select {
   font-size: 3.2vw;
 }
 
-.entry label{
+.entry label {
   font-size: 3vw;
 }

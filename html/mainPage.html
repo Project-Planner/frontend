@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,63 +8,7 @@
   <link rel="stylesheet" href="../css/master.css">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
-  <script>
-    var date =  new Date();
-    window.onload=function(){
-      changeDate(0);
-    };
-    var mode = "calendar";
-    var period = "week";
-    
-    function changeDate(val) {
-      date.setDate(date.getDate()+val);
-
-      var day = date.getDay();
-      var diff = date.getDate() - day + (day == 0 ? -6:1);
-      var nLimit = new Date();
-      var url_string = document.getElementById("calendarFrame").src
-      var url = new URL(url_string);
-      var mode = url.searchParams.get("mode");
-      var period = url.searchParams.get("period");
-      
-      date.setDate(diff);
-      nLimit.setDate(diff + 6);
-
-      y = date.getFullYear();
-      m = date.getMonth() + 1;
-      d = date.getDate();
-      
-      document.getElementById("date").innerHTML = d + "." + m +"."+ y + "\n - " + nLimit.getDate() + "." + (nLimit.getMonth()+1) + "." + nLimit.getFullYear();
-      document.getElementById("calendarFrame").src = "../data/calendar.xml?mode="+mode+"&period="+period+"&date="+d+"."+m+"."+y;
-    }
-
-    function changeCalendarMode(val) {
-      var url_string = document.getElementById("calendarFrame").src
-      var url = new URL(url_string);
-      mode = url.searchParams.get("mode");
-      date = url.searchParams.get("date");
-      
-      document.getElementById("calendarFrame").src = "../data/calendar.xml?mode="+mode+"&period="+val+"&date="+date;
-    }
-
-    function changeDisplayMode() {
-      var url_string = document.getElementById("calendarFrame").src
-      var url = new URL(url_string);
-      period = url.searchParams.get("period");
-      date = url.searchParams.get("date");
-
-      if (document.getElementById("displayModeCheckbox").checked) {
-        document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=project&period=" + period + "&date=" +
-          date;
-      } else {
-        document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=project&period=" + period + "&date=" +
-          date;
-      }
-    }
-
-    function setVisibilityTrue() {
-      document.getElementById("dropdown-content").style.display = "block";
-    }
+  <script src="../js/main.js">
   </script>
 </head>
 
@@ -125,7 +68,6 @@
       </div>
       -->
     </div>
-  </div>
 
   <form class="search" action="mainPage.html" method="post">
     <p>Andere Kalender</p>
@@ -138,11 +80,11 @@
       onclick="window.open('createEntry.html','popup','width=400,height=600', 'resizable=no'); return false;">Hinzufügen</a>
     <br>
   </div>
-  <button class="goback" onClick="changeDate(-7)">&loarr;</button>
+  <button class="goback" onClick="changeDate(-add)">&loarr;</button>
   <div id="date">
   </div>
-  <button class="goForward" onClick="changeDate(7)">&roarr;</button>
-  <iframe class="calendarView" id="calendarFrame" name="calendarFrame" src="../data/calendar.xml"
+  <button class="goForward" onClick="changeDate(add)">&roarr;</button>
+  <iframe class="calendarView" id="calendarFrame" name="calendarFrame" src="/me/c"
     frameBorder="0"></iframe>
   <iframe class="footer" src="../html/footer.html" frameBorder="0"></iframe>
 </body>

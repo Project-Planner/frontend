@@ -34,35 +34,66 @@
           <xsl:with-param name="date" select="$weekDate"/>
         </xsl:call-template>
     </xsl:variable>
-    <div class="container">
-        <div class="dayTitle">
-            <xsl:choose >
-              <xsl:when test="$dayOfDate=1">
-              Montag
-              </xsl:when>
-              <xsl:when test="$dayOfDate=2">
-              Dienstag
-              </xsl:when>
-              <xsl:when test="$dayOfDate=3">
-              Mittwoch
-              </xsl:when>
-              <xsl:when test="$dayOfDate=4">
-              Donnerstag
-              </xsl:when>
-              <xsl:when test="$dayOfDate=5">
-              Freitag
-              </xsl:when>
-              <xsl:when test="$dayOfDate=6">
-              Samstag
-              </xsl:when>
-              <xsl:when test="$dayOfDate=0">
-              Sonntag
-              </xsl:when>
-            </xsl:choose>
-          </div>
-            <xsl:call-template name="insertDay">
-              <xsl:with-param name="date" select="$weekDate"/>
-            </xsl:call-template>
+
+    <div class="background">
+      <div class="leftBar">
+        <div class="timeBar" style="margin-top: 0;"> 00:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 4.16%;"> 01:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 2*4.16%;"> 02:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 3*4.16%;"> 03:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 4*4.16%;"> 04:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 5*4.16%;"> 05:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 6*4.16%;"> 06:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 7*4.16%;"> 07:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 8*4.16%;"> 08:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 9*4.16%;"> 09:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 10*4.16%;"> 10:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 11*4.16%;"> 11:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 12*4.16%;"> 12:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 13*4.16%;"> 13:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 14*4.16%;"> 14:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 15*4.16%;"> 15:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 16*4.16%;"> 16:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 17*4.16%;"> 17:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 18*4.16%;"> 18:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 19*4.16%;"> 19:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 20*4.16%;"> 20:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 21*4.16%;"> 21:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 22*4.16%;"> 22:00 Uhr </div>
+        <div class="timeBar" style="margin-top: 23*4.16%;"> 23:00 Uhr </div>
+      </div>
+
+      <div class="topBar">
+        <div class="title">
+          <xsl:choose >
+            <xsl:when test="$dayOfDate=1">
+            Montag
+            </xsl:when>
+            <xsl:when test="$dayOfDate=2">
+            Dienstag
+            </xsl:when>
+            <xsl:when test="$dayOfDate=3">
+            Mittwoch
+            </xsl:when>
+            <xsl:when test="$dayOfDate=4">
+            Donnerstag
+            </xsl:when>
+            <xsl:when test="$dayOfDate=5">
+            Freitag
+            </xsl:when>
+            <xsl:when test="$dayOfDate=6">
+            Samstag
+            </xsl:when>
+            <xsl:when test="$dayOfDate=0">
+            Sonntag
+            </xsl:when>
+        </xsl:choose>
+        </div>
+      </div>
+    
+      <xsl:call-template name="insertDay">
+        <xsl:with-param name="date" select="$weekDate"/>
+      </xsl:call-template>
     </div>
   </xsl:template>
 
@@ -178,14 +209,18 @@
     
     <xsl:for-each select="calendar/items/milestones/milestone">
       <xsl:sort select="duetime/@val" data-type="number"/>
-
         <xsl:if test="duedate/@val=$date">
-              <tr>
-                <div class="milestone">
-                <xsl:value-of select="name/@val"/>
-                <xsl:value-of select="duedate/@val"/>
-                </div>
-              </tr>
+        
+          <xsl:variable name="timeVal">
+            <xsl:call-template name="getTimeValue">
+              <xsl:with-param name="time" select="duetime/@val"/>
+            </xsl:call-template>
+          </xsl:variable>
+          
+          <div class="milestone dayEntry" style="{concat('margin-top:', $timeVal ,'%;')}">
+            <p> <xsl:value-of select="name/@val"/> </p>
+            <p> <xsl:value-of select="duedate/@val"/> </p>
+          </div>
         </xsl:if>
     </xsl:for-each>
 
@@ -231,6 +266,7 @@
     <!--This method places the items based on their date and
     filtered by a day (val 0-6) into the calendar -->
     <!--ToDo:Make 1 Method for every view-->
+
     <xsl:param name="day"/>
     <!--Add milestones to calendar-->
     <xsl:for-each select="calendar/items/milestones/milestone">
@@ -567,7 +603,6 @@
     <xsl:value-of select="$day + floor((153 * $m + 2) div 5) + $y * 365 + floor($y div 4) - floor($y div 100) + floor($y div 400) - 32045"/>
   </xsl:template>
 
-
   <xsl:template name="getFirstDayOfMonth">
     <!--method to get first day of month-->
     <xsl:param name="date"/>
@@ -576,7 +611,6 @@
 
     <xsl:value-of select="concat('1.',$month, '.', $year)"/>
   </xsl:template>
-
 
   <xsl:template name="createTable">
     <!--method to create month Table-->
@@ -651,6 +685,15 @@
     
     </td>
 
+  </xsl:template>
+
+  <xsl:template name="getTimeValue">
+    <xsl:param name="time"/>
+
+    <xsl:variable name="hour" select="substring-before($time,':')"/>
+    <xsl:variable name="minutes" select="substring-after($time,':')"/>
+
+    <xsl:value-of select="$hour * 4.16 + $minutes * 0.0694"/>
   </xsl:template>
 
 </xsl:stylesheet>
