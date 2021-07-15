@@ -9,9 +9,9 @@ window.onload = function () {
   document.getElementById("calendarFrame").src =
     "/me/c?mode=" +
     mode +
-    "&period=" +
+    ";period=" +
     period +
-    "&date=" +
+    ";date=" +
     date.getDate() +
     "." +
     (date.getMonth() + 1) +
@@ -132,9 +132,9 @@ function changeDate(val) {
   document.getElementById("calendarFrame").src =
     "/me/c?mode=" +
     mode +
-    "&period=" +
+    ";period=" +
     period +
-    "&date=" +
+    ";date=" +
     d +
     "." +
     m +
@@ -156,9 +156,6 @@ function changeCalendarMode(val) {
       add = 1;
       break;
   }
-
-  document.getElementById("calendarFrame").src =
-    "/me/c?mode=" + mode + "&period=" + val + "&date=" + date;
   changeDate(0);
 }
 
@@ -170,10 +167,10 @@ function changeDisplayMode() {
 
   if (document.getElementById("displayModeCheckbox").checked) {
     document.getElementById("calendarFrame").src =
-      "/me/c?mode=project&period=" + period + "&date=" + date;
+      "/me/c?mode=project;period=" + period + ";date=" + date;
   } else {
     document.getElementById("calendarFrame").src =
-      "/me/c?mode=calendar&period=" + period + "&date=" + date;
+      "/me/c?mode=calendar;period=" + period + ";date=" + date;
   }
 }
 

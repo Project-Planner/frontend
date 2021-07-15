@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:variable name="weekDate" select="'5.7.2021'"/>
-  <xsl:variable name="displayMode" select="'calendar'"/>
-  <!--displayModes: calendar/project-->
-  <xsl:variable name="calendarMode" select="'month'"/>
-  <!--calendarModes: week/day/month-->
   <xsl:template match="/">
     <html>
       <head>
@@ -13,13 +8,13 @@
       </head>
       <body>
         <xsl:choose>
-          <xsl:when test="$calendarMode = 'day'">
+          <xsl:when test="$period = 'day'">
             <xsl:call-template name="dayCalendar"/>
           </xsl:when>
-          <xsl:when test="$calendarMode = 'week'">
+          <xsl:when test="$period = 'week'">
             <xsl:call-template name="weekCalendar"/>
           </xsl:when>
-          <xsl:when test="$calendarMode = 'month'">
+          <xsl:when test="$period = 'month'">
             <xsl:call-template name="monthCalendar"/>
           </xsl:when>
         </xsl:choose>
@@ -31,7 +26,7 @@
     <!--This method generates the day based Calendar-->
     <xsl:variable name="dayOfDate">
         <xsl:call-template name="getDay">
-          <xsl:with-param name="date" select="$weekDate"/>
+          <xsl:with-param name="date" select="$date"/>
         </xsl:call-template>
     </xsl:variable>
 
@@ -92,7 +87,7 @@
       </div>
     
       <xsl:call-template name="insertDay">
-        <xsl:with-param name="date" select="$weekDate"/>
+        <xsl:with-param name="date" select="$date"/>
       </xsl:call-template>
     </div>
   </xsl:template>
@@ -288,7 +283,7 @@
 
         <xsl:variable name="currentWeekInt">
           <xsl:call-template name="calculateJulianDay">
-            <xsl:with-param name="date" select="$weekDate"/>
+            <xsl:with-param name="date" select="$date"/>
           </xsl:call-template>
         </xsl:variable>
 
@@ -332,7 +327,7 @@
 
         <xsl:variable name="currentWeekInt">
           <xsl:call-template name="calculateJulianDay">
-            <xsl:with-param name="date" select="$weekDate"/>
+            <xsl:with-param name="date" select="$date"/>
           </xsl:call-template>
         </xsl:variable>
 
@@ -379,7 +374,7 @@
 
         <xsl:variable name="currentWeekInt">
           <xsl:call-template name="calculateJulianDay">
-            <xsl:with-param name="date" select="$weekDate"/>
+            <xsl:with-param name="date" select="$date"/>
           </xsl:call-template>
         </xsl:variable>
 
@@ -417,7 +412,7 @@
 
     <xsl:variable name="monthDate">
       <xsl:call-template name="getFirstDayOfMonth">
-        <xsl:with-param name="date" select="$weekDate"/>
+        <xsl:with-param name="date" select="$date"/>
       </xsl:call-template>  
     </xsl:variable>
     <!--Add milestones to calendar-->
@@ -673,7 +668,7 @@
     <xsl:variable name="currentDay">
     <xsl:call-template name="getDay">
       <xsl:call-template name="getFirstDayOfMonth">
-        <xsl:with-param name="date" select="$weekDate"/>
+        <xsl:with-param name="date" select="$date"/>
       </xsl:call-template>
     </xsl:call-template>  
     </xsl:variable>
