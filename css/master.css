@@ -1,7 +1,9 @@
-body {
+body,
+pre {
   background-color: #5a5c5f;
   font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
   color: white;
+  font-size: 1.1vw;
 }
 
 input[type="submit"] {
@@ -19,20 +21,39 @@ h1 {
   color: #add3f7;
   width: min-content;
   margin: auto;
+  font-size: 2.5vw;
+}
+
+h2 {
+  font-family: "Pacifico", Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 1.5vw;
 }
 
 .footer {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 99%;
-  height: 5%;
-  border: 0px transparent;
+  width: 100%;
+  height: 6%;
+  overflow: hidden;
+  background-color: #5a5c5f;
+}
+
+.footerLogin {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6%;
+  overflow: hidden;
+  background-color: transparent;
 }
 
 .footerBody {
   background: none;
 }
+
 
 div.footer-elements {
   float: right;
@@ -47,4 +68,8 @@ a {
 footer a:hover {
   color: blue;
   text-decoration: underline;
+}
+
+#adding {
+  color: black;
 }

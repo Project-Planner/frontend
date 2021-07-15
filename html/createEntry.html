@@ -12,8 +12,8 @@
 </head>
 
 <body>
-  <form class="" action="" method="post">
-    <div><label for="typ">Typ wählen: </label>
+  <form class="entry" action="" method="post">
+    <div><label for="typ">Typ wählen:</label>
       <select name="typ" id="typ">
         <!--Kalenderauswahl getrennt davon?-->
         <option value="calendar">Kalender</option>
@@ -38,7 +38,7 @@
     <div><label for="timet">Zeit bis:</label>
       <input type="time" id="timet" name="timet"></div>
     <div><label for="desc">Beschreibung:</label></div>
-    <div><textarea name="desc" rows="10" cols="30" maxlength="250">Beschreibung</textarea></div>
+    <div><textarea name="desc" rows="10" cols="30" maxlength="250" placeholder="max 250 Zeichen"></textarea></div>
     <div><input type="submit" name="" value="Create"></div>
     <!-- Abbrechen fehlt-->
   </form>
