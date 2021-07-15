@@ -55,38 +55,45 @@
       date = url.searchParams.get("date");
 
       if (document.getElementById("displayModeCheckbox").checked) {
-        document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=project&period="+period+"&date="+date;
-      }
-      else{
-        document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=project&period="+period+"&date="+date;
+        document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=project&period=" + period + "&date=" +
+          date;
+      } else {
+        document.getElementById("calendarFrame").src = "../data/calendar.xml?mode=project&period=" + period + "&date=" +
+          date;
       }
     }
 
+    function setVisibilityTrue() {
+      document.getElementById("dropdown-content").style.display = "block";
+    }
   </script>
 </head>
 
 <body>
   <div class="logo">
-    <img src="../ressources/plannet_logo_mitBack1.png" alt="">
+    <img src="../ressources/plannet_logo_lightblue.png" alt="Logo plannet_logo_lightblue">
   </div>
   <div class="viewToggle">
 
-    <p>Kalenderansicht</p>
+    <p><pre>Kalenderansicht </pre></p>
     <label class="switch">
       <input type="checkbox" id="displayModeCheckbox" onclick="changeDisplayMode()">
       <span class=" slider round"></span>
     </label>
-    <p>Projektansicht</p>
+    <p><pre> Projektansicht</pre></p>
   </div>
 
   <div class="timeToggle">
-    <p>Zeitraum</p>
-      <input type="radio" class="stv-radio-button" id="day" name="timeframeSelect" value="day" onClick="changeCalendarMode('day')" />
-      <label for="day">D</label>
-      <input type="radio" class="stv-radio-button" id="week" name="timeframeSelect" value="week" onClick="changeCalendarMode('week')"checked/>
-      <label for="week">W</label>
-      <input type="radio" class="stv-radio-button" id="month" name="timeframeSelect" value="month" onClick="changeCalendarMode('month')"/>
-      <label for="month">M</label>
+    <p>Zeitraum:</p>
+    <input type="radio" class="stv-radio-button" id="day" name="timeframeSelect" value="day"
+      onClick="changeCalendarMode('day')" checked />
+    <label for="day">D</label>
+    <input type="radio" class="stv-radio-button" id="week" name="timeframeSelect" value="week"
+      onClick="changeCalendarMode('week')" />
+    <label for="week">W</label>
+    <input type="radio" class="stv-radio-button" id="month" name="timeframeSelect" value="month"
+      onClick="changeCalendarMode('month')" />
+    <label for="month">M</label>
   </div>
 
   <input type="image" src="../ressources/user.png" class="userIcon"></input>
@@ -94,54 +101,50 @@
     <input type="image" src="../ressources/logout.png" class="logoutIcon"></input>
   </form>
 
+  <!--muss noch korrekt aus der HTML geladen werden-->
   <div class="dropdown">
-    <button class="dropbtn">Meine Kalender &#9660;</button>
-    <div class="dropdown-content">
-
+    <button class="dropbtn" onclick="setVisibilityTrue()">Meine Kalender &#9660;</button>
+    <div class="dropdown-content" id="dropdown-content">
+      <div>
+        <input type="checkbox" id="calendar1" name="calendar1" value="work">
+        <label for="calendar1">Arbeit</label>
+      </div>
+      <div>
+        <input type="checkbox" id="calendar2" name="calendar2" value="private">
+        <label for="calendar2">Privat</label>
+      </div>
+      <div>
+        <input type="checkbox" id="calendar3" name="calendar3" value="dhbw">
+        <label for="calendar3">DHBW</label>
+      </div>
+      <!--
       <div class="dropdown-entry">
         <p>Arbeit</p>
 
         <input type="checkbox">
       </div>
-
-      <div class="dropdown-entry">
-        <p>Privat</p>
-        <input type="checkbox">
-      </div>
-
-      <div class="dropdown-entry">
-        <p>DHBW</p>
-        <input type="checkbox">
-      </div>
+      -->
     </div>
   </div>
 
   <form class="search" action="mainPage.html" method="post">
     <p>Andere Kalender</p>
-    <input type="search" name="Suche" value="Suche" maxlength="250">
+    <input type="search" name="Suche" maxlength="250" placeholder="Suche">
   </form>
 
   <div class="add">
-    <p>Hinzufügen</p>
-
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Kalender/Projekt</a>
     <br>
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Aufgabe</a>
+    <a id="adding" href="createEntry.html" target="popup"
+      onclick="window.open('createEntry.html','popup','width=400,height=600', 'resizable=no'); return false;">Hinzufügen</a>
     <br>
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Unteraufgabe</a>
-    <br>
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Termin</a>
-    <br>
-    <a href="createEntry.html" target="popup" onclick="window.open('createEntry.html','popup','width=600,height=600'); return false;">Meilenstein</a>
-
   </div>
-    <button class="goback" onClick="changeDate(-7)">&#60;</button>
+  <button class="goback" onClick="changeDate(-7)">&loarr;</button>
   <div id="date">
   </div>
-    <button class="goForward" onClick="changeDate(7)">&#62;</button>
-  <iframe class="calendarView" id="calendarFrame" name="calendarFrame" src="../data/calendar.xml" frameBorder="0"></iframe>
+  <button class="goForward" onClick="changeDate(7)">&roarr;</button>
+  <iframe class="calendarView" id="calendarFrame" name="calendarFrame" src="../data/calendar.xml"
+    frameBorder="0"></iframe>
   <iframe class="footer" src="../html/footer.html" frameBorder="0"></iframe>
-
 </body>
 
 </html>

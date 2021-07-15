@@ -1,27 +1,32 @@
 div.logo img {
-  border-radius: 50%;
-  width: 30%;
+  display: flex;
+  width: 70%;
 }
 
 .logoutIcon {
   position: absolute;
-  top: 1%;
-  right: 0;
+  top: 2%;
+  right: 1%;
+  height: 5%;
 }
 
 .userIcon {
+  display: flex;
   position: absolute;
-  top: 0;
-  right: 5%;
+  top: 2%;
+  right: 8%;
+  height: 5%;
 }
 
 switch {
+  display: flex;
   float: left;
   display: inline;
   width: 49%;
 }
 
 div.viewToggle {
+  display: flex;
   position: absolute;
   left: 20%;
 }
@@ -33,7 +38,7 @@ div.viewToggle * {
 
 div.timeToggle {
   position: absolute;
-  top: 2%;
+  top: 3%;
   right: 20%;
   width: 20%;
 }
@@ -48,14 +53,25 @@ div.logo {
   width: 20%;
 }
 
+/*Dropdown zu "Meine Kalender"*/
+.dropbtn {
+  border-radius: 50px;
+  margin-top: 20%;
+}
+
 .dropdown {
+  top: 5%;
   width: min-content;
+}
+
+#dropdown-content{
+  display: none;
 }
 
 button.dropbtn {
   white-space: nowrap;
 }
-
+/*
 div.dropdown-content {
   display: none;
   color: white;
@@ -68,20 +84,24 @@ div.dropdown-content {
 
 div.dropdown:hover div.dropdown-content {
   display: inline;
-}
+}*/
 
+
+/*Suchfeld*/
 .search p {
-  margin-bottom: 1%;
+  display: flex;
 }
 
 .search input {
-  border: solid white 1px;
-  border-radius: 25px;
-  margin-left: 2%;
+  display: flex;
+  border: solid black 1px;
+  border-radius: 50px;
+  max-width: 10vw;
 }
 
 .add a {
-  margin-left: 2%;
+  display: flex;
+  margin-left: 0, 5%;
 }
 
 iframe.calendarView {
@@ -96,8 +116,8 @@ iframe.calendarView {
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 6vw;
+  height: 3.4vw;
 }
 
 /* Hide default HTML checkbox */
@@ -116,41 +136,205 @@ iframe.calendarView {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 2.6vw;
+  width: 2.6vw;
+  left: 0.4vw;
+  bottom: 0.4vw;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
-input:checked+.slider {
-  background-color: #F7BFBF;
+input:checked + .slider {
+  background-color: #f7bfbf;
 }
 
-input:focus+.slider {
-  box-shadow: 0 0 1px #F7BFBF;
+input:focus + .slider {
+  box-shadow: 0 0 1px #f7bfbf;
 }
 
-input:checked+.slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+input:checked + .slider:before {
+  -webkit-transform: translateX(2.6vw);
+  -ms-transform: translateX(2.6vw);
+  transform: translateX(2.6vw);
 }
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: 34px;
+  border-radius: 3.4vw;
 }
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+/*crazy rgb buttons*/
+.goback {
+  width: 60px;
+  height: 20px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+.goback:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+.goback:active {
+  color: rgb(255, 253, 253);
+}
+
+.goback:active:after {
+  background: transparent;
+}
+
+.goback:hover:before {
+  opacity: 1;
+}
+
+.goback:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.goForward {
+  width: 60px;
+  height: 20px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+.goForward:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+.goForward:active {
+  color: rgb(255, 253, 253);
+}
+
+.goForward:active:after {
+  background: transparent;
+}
+
+.goForward:hover:before {
+  opacity: 1;
+}
+
+.goForward:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+
+.entry{
+  white-space: pre-line;
+}
+
+.entry input, select{
+  font-size: 3.2vw;
+}
+
+.entry label{
+  font-size: 3vw;
 }
