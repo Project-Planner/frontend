@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="showCalendars.xsl"?>
 <user>
-    <name val="Günther Pascal" /> <!-- Has to be limited to (ASCII-)letters, numbers and -, _ (FE and BE)-->
+    <name val="Günther Pascal" />
+    <!-- Has to be limited to (ASCII-)letters, numbers and -, _ (FE and BE)-->
     <items>
-        <calendar href="file1" />
-        <calendar href="file2" />
-        <calendar href="file3" />
+        <calendar perm="owner" href="file1" />
+        <calendar perm="view" href="file2" />
+        <calendar perm="edit" href="file3" />
     </items>
 </user>
