@@ -16,8 +16,104 @@ div.logo img {
   top: 2%;
   right: 8%;
   height: 5%;
+  transition: all 0.25s ease-out;
+  filter: invert(0%);
 }
-
+#deleteuserimage {
+  filter: invert(100%);
+  margin: 1vh;
+  padding: 0;
+  height: 5vh;
+}
+.userpopup {
+  width: min-content;
+  height: min-content;
+  border-radius: 5px;
+  background: #5a5c5f;
+  left: 87.7vw;
+  top: 8vh;
+  z-index: 1000;
+  position: fixed;
+  transition: all 0.25s ease-out;
+  visibility: hidden;
+  border: 1px solid #eeeeee;
+  opacity: 0;
+  box-shadow: 0 0 2px #eeeeee;
+}
+.userpopup:target {
+  visibility: visible;
+  opacity: 0.9;
+}
+.closeuserpopup {
+  display: flex;
+  position: fixed;
+  filter: invert(0);
+  top: 2%;
+  right: 8%;
+  height: 5%;
+  transition: all 0.25s ease-out;
+  filter: invert(0%);
+}
+.deleteuser {
+  width: 100vw;
+  height: 100vh;
+  background-color: gray;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 100000;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.deleteuser:target {
+  visibility: visible;
+  opacity: 0.8;
+}
+.deleteuserbox {
+  background-color: #eeeeee;
+  width: 42vw;
+  height: 10vh;
+  margin: auto;
+  margin-top: 40vh;
+  border-radius: 5px;
+  box-shadow: 0 0 2px black;
+}
+#deleteusertext {
+  color: #333333;
+  margin: 0;
+  text-align: center;
+}
+#deleteuserbuttons {
+  width: 40vw;
+  height: 10vh;
+}
+#deleteuserbuttonyes {
+  width: 20%;
+  margin-left: 20%;
+  margin-top: 3%;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 2px gray;
+  border: 2px solid gray;
+  font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  background: red;
+  color: #efefef;
+}
+#deleteuserbuttonno {
+  width: 20%;
+  margin-left: 20%;
+  margin-top: 0;
+  margin-top: 3%;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 2px gray;
+  border: 2px solid gray;
+  filter: invert(100%);
+  background: #cccccc;
+  font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
+  font-weight: 600;
+}
 switch {
   display: flex;
   float: left;
@@ -26,7 +122,6 @@ switch {
 }
 
 div.viewToggle {
-  display: flex;
   position: absolute;
   left: 20%;
 }
@@ -56,11 +151,11 @@ div.logo {
 /*Dropdown zu "Meine Kalender"*/
 .dropbtn {
   border-radius: 50px;
-  margin-top: 20%;
+  margin-top: 5vh;
+  cursor: pointer;
 }
 
 .dropdown {
-  top: 5%;
   width: min-content;
 }
 
@@ -70,6 +165,10 @@ div.logo {
 
 button.dropbtn {
   white-space: nowrap;
+}
+
+.mycalendars {
+  border: none;
 }
 /*
 div.dropdown-content {
@@ -114,14 +213,17 @@ iframe.calendarView {
 
 /* The switch - the box around the slider */
 .switch {
+  display: flex;
+  top: 0.8vw;
   position: relative;
   display: inline-block;
-  width: 6vw;
-  height: 3.4vw;
+  width: 3.5vw;
+  height: 2vw;
 }
 
 /* Hide default HTML checkbox */
 .switch input {
+  display: flex;
   opacity: 0;
   width: 0;
   height: 0;
@@ -129,6 +231,7 @@ iframe.calendarView {
 
 /* The slider */
 .slider {
+  display: flex;
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -141,10 +244,11 @@ iframe.calendarView {
 }
 
 .slider:before {
+  display: flex;
   position: absolute;
   content: "";
-  height: 2.6vw;
-  width: 2.6vw;
+  height: 1.2vw;
+  width: 1.2vw;
   left: 0.4vw;
   bottom: 0.4vw;
   background-color: white;
@@ -153,25 +257,30 @@ iframe.calendarView {
 }
 
 input:checked + .slider {
+  display: flex;
   background-color: #f7bfbf;
 }
 
 input:focus + .slider {
+  display: flex;
   box-shadow: 0 0 1px #f7bfbf;
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(2.6vw);
-  -ms-transform: translateX(2.6vw);
-  transform: translateX(2.6vw);
+  display: flex;
+  -webkit-transform: translateX(1.6vw);
+  -ms-transform: translateX(1.6vw);
+  transform: translateX(1.6vw);
 }
 
 /* Rounded sliders */
 .slider.round {
+  display: flex;
   border-radius: 3.4vw;
 }
 
 .slider.round:before {
+  display: flex;
   border-radius: 50%;
 }
 
