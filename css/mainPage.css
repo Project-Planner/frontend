@@ -19,31 +19,30 @@ div.logo img {
   transition: all 0.25s ease-out;
   filter: invert(0%);
 }
-
+#deleteuserimage {
+  filter: invert(100%);
+  margin: 1vh;
+  padding: 0;
+  height: 5vh;
+}
 .userpopup {
-  width: 6vw;
-  height: 12vh;
+  width: min-content;
+  height: min-content;
   border-radius: 5px;
   background: #5a5c5f;
-  left: 90.8vw;
-  top: 7vh;
+  left: 87.7vw;
+  top: 8vh;
   z-index: 1000;
   position: fixed;
   transition: all 0.25s ease-out;
   visibility: hidden;
-  border: 1px solid white;
+  border: 1px solid #eeeeee;
   opacity: 0;
-  box-shadow: 0 0 2px white;
+  box-shadow: 0 0 2px #eeeeee;
 }
 .userpopup:target {
   visibility: visible;
   opacity: 0.9;
-}
-.userpopupicon {
-  margin: 0;
-  padding: 0;
-  margin-left: calc(50% - 25px);
-  position: absolute;
 }
 .closeuserpopup {
   display: flex;
@@ -72,14 +71,17 @@ div.logo img {
 }
 .deleteuserbox {
   background-color: #eeeeee;
-  width: 40vw;
+  width: 42vw;
   height: 10vh;
   margin: auto;
   margin-top: 40vh;
+  border-radius: 5px;
+  box-shadow: 0 0 2px black;
 }
 #deleteusertext {
   color: #333333;
   margin: 0;
+  text-align: center;
 }
 #deleteuserbuttons {
   width: 40vw;
@@ -87,14 +89,28 @@ div.logo img {
 }
 #deleteuserbuttonyes {
   width: 20%;
-  margin-left: 10%;
+  margin-left: 20%;
   margin-top: 3%;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 2px gray;
+  border: 2px solid gray;
+  font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
+  font-weight: 600;
 }
 #deleteuserbuttonno {
   width: 20%;
-  margin-left: 35%;
+  margin-left: 20%;
   margin-top: 0;
   margin-top: 3%;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 2px gray;
+  border: 2px solid gray;
+  filter: invert(100%);
+  background: #cccccc;
+  font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
+  font-weight: 600;
 }
 switch {
   display: flex;
@@ -135,6 +151,7 @@ div.logo {
 .dropbtn {
   border-radius: 50px;
   margin-top: 20%;
+  cursor: pointer;
 }
 
 .dropdown {
