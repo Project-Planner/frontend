@@ -6,8 +6,6 @@ var add = 7;
 var showCalendars = false;
 
 window.onload = function () {
-<<<<<<< HEAD
-=======
   document.getElementById("calendarFrame").src =
     "/me/c?mode=" +
     mode +
@@ -19,7 +17,6 @@ window.onload = function () {
     (date.getMonth() + 1) +
     "." +
     date.getFullYear();
->>>>>>> 8051b2dbbcb35b0aa68ce162d8fdc3784ce68a6c
   changeDate(0);
   setVisibilityTrue();
 };
