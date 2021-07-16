@@ -149,7 +149,7 @@ div.logo {
 /*Dropdown zu "Meine Kalender"*/
 .dropbtn {
   border-radius: 50px;
-  margin-top: 20%;
+  margin-top: 5vh;
   cursor: pointer;
 }
 
