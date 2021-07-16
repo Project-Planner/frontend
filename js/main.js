@@ -6,17 +6,6 @@ var add = 7;
 var showCalendars = false;
 
 window.onload = function () {
-  document.getElementById("calendarFrame").src =
-    "/me/c?mode=" +
-    mode +
-    "&period=" +
-    period +
-    "&date=" +
-    date.getDate() +
-    "." +
-    (date.getMonth() + 1) +
-    "." +
-    date.getFullYear();
   changeDate(0);
   setVisibilityTrue();
 };
@@ -24,9 +13,14 @@ window.onload = function () {
 function changeDate(val) {
   var current = new Date();
   var url_string = document.getElementById("calendarFrame").src;
+  //Javascript doesn't understand ; as url param splitter
+  url_string = url_string.replaceAll(";", "&");
   var url = new URL(url_string);
-  var mode = url.searchParams.get("mode");
-  let period = url.searchParams.get("period");
+
+  if (val != 0) {
+    period = url.searchParams.get("period");
+    mode = url.searchParams.get("mode");
+  }
 
   switch (period) {
     case "day":
@@ -132,9 +126,9 @@ function changeDate(val) {
   document.getElementById("calendarFrame").src =
     "/me/c?mode=" +
     mode +
-    "&period=" +
+    ";period=" +
     period +
-    "&date=" +
+    ";date=" +
     d +
     "." +
     m +
@@ -143,11 +137,7 @@ function changeDate(val) {
 }
 
 function changeCalendarMode(val) {
-  var url_string = document.getElementById("calendarFrame").src;
-  var url = new URL(url_string);
-  mode = url.searchParams.get("mode");
-  date = url.searchParams.get("date");
-
+  period = val;
   switch (val) {
     case "week":
       add = 7;
@@ -156,24 +146,23 @@ function changeCalendarMode(val) {
       add = 1;
       break;
   }
-
-  document.getElementById("calendarFrame").src =
-    "/me/c?mode=" + mode + "&period=" + val + "&date=" + date;
   changeDate(0);
 }
 
 function changeDisplayMode() {
   var url_string = document.getElementById("calendarFrame").src;
+  //Javascript doesn't understand ; as url param splitter
+  url_string = url_string.replaceAll(";", "&");
   var url = new URL(url_string);
   period = url.searchParams.get("period");
   date = url.searchParams.get("date");
 
   if (document.getElementById("displayModeCheckbox").checked) {
     document.getElementById("calendarFrame").src =
-      "/me/c?mode=project&period=" + period + "&date=" + date;
+      "/me/c?mode=project;period=" + period + ";date=" + date;
   } else {
     document.getElementById("calendarFrame").src =
-      "/me/c?mode=calendar&period=" + period + "&date=" + date;
+      "/me/c?mode=calendar;period=" + period + ";date=" + date;
   }
 }
 
