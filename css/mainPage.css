@@ -97,6 +97,8 @@ div.logo img {
   border: 2px solid gray;
   font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
   font-weight: 600;
+  background: red;
+  color: #efefef;
 }
 #deleteuserbuttonno {
   width: 20%;
