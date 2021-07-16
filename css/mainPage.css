@@ -16,6 +16,44 @@ div.logo img {
   top: 2%;
   right: 8%;
   height: 5%;
+  transition: all 0.25s ease-out;
+  filter: invert(0%);
+}
+
+.userpopup {
+  width: 6vw;
+  height: 12vh;
+  border-radius: 5px;
+  background: #5a5c5f;
+  left: 90.8vw;
+  top: 7vh;
+  z-index: 1000;
+  position: fixed;
+  transition: all 0.25s ease-out;
+  visibility: hidden;
+  border: 1px solid white;
+  opacity: 0;
+  box-shadow: 0 0 2px white;
+}
+.userpopup:target {
+  visibility: visible;
+  opacity: 0.9;
+}
+.userpopupicon {
+  margin: 0;
+  padding: 0;
+  margin-left: calc(50% - 25px);
+  position: absolute;
+}
+.closeuserpopup {
+  display: flex;
+  position: fixed;
+  filter: invert(0);
+  top: 2%;
+  right: 8%;
+  height: 5%;
+  transition: all 0.25s ease-out;
+  filter: invert(0%);
 }
 
 switch {
