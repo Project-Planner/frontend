@@ -60,7 +60,6 @@ div.logo {
 }
 
 .dropdown {
-  top: 5%;
   width: min-content;
 }
 
@@ -70,6 +69,10 @@ div.logo {
 
 button.dropbtn {
   white-space: nowrap;
+}
+
+.mycalendars {
+  border: none;
 }
 /*
 div.dropdown-content {

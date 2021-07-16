@@ -48,26 +48,9 @@
   <div class="dropdown">
     <button class="dropbtn" onclick="setVisibilityTrue()">Meine Kalender &#9660;</button>
     <div class="dropdown-content" id="dropdown-content">
-      <div>
-        <input type="checkbox" id="calendar1" name="calendar1" value="work">
-        <label for="calendar1">Arbeit</label>
-      </div>
-      <div>
-        <input type="checkbox" id="calendar2" name="calendar2" value="private">
-        <label for="calendar2">Privat</label>
-      </div>
-      <div>
-        <input type="checkbox" id="calendar3" name="calendar3" value="dhbw">
-        <label for="calendar3">DHBW</label>
-      </div>
-      <!--
-      <div class="dropdown-entry">
-        <p>Arbeit</p>
-
-        <input type="checkbox">
-      </div>
-      -->
+      <iframe class="mycalendars" src="../data/user.xml"></iframe>
     </div>
+  </div>
 
   <form class="search" action="mainPage.html" method="post">
     <p>Andere Kalender</p>
