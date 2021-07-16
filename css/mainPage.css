@@ -55,7 +55,47 @@ div.logo img {
   transition: all 0.25s ease-out;
   filter: invert(0%);
 }
-
+.deleteuser {
+  width: 100vw;
+  height: 100vh;
+  background-color: gray;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 100000;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.deleteuser:target {
+  visibility: visible;
+  opacity: 0.8;
+}
+.deleteuserbox {
+  background-color: #eeeeee;
+  width: 40vw;
+  height: 10vh;
+  margin: auto;
+  margin-top: 40vh;
+}
+#deleteusertext {
+  color: #333333;
+  margin: 0;
+}
+#deleteuserbuttons {
+  width: 40vw;
+  height: 10vh;
+}
+#deleteuserbuttonyes {
+  width: 20%;
+  margin-left: 10%;
+  margin-top: 3%;
+}
+#deleteuserbuttonno {
+  width: 20%;
+  margin-left: 35%;
+  margin-top: 0;
+  margin-top: 3%;
+}
 switch {
   display: flex;
   float: left;

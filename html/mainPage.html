@@ -42,9 +42,17 @@
   <a class="userIcon" href="#userpopupid"><img src="../ressources/user.png"/></a>
   <div class="userpopup" id="userpopupid">
     <a class="closeuserpopup" href="#"><img src="../ressources/user.png"/></a>
-    <form class="userpopupicon" action="login.html">
-      <input type="image" src="../ressources/logout.png"></input>
-    </form>
+      <a href="#deleteuser"><input type="image" src="../ressources/logout.png"></input></a>
+  </div>
+
+  <div class="deleteuser" id="deleteuser">
+    <div class="deleteuserbox">
+      <h4 id="deleteusertext">Bist du dir sicher, dass du deinen Account löschen möchtest?</h4>
+      <div id="deleteuserbuttons">
+        <input id="deleteuserbuttonyes" type="button" value="Ja"/>
+        <a href="#"><input id="deleteuserbuttonno" type="button" value="Nein"/></a>
+      </div>
+    </div>
   </div>
   <form class="" action="login.html">
     <input type="image" src="../ressources/logout.png" class="logoutIcon"></input>
