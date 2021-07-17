@@ -39,6 +39,8 @@
                         font-size: 1.8vh;
                       }
             </style>
+                <script src="../js/main.js">
+            </script>
             </head>
             <body>
                 <xsl:for-each select="user/items/calendar">
@@ -70,34 +72,28 @@
                                 <img src="../ressources/sharecalendar.svg" style="height: 10vh;"/>
                             </a>
                         </xsl:if>
-                        <xsl:if test="@perm = 'owner'">&#160;&#160;&#160;
-                            <a href="#confirmdeletecalendar" target="_parent">
+                        <xsl:if test="@perm = 'owner'">
+                            <xsl:variable name="dq">
+                                <xsl:text>'</xsl:text>
+                            </xsl:variable>
+                            <xsl:variable name="callfnc">
+                                <xsl:value-of select="concat(concat(concat(concat('setCalendarnameInDeleteCalendar(',$dq),@href), $dq),')')"/>
+                            </xsl:variable>
+                            &#160;&#160;&#160;
+                            <script type="text/javascript">
+                function setCalendarnameInDeleteCalendar(name){
+                    parent.document.getElementById("deletecalendarcalendarname").textContent = name; //Sets the calendar name of the element in mainPage.html
+                    parent.window.location.href = parent.window.location.href + "#deletecalendar";  //Appends #deletecalendar to the url to show the deletecalendar dialog
+                    parent.document.getElementById("deletecalendarform").action = "/me/c/"+name;
+                    parent.document.getElementById("deletecalendarform").href = "/me/c/"+name;
+                    }
+                </script>
+                            <a>
+                                <xsl:attribute name="onclick">
+                                    <xsl:value-of select="$callfnc"/>
+                                </xsl:attribute>
                                 <img src="../ressources/deletecalendar.svg" style="height: 10vh;"/>
                             </a>
-                            <div id="confirmdeletecalendar">
-                                <form method="delete" style="display: inline-block;">
-                                    <xsl:attribute name="action">
-                                        <xsl:value-of select="concat('/me/c/', @href)"/>
-                                    </xsl:attribute>
-                                    <xsl:attribute name="href">
-                                        <xsl:value-of select="concat('/me/c/', @href)"/>
-                                    </xsl:attribute>
-                                    <div class="deletecalendarbox">
-                                        <div class="deletecalendartext">Bist du dir sicher, dass du deinen Kalender
-                                            <div style="color: #333333;
-                                            display: inline;
-                                            font-size: 1.8vh; font-weight: 800;">
-                                                <xsl:value-of select="@href"/>
-                                            </div>&#160;löschen möchtest?
-                                        </div>
-                                        <br/>
-                                        <input type="submit" value="Ja"/>
-                                        <a href="">
-                                            <input type="button" value="Nein"/>
-                                        </a>
-                                    </div>
-                                </form>
-                            </div>
                         </xsl:if>
                     </div>
                 </xsl:for-each>
@@ -111,3 +107,23 @@
                                 </xsl:attribute><xsl:attribute name="href">
                                     <xsl:value-of select="concat('/me/c/', @href)"/>
                                 </xsl:attribute>-->
+<!--<div class="deletecalendarbox">
+                                        <div class="deletecalendartext">Bist du dir sicher, dass du deinen Kalender
+                                            <div style="color: #333333;
+                                            display: inline;
+                                            font-size: 1.8vh; font-weight: 800;">
+                                                <xsl:value-of select="@href"/>
+                                            </div>&#160;löschen möchtest?
+                                        </div>
+                                        <br/>
+                                        <input type="submit" value="Ja"/>
+                                        <a href="">
+                                            <input type="button" value="Nein"/>
+                                        </a>
+                                    </div>-->
+<!--<xsl:attribute name="action">
+                                <xsl:value-of select="concat('/me/c/', @href)"/>
+                            </xsl:attribute>
+                            <xsl:attribute name="href">
+                                <xsl:value-of select="concat('/me/c/', @href)"/>
+                            </xsl:attribute>-->
