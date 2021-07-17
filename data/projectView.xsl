@@ -66,7 +66,6 @@
                 </table>
                 <div id ="EditItemView">
                     <iframe class="editItem" id="editItem" name="editItem"  src="../html/createEntry.html"></iframe>
-                    <!--hier wird editItem aufgerufen, die id muss hier auch übergeben werden @backend-->
                     <input type="submit" id= "close" value="save" onclick="hideEditItemView()"/>
                 </div>
                 <script>function hideEditItemView(){
@@ -142,6 +141,7 @@
                     <xsl:with-param name="name" select="name/@val"/>
                     <xsl:with-param name="startJulian" select="$startJulian"/>
                     <xsl:with-param name="endJulian" select="$endJulian"/>
+                    <xsl:with-param name ="id" select="@id"></xsl:with-param>
                 </xsl:call-template>
             </tr>
         </xsl:for-each>
@@ -151,6 +151,7 @@
         <xsl:param name="name"/>
         <xsl:param name="startJulian"/>
         <xsl:param name="endJulian"/>
+        <xsl:param name="id"/>
         <xsl:variable name="startDivJulian">
             <xsl:call-template name="calculate-julian-day">
                 <xsl:with-param name="date" select="startDate/@val | duedate/@val"/>
@@ -171,17 +172,21 @@
             <xsl:attribute name="colspan" >
                 <xsl:value-of select="$length+1"></xsl:value-of>
             </xsl:attribute>
-            <a onclick="showEditItemView('val')" >
+            <a>
+                <xsl:attribute name="onclick">
+                    <xsl:value-of select="concat('showEditItemView(',$id,')')"></xsl:value-of>
+                </xsl:attribute>
                 <xsl:value-of select="$name"></xsl:value-of>
             </a>
             <script>function showEditItemView(val){
-                alert(val)
+               
                document.getElementById("EditItemView").style.display = "block";  
                var iframe = document.getElementById('editItem');
                 iframe.src = iframe.src; 
-                }  
+                document.getElementById('editItem').src= "../html/createEntry.html?id="+val;
+                <!--wie muss die url aussehen? @backend-->
+                }
             </script>
-            <!--TODO ID uebergeben-->
         </td>
         <xsl:call-template name="insertEmptyTD">
             <xsl:with-param name ="TDCount" select="$endJulian - $startDivJulian - $length"></xsl:with-param>
