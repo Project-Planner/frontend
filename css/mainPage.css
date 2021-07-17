@@ -55,43 +55,43 @@ div.logo img {
   filter: invert(0%);
 }
 .deleteuser {
+  position: absolute;
   width: 100vw;
   height: 100vh;
   background-color: gray;
-  visibility: hidden;
-  opacity: 0;
-  z-index: 100;
-  position: absolute;
-  left: 0;
+  margin: 0;
   top: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
 }
 .deleteuser:target {
   visibility: visible;
   opacity: 0.8;
 }
 .deleteuserbox {
-  background-color: #eeeeee;
-  width: 42vw;
-  height: 10vh;
-  margin: auto;
+  width: 50vw;
+  height: 20vh;
+  margin-left: 25vw;
   margin-top: 40vh;
+  border: 1px solid white;
   border-radius: 5px;
-  box-shadow: 0 0 2px black;
+  box-shadow: 0 0 2px white;
 }
 #deleteusertext {
   color: #333333;
-  margin: 0;
   text-align: center;
+  font-weight: 800;
 }
 #deleteuserbuttons {
-  width: 40vw;
-  height: 10vh;
+  margin-top: 5vh;
+  width: 50vw;
+}
+.deleteuserform {
+  display: inline-block;
+  width: 22vw;
 }
 #deleteuserbuttonyes {
-  width: 20%;
-  margin-left: 20%;
-  margin-top: 3%;
-  cursor: pointer;
   border-radius: 5px;
   box-shadow: 0 0 2px gray;
   border: 2px solid gray;
@@ -99,13 +99,11 @@ div.logo img {
   font-weight: 600;
   background: red;
   color: #efefef;
+  margin-left: 18vw;
+  width: 4vw;
+  cursor: pointer;
 }
 #deleteuserbuttonno {
-  width: 20%;
-  margin-left: 20%;
-  margin-top: 0;
-  margin-top: 3%;
-  cursor: pointer;
   border-radius: 5px;
   box-shadow: 0 0 2px gray;
   border: 2px solid gray;
@@ -113,6 +111,9 @@ div.logo img {
   background: #cccccc;
   font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
   font-weight: 600;
+  width: 4vw;
+  margin-left: 6vw;
+  cursor: pointer;
 }
 switch {
   display: flex;
@@ -215,6 +216,7 @@ div.dropdown:hover div.dropdown-content {
 
 #deletecalendartext {
   text-align: center;
+  font-weight: 800;
 }
 #deletecalendarcalendarname {
   display: inline-block;

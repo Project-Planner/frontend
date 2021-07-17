@@ -49,9 +49,9 @@
 
   <div class="deleteuser" id="deleteuser">
     <div class="deleteuserbox">
-      <h4 id="deleteusertext">Bist du dir sicher, dass du deinen Account löschen möchtest?</h4>
+      <div id="deleteusertext">Bist du dir sicher, dass du deinen Account löschen möchtest?</div>
       <div id="deleteuserbuttons">
-        <input id="deleteuserbuttonyes" type="button" value="Ja"/>
+        <form method="delete" action="/api/user" class="deleteuserform"><input type="submit" value="Ja" id="deleteuserbuttonyes"></input></form>
         <a href=""><input id="deleteuserbuttonno" type="button" value="Nein"/></a>
       </div>
     </div>
