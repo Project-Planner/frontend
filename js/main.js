@@ -186,6 +186,3 @@ function setVisibilityTrue() {
     showCalendars = true;
   }
 }
-
-function test(){
-}

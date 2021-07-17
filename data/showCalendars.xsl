@@ -101,29 +101,3 @@
         </html>
     </xsl:template>
 </xsl:stylesheet>
-<!--<form method="delete" style="display: inline-block;">
-                                <xsl:attribute name="action">
-                                    <xsl:value-of select="concat('/me/c/', @href)"/>
-                                </xsl:attribute><xsl:attribute name="href">
-                                    <xsl:value-of select="concat('/me/c/', @href)"/>
-                                </xsl:attribute>-->
-<!--<div class="deletecalendarbox">
-                                        <div class="deletecalendartext">Bist du dir sicher, dass du deinen Kalender
-                                            <div style="color: #333333;
-                                            display: inline;
-                                            font-size: 1.8vh; font-weight: 800;">
-                                                <xsl:value-of select="@href"/>
-                                            </div>&#160;löschen möchtest?
-                                        </div>
-                                        <br/>
-                                        <input type="submit" value="Ja"/>
-                                        <a href="">
-                                            <input type="button" value="Nein"/>
-                                        </a>
-                                    </div>-->
-<!--<xsl:attribute name="action">
-                                <xsl:value-of select="concat('/me/c/', @href)"/>
-                            </xsl:attribute>
-                            <xsl:attribute name="href">
-                                <xsl:value-of select="concat('/me/c/', @href)"/>
-                            </xsl:attribute>-->
