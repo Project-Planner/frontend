@@ -64,12 +64,19 @@
                             </xsl:attribute>
                             <xsl:value-of select="@href"/>
                         </label>
-                        <xsl:if test="@perm = 'owner'">&#160;&#160;&#160;
+                        <xsl:if test="@perm = 'owner'">
+                            <xsl:variable name="dq">
+                                <xsl:text>'</xsl:text>
+                            </xsl:variable>
+                            <xsl:variable name="callfnc">
+                                <xsl:value-of select="concat(concat(concat(concat('setCalendarnameToShare(',$dq),@href), $dq),')')"/>
+                            </xsl:variable>
+                        &#160;&#160;&#160;
                             <a>
-                                <xsl:attribute name="href">
-                                    <xsl:value-of select="concat('/me/c/', @href)"/>
+                                <xsl:attribute name="onclick">
+                                    <xsl:value-of select="$callfnc"/>
                                 </xsl:attribute>
-                                <img src="../ressources/sharecalendar.svg" style="height: 10vh;"/>
+                                <img src="../ressources/sharecalendar.svg" style="height: 10vh; cursor: pointer;"/>
                             </a>
                         </xsl:if>
                         <xsl:if test="@perm = 'owner'">
@@ -80,19 +87,11 @@
                                 <xsl:value-of select="concat(concat(concat(concat('setCalendarnameInDeleteCalendar(',$dq),@href), $dq),')')"/>
                             </xsl:variable>
                             &#160;&#160;&#160;
-                            <script type="text/javascript">
-                function setCalendarnameInDeleteCalendar(name){
-                    parent.document.getElementById("deletecalendarcalendarname").textContent = name; //Sets the calendar name of the element in mainPage.html
-                    parent.window.location.href = parent.window.location.href + "#deletecalendar";  //Appends #deletecalendar to the url to show the deletecalendar dialog
-                    parent.document.getElementById("deletecalendarform").action = "/me/c/"+name;
-                    parent.document.getElementById("deletecalendarform").href = "/me/c/"+name;
-                    }
-                </script>
                             <a>
                                 <xsl:attribute name="onclick">
                                     <xsl:value-of select="$callfnc"/>
                                 </xsl:attribute>
-                                <img src="../ressources/deletecalendar.svg" style="height: 10vh;"/>
+                                <img src="../ressources/deletecalendar.svg" style="height: 10vh; cursor: pointer;"/>
                             </a>
                         </xsl:if>
                     </div>

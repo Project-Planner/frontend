@@ -240,6 +240,91 @@ div.dropdown:hover div.dropdown-content {
   cursor: pointer;
 }
 
+.sharecalendar {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: gray;
+  margin: 0;
+  top: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+}
+.sharecalendar:target {
+  opacity: 0.8;
+  visibility: visible;
+}
+
+#sharecalendarbox {
+  width: 50vw;
+  height: 20vh;
+  margin-left: 25vw;
+  margin-top: 40vh;
+  border: 1px solid white;
+  border-radius: 5px;
+  box-shadow: 0 0 2px white;
+}
+
+#sharecalendartext {
+  text-align: center;
+  font-weight: 800;
+}
+#sharecalendarcalendarname {
+  display: inline-block;
+}
+#sharecalendarbuttons {
+  margin-top: 5vh;
+  width: 50vw;
+}
+.sharecalendarform {
+  display: inline-block;
+  width: 24vw;
+  margin-left: 14vw;
+}
+#sharecalendarcalnamelabel {
+  display: none;
+}
+#sharecalendartextbox {
+  margin-left: 0;
+  width: 4vw;
+  background-color: #add3f7;
+  font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
+  border-radius: 25pt;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 0.6vw;
+}
+.sharecalendardropdown {
+  font-size: 0.6vw;
+  width: 6vw;
+  background-color: #add3f7;
+  font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
+  border-radius: 25pt;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+  cursor: pointer;
+  margin-left: 4vw;
+}
+#sharecalendarbuttonyes {
+  width: 4vw;
+  margin-left: 4vw;
+  cursor: pointer;
+  font-size: 0.6vw;
+}
+#sharecalendarbuttonbackdiv {
+  margin-top: 3vh;
+  text-align: center;
+}
+#sharecalendarbuttonback {
+  width: 4vw;
+  cursor: pointer;
+  font-size: 0.6vw;
+  filter: invert(100%);
+}
+
 .search p {
   display: flex;
 }

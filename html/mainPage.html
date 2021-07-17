@@ -64,7 +64,7 @@
   <div class="dropdown">
     <button class="dropbtn" onclick="setVisibilityTrue()">Meine Kalender &#9660;</button>
     <div class="dropdown-content" id="dropdown-content">
-      <iframe class="mycalendars" src="/me/calendars"></iframe>
+      <iframe class="mycalendars" src="../data/user.xml"></iframe>
     </div>
   </div>
 
@@ -77,6 +77,25 @@
         </form>
         <a href=""><input type="submit" value="Nein" id="deletecalendarbuttonno"></input></a>
       </div>
+    </div>
+  </div>
+
+  <div class="sharecalendar" id="sharecalendar">
+    <div id="sharecalendarbox">
+      <div id="sharecalendartext">Wen möchtest du zum Kalender&nbsp;"<div id="sharecalendarcalendarname">placeholder</div>"&nbsp;hinzufügen?</div>
+      <div id="sharecalendarbuttons">
+          <form method="POST" class="sharecalendarform" id="sharecalendarform" action="me/sharing">
+            <label name="calendarName" id="sharecalendarcalnamelabel"></label>
+            <input name="userName" type="text" placeholder="Name" id="sharecalendartextbox"></input>
+        <select class="sharecalendardropdown" name="perm">
+          <option value="perm" disabled selected>Rechte</option>
+          <option value="edit">Editieren</option>
+          <option value="view">Ansehen</option>
+        </select>
+            <input type="submit" value="Speichern" id="sharecalendarbuttonyes"></input>
+          </form>
+          
+      </div><div id="sharecalendarbuttonbackdiv"><a href=""><input type="submit" value="Zurück" id="sharecalendarbuttonback"></input></a></div>
     </div>
   </div>
 
