@@ -5,42 +5,9 @@
     <xsl:template match="/">
         <html>
             <head>
-                <style>
-                    body{margin:0;padding:0;}
-                    #confirmdeletecalendar {
-                        width: 100vw;
-                        height: 100vh;
-                        background-color: gray;
-                        visibility: hidden;
-                        opacity: 0;
-                        z-index: 100000;
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                    }
-                    #confirmdeletecalendar:target{
-                        visibility: visible;
-                        opacity: 0.8;
-                    }
-                    .deletecalendarbox {
-                        background-color: #AAAAAA;
-                        width: 42vw;
-                        height: 10vh;
-                        margin: auto;
-                        margin-top: 40vh;
-                        border-radius: 5px;
-                        box-shadow: 0 0 2px black;
-                        position: absolute;
-                        left: 29vw;
-                      }
-                      .deletecalendartext {
-                        color: #333333;
-                        display: inline;
-                        font-size: 1.8vh;
-                      }
-            </style>
                 <script src="../js/main.js">
-            </script>
+                    <link rel="stylesheet" href="../css/showCalendars.css" />
+                </script>
             </head>
             <body>
                 <xsl:for-each select="user/items/calendar">
@@ -57,13 +24,13 @@
                                     <xsl:value-of select="@href"/>
                                 </xsl:attribute>
                             </input>
-                        </a>
-                        <label>
-                            <xsl:attribute name="for">
+                            <label>
+                                <xsl:attribute name="for">
+                                    <xsl:value-of select="@href"/>
+                                </xsl:attribute>
                                 <xsl:value-of select="@href"/>
-                            </xsl:attribute>
-                            <xsl:value-of select="@href"/>
-                        </label>
+                            </label>
+                        </a>
                         <xsl:if test="@perm = 'owner'">
                             <xsl:variable name="dq">
                                 <xsl:text>'</xsl:text>
