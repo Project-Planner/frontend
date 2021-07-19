@@ -4,6 +4,7 @@
     xmlns="http://www.w3.org/1999/xhtml">
     <xsl:variable name="weekDate" select="'1.1.1970'"/>
     <xsl:variable name="displayMode" select="'calender'"/>
+    <xsl:variable name="calendarID" select="calendar/id/@val"/>
     <!--displayModes: calender/project-->
     <xsl:output method="xml" encoding="utf-8" indent="yes"/>
     <xsl:template match="/">
@@ -66,7 +67,6 @@
                 </table>
                 <div id ="EditItemView">
                     <iframe class="editItem" id="editItem" name="editItem"  src="../html/createEntry.html"></iframe>
-                    <input type="submit" id= "close" value="save" onclick="hideEditItemView()"/>
                 </div>
                 <script>function hideEditItemView(){
                document.getElementById("EditItemView").style.display = "none";    
@@ -183,8 +183,7 @@
                document.getElementById("EditItemView").style.display = "block";  
                var iframe = document.getElementById('editItem');
                 iframe.src = iframe.src; 
-                document.getElementById('editItem').src= "../html/createEntry.html?id="+val;
-                <!--wie muss die url aussehen? @backend-->
+                document.getElementById('editItem').src= "/me/c/$calendarID?mode=edit;id="+val;
                 }
             </script>
         </td>
