@@ -51,7 +51,10 @@
     <div class="deleteuserbox">
       <div id="deleteusertext">Bist du dir sicher, dass du deinen Account löschen möchtest?</div>
       <div id="deleteuserbuttons">
-        <form method="delete" action="/api/user" class="deleteuserform"><input type="submit" value="Ja" id="deleteuserbuttonyes"></input></form>
+        <form action="/api/user" class="deleteuserform">
+          <input type="submit" value="Ja" id="deleteuserbuttonyes"></input>
+          <input type="hidden" name="_method" value="delete">
+        </form>
         <a href=""><input id="deleteuserbuttonno" type="button" value="Nein"/></a>
       </div>
     </div>
@@ -64,7 +67,7 @@
   <div class="dropdown">
     <button class="dropbtn" onclick="setVisibilityTrue()">Meine Kalender &#9660;</button>
     <div class="dropdown-content" id="dropdown-content">
-      <iframe class="mycalendars" src="/me/calendar"></iframe>
+      <iframe class="mycalendars" src="/me/calendars"></iframe>
     </div>
   </div>
 
@@ -72,8 +75,9 @@
     <div id="deletecalendarbox">
       <div id="deletecalendartext">Bist du dir sicher, dass du den Kalender &nbsp;"<div id="deletecalendarcalendarname">placeholder</div>"&nbsp;löschen möchtest?</div>
       <div id="deletecalendarbuttons">
-        <form method="delete" class="deletecalendarform" id="deletecalendarform">
+        <form class="deletecalendarform" id="deletecalendarform">
           <input type="submit" value="Ja" id="deletecalendarbuttonyes"></input>
+          <input type="hidden" name="_method" value="delete">
         </form>
         <a href=""><input type="submit" value="Nein" id="deletecalendarbuttonno"></input></a>
       </div>
