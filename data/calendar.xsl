@@ -37,10 +37,10 @@
 
     <div class="tableDay"> 
         <table>
-        <caption>Hier könnte Montag stehen</caption>
-          <thead class="tableHead">
+        <caption class="caption">Hier könnte Montag stehen</caption>
+          <thead>
             <tr>
-              <th class="tableHead">
+              <th>
               </th>
             </tr>
           </thead>
