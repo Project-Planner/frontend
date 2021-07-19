@@ -37,15 +37,15 @@
 
     <div class="tableDay"> 
         <table>
-          <thead>
+          <thead class="tableHead">
             <tr>
-              <th>Hier könnte Montag stehen
+              <th class="tableHead">Hier könnte Montag stehen
               </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>00:00 Uhr</td>
+              <td class="bl">00:00 Uhr</td>
               <td>Platz für Inhalt</td>
             </tr>
             <tr>
