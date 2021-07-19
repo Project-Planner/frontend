@@ -2,7 +2,9 @@ div.logo img {
   display: flex;
   width: 70%;
 }
-
+body {
+  overflow: hidden;
+}
 .logoutIcon {
   position: absolute;
   top: 2%;
