@@ -33,3 +33,13 @@ body {
   display: inline;
   font-size: 1.8vh;
 }
+
+#mycalendars {
+  color: white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-size: 6vw;
+}
