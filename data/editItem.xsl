@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:css="http://www.w3.org/TR/XSL-for-CSS">
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:variable name="displayMode" select="'calender'"/>
+    <xsl:variable name="calendarID" select="calendar/id/@val"/>
     <!--displayModes: calender/project-->
-    <xsl:variable name="id" select="33"/>
-    <!--hier id des anzuzeigenden Elements setzen-->
-    <xsl:output method="XML" encoding="utf-8" indent="yes"/>
+    <xsl:output method="XML" encoding="utf-8"/>
     <xsl:template match="/">
         <html>
             <head>
-                <link rel="stylesheet" href="../css/projectView.css"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+                <link rel="stylesheet" href="../css/mainPage.css"/>
                 <link rel="stylesheet" href="../css/master.css"/>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro"/>
             </head>
@@ -93,10 +92,12 @@
         <xsl:for-each select="calendar/items/appointments/appointment  | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
             <xsl:if test="@id = $id">
                 <xsl:value-of select="duetime/@val"></xsl:value-of>
-                <form class="" action="" method="post">
-                    <div>
-                        <label for="relation">Zu Projekt hinzufügen: </label>
-                    </div>
+                <xsl:variable name="type" select="name()"></xsl:variable>
+                <form class="entry" method="post">
+                    <xsl:attribute name="action">
+                        <xsl:value-of select="concat('/me/api/',$type,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                    </xsl:attribute>
+                    <input type="hidden" name="_method" value="PUT"></input>
                     <div>
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" maxlength="250">
@@ -106,8 +107,8 @@
                         </input>
                     </div>
                     <div>
-                        <label for="datef">Datum von:</label>
-                        <input type="date" id="datef" name="datef">
+                        <label for="startDate">Datum von:</label>
+                        <input type="date" id="startDate" name="startDate">
                             <xsl:variable name="date">
                                 <xsl:value-of select="startDate/@val"></xsl:value-of>
                             </xsl:variable>
@@ -122,8 +123,8 @@
                         </input>
                     </div>
                     <div>
-                        <label for="datet">Datum bis:</label>
-                        <input type="date" id="datet" name="datet">
+                        <label for="endDate">Datum bis:</label>
+                        <input type="date" id="endDate" name="endDate">
                             <xsl:variable name="date">
                                 <xsl:value-of select="endDate/@val"></xsl:value-of>
                             </xsl:variable>
@@ -138,8 +139,8 @@
                         </input>
                     </div>
                     <div>
-                        <label for="timef">Zeit von:</label>
-                        <input type="time" id="timef" name="timef" >
+                        <label for="startTime">Zeit von:</label>
+                        <input type="time" id="startTime" name="startTime " >
                             <xsl:attribute name="value">
                                 <xsl:variable name="timeWithoutZeros">
                                     <xsl:value-of select="startTime/@val"></xsl:value-of>
@@ -155,8 +156,8 @@
                         </input>
                     </div>
                     <div>
-                        <label for="timet">Zeit bis:</label>
-                        <input type="time" id="timet" name="timet">
+                        <label for="endTime">Zeit bis:</label>
+                        <input type="time" id="endTime" name="endTime ">
                             <xsl:attribute name="value">
                                 <xsl:variable name="timeWithoutZeros">
                                     <xsl:value-of select="endTime/@val"></xsl:value-of>
@@ -170,19 +171,28 @@
                                 <xsl:value-of select="$timeWithZeros"></xsl:value-of>
                             </xsl:attribute>
                         </input>
+                    </div>
+                    <div>
                         <div>
                             <label for="desc">Beschreibung:</label>
-                        </div>
-                        <div>
-                            <textarea name="desc" rows="10" cols="30" maxlength="250">
+                            <textarea name="desc" rows="8" cols="40" placeholder="max 250 Zeichen">
                                 <xsl:value-of select="desc"></xsl:value-of>
                             </textarea>
                         </div>
                         <div>
-                            <input type="submit" name="" value="Create"/>
+                            <input type="submit" name="" value="Save"/>
                         </div>
-                        <!-- Abbrechen fehlt-->
                     </div>
+                    <xsl:variable name="type" select="name()"></xsl:variable>
+                    <form class="entry" method="post">
+                        <xsl:attribute name="action">
+                            <xsl:value-of select="concat('/me/api/',$type,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                        </xsl:attribute>
+                        <input type="hidden" name="_method" value="DELETE"></input>
+                        <div>
+                            <input type="submit" name="" value="Delete"/>
+                        </div>
+                    </form>
                 </form>
             </xsl:if>
         </xsl:for-each>
@@ -190,10 +200,12 @@
     <xsl:template name="showMilestoneView">
         <xsl:for-each select=" calendar/items/milestones/milestone">
             <xsl:if test="@id = $id">
-                <form class="" action="" method="post">
-                    <div>
-                        <label for="relation">Zu Projekt hinzufügen: </label>
-                    </div>
+                <xsl:variable name="type" select="name()"></xsl:variable>
+                <form class="entry" method="post">
+                    <xsl:attribute name="action">
+                        <xsl:value-of select="concat('/me/api/',$type,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                    </xsl:attribute>
+                    <input type="hidden" name="_method" value="PUT"></input>
                     <div>
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" maxlength="250">
@@ -203,8 +215,8 @@
                         </input>
                     </div>
                     <div>
-                        <label for="datef">Datum:</label>
-                        <input type="date" id="datef" name="datef">
+                        <label for="duedate">Datum:</label>
+                        <input type="date" id="duedate" name="duedate">
                             <xsl:variable name="date">
                                 <xsl:value-of select="duedate/@val"></xsl:value-of>
                             </xsl:variable>
@@ -219,8 +231,8 @@
                         </input>
                     </div>
                     <div>
-                        <label for="timef">Zeit:</label>
-                        <input type="time" id="timef" name="timef" >
+                        <label for="duetime">Zeit:</label>
+                        <input type="time" id="duetime" name="duetime" >
                             <xsl:attribute name="value">
                                 <xsl:variable name="timeWithoutZeros">
                                     <xsl:value-of select="duetime/@val"></xsl:value-of>
@@ -239,13 +251,22 @@
                         <label for="desc">Beschreibung:</label>
                     </div>
                     <div>
-                        <textarea name="desc" rows="10" cols="30" maxlength="250">
+                        <textarea name="desc" rows="8" cols="40" placeholder="max 250 Zeichen">
                             <xsl:value-of select="desc"></xsl:value-of>
                         </textarea>
                     </div>
                     <div>
-                        <input type="submit" name="" value="Create"/>
+                        <input type="submit" name="" value="Save" onclick="parent.hideEditItemView()"/>
                         <!-- Abbrechen fehlt-->
+                    </div>
+                </form>
+                <form class="entry" method="post">
+                    <xsl:attribute name="action">
+                        <xsl:value-of select="concat('/me/api/',$type,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                    </xsl:attribute>
+                    <input type="hidden" name="_method" value="DELETE"></input>
+                    <div>
+                        <input type="submit" name="" value="Delete"/>
                     </div>
                 </form>
             </xsl:if>

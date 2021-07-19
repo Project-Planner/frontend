@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:css="http://www.w3.org/TR/XSL-for-CSS">
+    xmlns="http://www.w3.org/1999/xhtml">
     <xsl:variable name="weekDate" select="'1.1.1970'"/>
     <xsl:variable name="displayMode" select="'calender'"/>
+    <xsl:variable name="calendarID" select="calendar/id/@val"/>
     <!--displayModes: calender/project-->
-    <xsl:output method="XML" encoding="utf-8" indent="yes"/>
+    <xsl:output method="xml" encoding="utf-8" indent="yes"/>
     <xsl:template match="/">
         <html>
             <head>
-                <link rel="stylesheet" href="../css/projectView.css"/>
+                <link rel="stylesheet" type="text/css" href="../css/projectView.css"/>
                 <link rel="stylesheet" href="../css/master.css"/>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro"/>
             </head>
@@ -64,6 +65,14 @@
                         <xsl:with-param name="endJulian" select="$latestEndJulian"/>
                     </xsl:call-template>
                 </table>
+                <div id ="EditItemView">
+                    <iframe class="editItem" id="editItem" name="editItem"  src="../html/createEntry.html"></iframe>
+                </div>
+                <script>function hideEditItemView(){
+               document.getElementById("EditItemView").style.display = "none";    
+                location.reload();      
+            }  
+            </script>
             </body>
         </html>
     </xsl:template>
@@ -132,6 +141,7 @@
                     <xsl:with-param name="name" select="name/@val"/>
                     <xsl:with-param name="startJulian" select="$startJulian"/>
                     <xsl:with-param name="endJulian" select="$endJulian"/>
+                    <xsl:with-param name ="id" select="@id"></xsl:with-param>
                 </xsl:call-template>
             </tr>
         </xsl:for-each>
@@ -141,6 +151,7 @@
         <xsl:param name="name"/>
         <xsl:param name="startJulian"/>
         <xsl:param name="endJulian"/>
+        <xsl:param name="id"/>
         <xsl:variable name="startDivJulian">
             <xsl:call-template name="calculate-julian-day">
                 <xsl:with-param name="date" select="startDate/@val | duedate/@val"/>
@@ -161,9 +172,20 @@
             <xsl:attribute name="colspan" >
                 <xsl:value-of select="$length+1"></xsl:value-of>
             </xsl:attribute>
-            <a href="calendar.xml" target="popup" onclick="window.open('calendar.xml','popup','width=600,height=600'); return false;">
+            <a>
+                <xsl:attribute name="onclick">
+                    <xsl:value-of select="concat('showEditItemView(',$id,')')"></xsl:value-of>
+                </xsl:attribute>
                 <xsl:value-of select="$name"></xsl:value-of>
             </a>
+            <script>function showEditItemView(val){
+               
+               document.getElementById("EditItemView").style.display = "block";  
+               var iframe = document.getElementById('editItem');
+                iframe.src = iframe.src; 
+                document.getElementById('editItem').src= "/me/c/$calendarID?mode=edit;id="+val;
+                }
+            </script>
         </td>
         <xsl:call-template name="insertEmptyTD">
             <xsl:with-param name ="TDCount" select="$endJulian - $startDivJulian - $length"></xsl:with-param>
