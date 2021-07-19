@@ -185,18 +185,20 @@ function setVisibilityTrue() {
     document.getElementById("dropdown-content").style.display = "none";
     showCalendars = true;
   }
-    
 }
 
-function setCalendarnameToShare(name){
-  parent.document.getElementById("sharecalendarcalendarname").textContent = name;
-  parent.window.location.href = parent.window.location.href + "#sharecalendar";  //Appends #sharecalendar to the url to show the sharecalendar dialog
-  parent.document.getElementById("sharecalendarcalnamelabel").textContent = name;
-  }
+function setCalendarnameToShare(name) {
+  parent.document.getElementById("sharecalendarcalendarname").textContent =
+    name;
+  parent.window.location.href = parent.window.location.href + "#sharecalendar"; //Appends #sharecalendar to the url to show the sharecalendar dialog
+  parent.document.getElementById("sharecalendarcalnamelabel").textContent =
+    name;
+}
 
-  function setCalendarnameInDeleteCalendar(name){
-    parent.document.getElementById("deletecalendarcalendarname").textContent = name; //Sets the calendar name of the element in mainPage.html
-    parent.window.location.href = parent.window.location.href + "#deletecalendar";  //Appends #deletecalendar to the url to show the deletecalendar dialog
-    parent.document.getElementById("deletecalendarform").action = "/me/c/"+name;
-    parent.document.getElementById("deletecalendarform").href = "/me/c/"+name;
-    }
+function setCalendarnameInDeleteCalendar(name) {
+  parent.document.getElementById("deletecalendarcalendarname").textContent =
+    name; //Sets the calendar name of the element in mainPage.html
+  parent.window.location.href = parent.window.location.href + "#deletecalendar"; //Appends #deletecalendar to the url to show the deletecalendar dialog
+  parent.document.getElementById("deletecalendarform").action = "/me/c/" + name;
+  parent.document.getElementById("deletecalendarform").href = "/me/c/" + name;
+}
