@@ -33,32 +33,115 @@
         </xsl:call-template>
     </xsl:variable>
 
-    <div class="background">
-      <div class="leftBar">
-        <div class="timeBar" style="margin-top: 0;"> 00:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 4.16%;"> 01:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 2*4.16%;"> 02:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 3*4.16%;"> 03:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 4*4.16%;"> 04:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 5*4.16%;"> 05:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 6*4.16%;"> 06:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 7*4.16%;"> 07:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 8*4.16%;"> 08:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 9*4.16%;"> 09:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 10*4.16%;"> 10:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 11*4.16%;"> 11:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 12*4.16%;"> 12:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 13*4.16%;"> 13:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 14*4.16%;"> 14:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 15*4.16%;"> 15:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 16*4.16%;"> 16:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 17*4.16%;"> 17:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 18*4.16%;"> 18:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 19*4.16%;"> 19:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 20*4.16%;"> 20:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 21*4.16%;"> 21:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 22*4.16%;"> 22:00 Uhr </div>
-        <div class="timeBar" style="margin-top: 23*4.16%;"> 23:00 Uhr </div>
+  <div class="background">
+
+    <div class="tableDay"> 
+        <table>
+          <thead>
+            <tr>
+              <th>Hier könnte Montag stehen
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>00:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>01:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>02:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>03:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>04:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>05:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>06:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>07:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>08:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>09:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>10:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>11:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>12:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>13:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>14:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+              <tr>
+              <td>15:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>16:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>17:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>18:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>19:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>20:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>21:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>22:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+            <tr>
+              <td>23:00 Uhr</td>
+              <td>Platz für Inhalt</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="topBar">
