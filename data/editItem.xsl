@@ -5,8 +5,6 @@
     <xsl:variable name="displayMode" select="'calender'"/>
     <xsl:variable name="calendarID" select="calendar/id/@val"/>
     <!--displayModes: calender/project-->
-    <xsl:variable name="id" select="123"/>
-    <!--hier id des anzuzeigenden Elements setzen-->
     <xsl:output method="xml" encoding="utf-8"/>
     <xsl:template match="/">
         <html>
