@@ -112,10 +112,10 @@ div.daydiv p {
 }
 
 .title {
-  margin-left: 50%;
+  margin-left: 40%;
   margin-right: 50%;
-  margin-top: 10%;
-  font-size: 8vmax;
+  margin-top: 8%;
+  font-size: 6vmax;
 }
 
 .timeBar {
@@ -153,4 +153,8 @@ div.daydiv p {
 
 .bl {
   border-left: solid thin black;
+}
+
+.insertDay {
+  display: flex;
 }

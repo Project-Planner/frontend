@@ -37,8 +37,36 @@
 
     <div class="tableDay"> 
         <table>
-        <caption class="caption">Hier könnte Montag stehen</caption>
-          <thead>
+        <caption class="caption">
+              <div class="topBar">
+                <div class="title">
+                  <xsl:choose >
+                    <xsl:when test="$dayOfDate=1">
+                    Montag
+                    </xsl:when>
+                    <xsl:when test="$dayOfDate=2">
+                    Dienstag
+                    </xsl:when>
+                    <xsl:when test="$dayOfDate=3">
+                    Mittwoch
+                    </xsl:when>
+                    <xsl:when test="$dayOfDate=4">
+                    Donnerstag
+                    </xsl:when>
+                    <xsl:when test="$dayOfDate=5">
+                    Freitag
+                    </xsl:when>
+                    <xsl:when test="$dayOfDate=6">
+                    Samstag
+                    </xsl:when>
+                    <xsl:when test="$dayOfDate=0">
+                    Sonntag
+                    </xsl:when>
+                  </xsl:choose>
+                </div>
+              </div>
+        </caption>
+          <thead class="bl">
             <tr>
               <th>
               </th>
@@ -135,47 +163,23 @@
             </tr>
             <tr>
               <td>22:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                Platz für Inhalt
+              </td>
             </tr>
             <tr>
               <td>23:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td> 
+                Platz für Inhalt
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <div class="topBar">
-        <div class="title">
-          <xsl:choose >
-            <xsl:when test="$dayOfDate=1">
-            Montag
-            </xsl:when>
-            <xsl:when test="$dayOfDate=2">
-            Dienstag
-            </xsl:when>
-            <xsl:when test="$dayOfDate=3">
-            Mittwoch
-            </xsl:when>
-            <xsl:when test="$dayOfDate=4">
-            Donnerstag
-            </xsl:when>
-            <xsl:when test="$dayOfDate=5">
-            Freitag
-            </xsl:when>
-            <xsl:when test="$dayOfDate=6">
-            Samstag
-            </xsl:when>
-            <xsl:when test="$dayOfDate=0">
-            Sonntag
-            </xsl:when>
-        </xsl:choose>
-        </div>
-      </div>
-    
-      <xsl:call-template name="insertDay">
-        <xsl:with-param name="date" select="$date"/>
-      </xsl:call-template>
+                <xsl:call-template name="insertDay">
+                <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
     </div>
   </xsl:template>
 
