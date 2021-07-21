@@ -19,8 +19,11 @@
                 <xsl:for-each select="user/items/calendar">
                     <div id="mycalendars">
                         <a target="calendarFrame">
-                            <xsl:attribute name="href">
+                            <!--<xsl:attribute name="href">
                                 <xsl:value-of select="concat('/me/c/', @href)"/>
+                            </xsl:attribute>-->
+                            <xsl:attribute name="onclick">
+                                <xsl:value-of select="concat('changeCalendar(',$sp,'/me/c/',$username,'/',@href,$sp,')')"/>
                             </xsl:attribute>
                             <xsl:choose>
                                 <xsl:when test="position() = 1">

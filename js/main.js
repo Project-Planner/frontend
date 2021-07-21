@@ -215,3 +215,19 @@ function changecreateForm(){
   }else
   document.getElementById("createitemform").action = "/me/api/"+item+"/post/"+calendar;
 }
+
+function changeCalendar(cal) {y = dateJs.getFullYear();
+  y = dateJs.getFullYear();
+  m = dateJs.getMonth() + 1;
+  d = dateJs.getDate();
+  parent.document.getElementById("calendarFrame").src = cal +"?mode="+
+  mode +
+  ";period=" +
+  period +
+  ";date=" +
+  d +
+  "." +
+  m +
+  "." +
+  y;
+}
