@@ -240,6 +240,104 @@ div.dropdown:hover div.dropdown-content {
   cursor: pointer;
 }
 
+.createitem {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: gray;
+  margin: 0;
+  top: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+}
+.createitem:target {
+  opacity: 0.8;
+  visibility: visible;
+}
+
+#createitembox {
+  width: 50vw;
+  height: 30vh;
+  margin-left: 25vw;
+  margin-top: 40vh;
+  border: 1px solid white;
+  border-radius: 5px;
+  box-shadow: 0 0 2px white;
+}
+
+#createitemtext {
+  text-align: center;
+  font-weight: 800;
+}
+#createitemfields {
+  margin-top: 5vh;
+  width: 50vw;
+}
+.createitemform {
+  width: 50vw;
+}
+#createitemattributes {
+  display: inline-block;
+  margin-left: 4vw;
+}
+#createitemtyp {
+  font-size: 0.6vw;
+}
+#createiteminputtyp {
+  font-size: 0.6vw;
+}
+#createitemname {
+  margin-top: 1vh;
+  font-size: 0.6vw;
+}
+#createitemdatef {
+  margin-top: 1vh;
+  font-size: 0.6vw;
+}
+#createitemdatet {
+  margin-top: 1vh;
+  font-size: 0.6vw;
+}
+#createitemtimef {
+  margin-top: 1vh;
+  font-size: 0.6vw;
+}
+#createitemtimet {
+  margin-top: 1vh;
+  font-size: 0.6vw;
+}
+#createitemdesc {
+  display: inline-block;
+  font-size: 0.6vw;
+  margin-left: 4vw;
+}
+#createitemdesclabel {
+  vertical-align: top;
+}
+#createitembuttons {
+  display: inline-block;
+  margin-left: 4vw;
+  width: 5vw;
+  vertical-align: top;
+  margin-top: 5vh;
+}
+#createitembuttonyes {
+  width: 4vw;
+  cursor: pointer;
+}
+#createitembuttonno {
+  width: 4vw;
+  cursor: pointer;
+  background-color: #add3f7;
+  font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
+  border-radius: 25pt;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+  filter: invert(100%);
+}
+
 .sharecalendar {
   position: absolute;
   width: 100vw;

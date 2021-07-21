@@ -3,27 +3,47 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:css="http://www.w3.org/TR/XSL-for-CSS">
     <xsl:template match="/">
+        <xsl:variable name="sp">
+            <xsl:text>'</xsl:text>
+        </xsl:variable>
         <html>
             <head>
                 <script src="../js/main.js">
-                    <link rel="stylesheet" href="../css/showCalendars.css" />
                 </script>
+                <link rel="stylesheet" href="../css/showCalendars.css" />
             </head>
             <body>
+                <label id="username">
+                    <xsl:value-of select="user/name/@val"/>
+                </label>
                 <xsl:for-each select="user/items/calendar">
                     <div id="mycalendars">
                         <a target="calendarFrame">
                             <xsl:attribute name="href">
                                 <xsl:value-of select="concat('/me/c/', @href)"/>
                             </xsl:attribute>
-                            <input type="radio" name="showcalendarradiobuttons">
-                                <xsl:attribute name="id">
-                                    <xsl:value-of select="@href"/>
-                                </xsl:attribute>
-                                <xsl:attribute name="value">
-                                    <xsl:value-of select="@href"/>
-                                </xsl:attribute>
-                            </input>
+                            <xsl:choose>
+                                <xsl:when test="position() = 1">
+                                    <input type="radio" name="showcalendarradiobuttons" checked="checked">
+                                        <xsl:attribute name="id">
+                                            <xsl:value-of select="@href"/>
+                                        </xsl:attribute>
+                                        <xsl:attribute name="value">
+                                            <xsl:value-of select="@href"/>
+                                        </xsl:attribute>
+                                    </input>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <input type="radio" name="showcalendarradiobuttons">
+                                        <xsl:attribute name="id">
+                                            <xsl:value-of select="@href"/>
+                                        </xsl:attribute>
+                                        <xsl:attribute name="value">
+                                            <xsl:value-of select="@href"/>
+                                        </xsl:attribute>
+                                    </input>
+                                </xsl:otherwise>
+                            </xsl:choose>
                             <label>
                                 <xsl:attribute name="for">
                                     <xsl:value-of select="@href"/>
@@ -32,11 +52,8 @@
                             </label>
                         </a>
                         <xsl:if test="@perm = 'owner'">
-                            <xsl:variable name="dq">
-                                <xsl:text>'</xsl:text>
-                            </xsl:variable>
                             <xsl:variable name="callfnc">
-                                <xsl:value-of select="concat(concat(concat(concat('setCalendarnameToShare(',$dq),@href), $dq),')')"/>
+                                <xsl:value-of select="concat(concat(concat(concat('setCalendarnameToShare(',$sp),@href), $sp),')')"/>
                             </xsl:variable>
                         &#160;&#160;&#160;
                             <a>
@@ -47,11 +64,8 @@
                             </a>
                         </xsl:if>
                         <xsl:if test="@perm = 'owner'">
-                            <xsl:variable name="dq">
-                                <xsl:text>'</xsl:text>
-                            </xsl:variable>
                             <xsl:variable name="callfnc">
-                                <xsl:value-of select="concat(concat(concat(concat('setCalendarnameInDeleteCalendar(',$dq),@href), $dq),')')"/>
+                                <xsl:value-of select="concat(concat(concat(concat('setCalendarnameInDeleteCalendar(',$sp),@href), $sp),')')"/>
                             </xsl:variable>
                             &#160;&#160;&#160;
                             <a>

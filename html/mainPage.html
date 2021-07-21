@@ -67,7 +67,7 @@
   <div class="dropdown">
     <button class="dropbtn" onclick="setVisibilityTrue()">Meine Kalender &#9660;</button>
     <div class="dropdown-content" id="dropdown-content">
-      <iframe class="mycalendars" src="/me/calendars"></iframe>
+      <iframe class="mycalendars" src="/me/calendars" id="mycalendars"></iframe>
     </div>
   </div>
 
@@ -83,6 +83,46 @@
       </div>
     </div>
   </div>
+
+  <div class="createitem" id="createitem">
+    <div id="createitembox">
+      <div id="createitemtext">Erstellen</div>
+      <div id="createitemfields">
+        <form class="createitemform" id="createitemform" method="POST">
+          <div id="createitemattributes">
+          <div id="createitemtyp">
+            <label for="typ">Typ wählen:</label>
+            <select name="typ" id="createiteminputtyp">
+              <option value="calendar">Kalender</option>
+              <option value="tasks">Aufgabe</option>
+              <option value="subtasks">Unteraufgabe</option>
+              <option value="appointments">Termin</option>
+              <option value="milestones">Meilenstein</option>
+            </select>
+          </div>
+          <div id="createitemname"><label for="name">Name</label>
+            <input type="text" id="createiteminputname" name="name" maxlength="250"/></div>
+          <div id="createitemdatef"><label for="datef">Datum von:</label>
+            <input type="date" id="createiteminputdatef" name="datef" /></div>
+          <div id="createitemdatet"><label for="datet">Datum bis:</label>
+            <input type="date" id="createiteminputdatet" name="datet" /></div>
+          <div id="createitemtimef"><label for="timef">Zeit von:</label>
+            <input type="time" id="createiteminputtimef" name="timef" /></div>
+          <div id="createitemtimet"><label for="timet">Zeit bis:</label>
+            <input type="time" id="createiteminputtimet" name="timet"></div>
+          </div>
+          <div id="createitemdesc"><label for="desc" id="createitemdesclabel">Beschreibung:</label>
+          <textarea id="createiteminputdesc" name="desc" rows="10" cols="30" maxlength="250" placeholder="max 250 Zeichen"></textarea></div>
+          <div id="createitembuttons">
+          <input onclick="changecreateForm()" type="submit" value="Erstellen" id="createitembuttonyes"></input>
+        
+        </form>
+        <a href=""><input type="button" value="Abbrechen" id="createitembuttonno"></input></a></div>
+      </div>
+    </div>
+  </div>
+
+
 
   <div class="sharecalendar" id="sharecalendar">
     <div id="sharecalendarbox">
@@ -103,15 +143,13 @@
     </div>
   </div>
 
-  <form class="search" action="mainPage.html" method="post">
-    <p>Andere Kalender</p>
-    <input type="search" name="Suche" maxlength="250" placeholder="Suche">
-  </form>
-
   <div class="add">
     <br>
+    <!--
     <a id="adding" href="createEntry.html" target="popup"
       onclick="window.open('createEntry.html','popup','width=400,height=600', 'resizable=no'); return false;">Hinzufügen</a>
+      -->
+      <a href="#createitem" id="adding">Hinzufügen</a>
     <br>
   </div>
   <button class="goback" onClick="changeDate(-add)">&loarr;</button>

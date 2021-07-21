@@ -1,126 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="calendar.xsl"?>
-
+<?xml-stylesheet type="text/xsl" href="projectView.xsl"?>
 <calendar>
-    <name val="Birthday Calendar" />
-    <owner href="ownerFile1" />
+    <name val="Birthday_Calendar" />
+    <owner val="ownerName" />
+    <id val="ownerName/Birthday_Calendar" />
+    <!--this field must always be formed like this and it must be unique -> calendar name must be unique to user-->
     <permissions>
-        <group val="View">
-            <user href="Kevin" />
-        </group>
-        <group val="Edit">
-            <user href="lol" />
-        </group>
+        <view>
+            <user val="Kevin" />
+            <user val="otherkevin" />
+        </view>
+        <edit>
+            <user val="lol" />
+            <user val="lol2" />
+        </edit>
     </permissions>
-
+    <desc>Lorem Ipsum.</desc>
+    <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
     <items>
         <appointments>
-            <appointment>
-                <name val="appointment1"/>
-                <color val="#FF0000" />
-                <startDate val="11.7.2021"/>
+            <appointment id="1224-34-2322342-42-24-24">
+                <name val="somename that works"/>
+                <startDate val="1.4.2021"/>
                 <startTime val="4:12" />
                 <endTime val="5:12" />
-                <endDate val="10.7.2021" />
-                <cat val="Leisure" />
-                <desc>desc ap1</desc>                <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
+                <endDate val="7.4.2021" />
+                <desc>Lorem Ipsum.</desc>
+                <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
             </appointment>
-            <appointment>
-                <name val="appointment2"/>
-                <color val="#FF0000" />
-                <startDate val="1.6.2021"/>
+            <appointment id="1224-34-2322342-42-24-24">
+                <name val="somename that also works"/>
+                <startDate val="1.4.2021"/>
                 <startTime val="4:12" />
                 <endTime val="5:12" />
                 <endDate val="14.4.2021" />
-                <cat val="Leisure" />
-                <desc>desc ap2</desc>                <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
-            </appointment>
-            <appointment>
-                <name val="appointment3"/>
-                <color val="#FF0000" />
-                <startDate val="5.7.2021"/>
-                <startTime val="4:12" />
-                <endTime val="5:12" />
-                <endDate val="14.4.2021" />
-                <cat val="Leisure" />
-                <desc>desc ap3</desc>                <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
+                <desc>Lorem Ipsum.</desc>
+                <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
             </appointment>
         </appointments>
         <milestones>
-            <milestone id="1">
-                <name val="milestone4"/>
-                <duedate val="5.7.2021"/>
-                <duetime val="5:35"/>
-            </milestone>
-            <milestone id="1">
-                <name val="milestone4"/>
-                <duedate val="5.7.2021"/>
-                <duetime val="6:35"/>
-            </milestone>
-            <milestone id="1">
-                <name val="milestone4"/>
-                <duedate val="5.7.2021"/>
-                <duetime val="24:01"/>
-            </milestone>
-            <milestone id="2">
-                <name val="milestone5"/>
-                <duedate val="1.7.2021"/>
+            <milestone id="1224-34-2322342-42-24-24">
+                <name val="somename"/>
+                <duedate val="1.5.2021"/>
                 <duetime val="5:34"/>
+                <desc>Some Milestone</desc>
             </milestone>
-            <milestone id="3">
-                <name val="milestone6"/>
-                <duedate val="15.7.2021"/>
+            <milestone id="1224-34-2322342-42-24-24">
+                <name val="somename"/>
+                <duedate val="1.6.2021"/>
                 <duetime val="5:34"/>
-            </milestone>
-            <milestone id="3">
-                <name val="milestone6"/>
-                <duedate val="30.6.2021"/>
-                <duetime val="5:34"/>
-            </milestone>
-            <milestone id="1">
-                <name val="milestone7"/>
-                <duedate val="1.8.2021"/>
-                <duetime val="5:34"/>
-            </milestone>
-            <milestone id="2">
-                <name val="milestone8"/>
-                <duedate val="21.7.2021"/>
-                <duetime val="5:32"/>
-            </milestone>
-            <milestone id="3">
-                <name val="milestone9"/>
-                <duedate val="7.7.2021"/>
-                <duetime val="5:34"/>
+                <desc>Some Milestone</desc>
             </milestone>
         </milestones>
         <tasks>
-            <task>
-                <name val="task1"/>
-                <milestone id="1"/>
-                <duedate val="5.7.2021"/>
+            <task id="1224-34-2322342-42-24-24">
+                <name val="name"/>
+                <milestone id="id of the milestone"/>
+                <startDate val="1.7.2021"/>
+                <startTime val="4:12" />
+                <duedate val="2.8.2021"/>
                 <duetime val="5:34"/>
-                <desc>desc t1</desc>
+                <desc>Dolor</desc>
                 <subtasks>
-                    <subtask>
-                        <name val="t1s1"/>
-                        <duedate val="10.6.2021"/>
+                    <subtask id="1224-34-2322342-42-24-24">
+                        <name val="someName"/>
+                        <startDate val="2.7.2021"/>
+                        <startTime val="4:12" />
+                        <duedate val="5.7.2021"/>
                         <duetime val="5:34"/>
-                        <desc>desc t1s1</desc>
+                        <desc>sit amet</desc>
+                    </subtask>
+                    <subtask id="1224-34-2322342-42-24-24">
+                        <name val="someName"/>
+                        <startDate val="7.7.2021"/>
+                        <startTime val="4:12" />
+                        <duedate val="10.7.2021"/>
+                        <duetime val="5:34"/>
+                        <desc>sit amet</desc>
                     </subtask>
                 </subtasks>
             </task>
-            <task>
-                <name val="task2"/>
-                <milestone id="2"/>
-                <duedate val="6.7.2021"/>
+            <task id="1224-34-2322342-42-24-24">
+                <name val="name"/>
+                <milestone id="id of the milestone"/>
+                <startDate val="1.10.2021"/>
+                <startTime val="4:12" />
+                <duedate val="30.11.2021"/>
                 <duetime val="5:34"/>
-                <desc>desc t2</desc>
+                <desc>Dolor</desc>
                 <subtasks>
-                    <subtask>
-                        <name val="t2s1"/>
-                        <duedate val="8.10.2021"/>
+                    <subtask id="someID">
+                        <name val="someName"/>
+                        <startDate val="2.10.2021"/>
+                        <startTime val="4:12" />
+                        <duedate val="5.10.2021"/>
                         <duetime val="5:34"/>
-                        <desc>desc t2s1</desc>
+                        <desc>sit amet</desc>
+                    </subtask>
+                    <subtask id="someID">
+                        <name val="someName"/>
+                        <startDate val="6.10.2021"/>
+                        <startTime val="4:12" />
+                        <duedate val="10.12.2021"/>
+                        <duetime val="5:34"/>
+                        <desc>sit amet</desc>
                     </subtask>
                 </subtasks>
             </task>

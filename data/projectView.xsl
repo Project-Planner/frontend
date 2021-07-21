@@ -109,11 +109,11 @@
     <xsl:template name="latestEnd">
         <xsl:param name="path"/>
         <xsl:for-each select="$path/appointments/appointment | $path/milestones/milestone | $path/tasks/task | $path/tasks/task/subtasks/subtask">
-            <xsl:sort order="descending" select="substring-after(substring-after(startDate/@val | duedate/@val,'.'),'.')" data-type="number"/>
-            <xsl:sort order="descending" select="substring-before(substring-after(startDate/@val | duedate/@val, '.'), '.')" data-type="number"/>
-            <xsl:sort order="descending" select="substring-before(startDate/@val | duedate/@val, '.')"/>
+            <xsl:sort order="descending" select="substring-after(substring-after(endDate/@val | duedate/@val,'.'),'.')" data-type="number"/>
+            <xsl:sort order="descending" select="substring-before(substring-after(endDate/@val | duedate/@val, '.'), '.')" data-type="number"/>
+            <xsl:sort order="descending" select="substring-before(endDate/@val | duedate/@val, '.')"/>
             <xsl:if test="position() = 1">
-                <xsl:value-of select="startDate/@val | duedate/@val"/>
+                <xsl:value-of select="endDate/@val | duedate/@val"/>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>

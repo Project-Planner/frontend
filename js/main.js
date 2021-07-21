@@ -200,3 +200,18 @@ function setCalendarnameToShare(name){
     parent.document.getElementById("deletecalendarform").action = "/me/c/"+name;
     parent.document.getElementById("deletecalendarform").href = "/me/c/"+name;
     }
+
+function changecreateForm(){
+  var item = document.getElementById("createiteminputtyp").value;
+  var user = document.getElementById("mycalendars").contentWindow.document.getElementById("username").textContent;
+  var radiobuttons = document.getElementById("mycalendars").contentWindow.document.getElementsByName("showcalendarradiobuttons");
+  var calendar;
+  for(var i=0;i<radiobuttons.length;i++) {
+    if(radiobuttons[i].checked)
+      calendar = radiobuttons[i].value;
+  }
+  if(item == "calendar"){
+    document.getElementById("createitemform").action = "/me/c/"+user;
+  }else
+  document.getElementById("createitemform").action = "/me/api/"+item+"/"+user+"/"+calendar;
+}
