@@ -71,7 +71,7 @@
     </div>
   </div>
 
-  <div class="deletecalendar" id="deletecalendar">
+  <div class="deletecalendar" id="deletecalendar" method="POST">
     <div id="deletecalendarbox">
       <div id="deletecalendartext">Bist du dir sicher, dass du den Kalender &nbsp;"<div id="deletecalendarcalendarname">placeholder</div>"&nbsp;löschen möchtest?</div>
       <div id="deletecalendarbuttons">
@@ -95,21 +95,20 @@
             <select name="typ" id="createiteminputtyp">
               <option value="calendar">Kalender</option>
               <option value="tasks">Aufgabe</option>
-              <option value="subtasks">Unteraufgabe</option>
               <option value="appointments">Termin</option>
               <option value="milestones">Meilenstein</option>
             </select>
           </div>
           <div id="createitemname"><label for="name">Name</label>
-            <input type="text" id="createiteminputname" name="name" maxlength="250"/></div>
+            <input type="name" id="createiteminputname" name="name" maxlength="250"/></div>
           <div id="createitemdatef"><label for="datef">Datum von:</label>
-            <input type="date" id="createiteminputdatef" name="datef" /></div>
+            <input type="startDate" id="createiteminputdatef" name="datef" /></div>
           <div id="createitemdatet"><label for="datet">Datum bis:</label>
-            <input type="date" id="createiteminputdatet" name="datet" /></div>
+            <input type="endDate" id="createiteminputdatet" name="datet" /></div>
           <div id="createitemtimef"><label for="timef">Zeit von:</label>
-            <input type="time" id="createiteminputtimef" name="timef" /></div>
+            <input type="startTime" id="createiteminputtimef" name="timef" /></div>
           <div id="createitemtimet"><label for="timet">Zeit bis:</label>
-            <input type="time" id="createiteminputtimet" name="timet"></div>
+            <input type="endTime" id="createiteminputtimet" name="timet"></div>
           </div>
           <div id="createitemdesc"><label for="desc" id="createitemdesclabel">Beschreibung:</label>
           <textarea id="createiteminputdesc" name="desc" rows="10" cols="30" maxlength="250" placeholder="max 250 Zeichen"></textarea></div>
