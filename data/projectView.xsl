@@ -174,16 +174,19 @@
             </xsl:attribute>
             <a>
                 <xsl:attribute name="onclick">
-                    <xsl:value-of select="concat('showEditItemView(',$id,')')"></xsl:value-of>
+                    <xsl:variable name="apostrophe">'</xsl:variable>
+                    <xsl:value-of select="concat('showEditItemView(',$apostrophe,$id,$apostrophe,',',$apostrophe,$calendarID,$apostrophe,')')"></xsl:value-of>
                 </xsl:attribute>
                 <xsl:value-of select="$name"></xsl:value-of>
             </a>
-            <script>function showEditItemView(val){
+            <script>function showEditItemView(id,calendarID){
                
                document.getElementById("EditItemView").style.display = "block";  
                var iframe = document.getElementById('editItem');
                 iframe.src = iframe.src; 
-                document.getElementById('editItem').src= "/me/c/$calendarID?mode=edit;id="+val;
+                document.getElementById('editItem').src= "/me/c/"+calendarID+"?mode=edit;id="+id;
+                
+               
                 }
             </script>
         </td>

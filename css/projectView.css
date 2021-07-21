@@ -50,10 +50,6 @@ td {
   border-style: solid;
 }
 
-.EditItemView:target {
-  display: block;
-}
-
 .EditItemView {
   display: none;
 }

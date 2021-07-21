@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns="http://www.w3.org/1999/xhtml">
     <xsl:variable name="displayMode" select="'calender'"/>
     <xsl:variable name="calendarID" select="calendar/id/@val"/>
     <!--displayModes: calender/project-->
-    <xsl:output method="XML" encoding="utf-8"/>
+    <xsl:output method="xml" encoding="utf-8"/>
     <xsl:template match="/">
         <html>
             <head>
@@ -92,10 +93,10 @@
         <xsl:for-each select="calendar/items/appointments/appointment  | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
             <xsl:if test="@id = $id">
                 <xsl:value-of select="duetime/@val"></xsl:value-of>
-                <xsl:variable name="type" select="name()"></xsl:variable>
+                <xsl:variable name="ItemType" select="name()"></xsl:variable>
                 <form class="entry" method="post">
                     <xsl:attribute name="action">
-                        <xsl:value-of select="concat('/me/api/',$type,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                        <xsl:value-of select="concat('/me/api/other/',$ItemType,'s/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="PUT"></input>
                     <div>
@@ -175,6 +176,8 @@
                     <div>
                         <div>
                             <label for="desc">Beschreibung:</label>
+                        </div>
+                        <div>
                             <textarea name="desc" rows="8" cols="40" placeholder="max 250 Zeichen">
                                 <xsl:value-of select="desc"></xsl:value-of>
                             </textarea>
@@ -183,16 +186,16 @@
                             <input type="submit" name="" value="Save"/>
                         </div>
                     </div>
-                    <xsl:variable name="type" select="name()"></xsl:variable>
-                    <form class="entry" method="post">
-                        <xsl:attribute name="action">
-                            <xsl:value-of select="concat('/me/api/',$type,'s/',$calendarID,'/',$id)"></xsl:value-of>
-                        </xsl:attribute>
-                        <input type="hidden" name="_method" value="DELETE"></input>
-                        <div>
-                            <input type="submit" name="" value="Delete"/>
-                        </div>
-                    </form>
+                </form>
+                <xsl:variable name="Itemtype" select="name()"></xsl:variable>
+                <form class="entry" method="post">
+                    <xsl:attribute name="action">
+                        <xsl:value-of select="concat('/me/api/other/',$ItemType,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                    </xsl:attribute>
+                    <input type="hidden" name="_method" value="DELETE"></input>
+                    <div>
+                        <input type="submit" name="" value="Delete"/>
+                    </div>
                 </form>
             </xsl:if>
         </xsl:for-each>
@@ -200,10 +203,10 @@
     <xsl:template name="showMilestoneView">
         <xsl:for-each select=" calendar/items/milestones/milestone">
             <xsl:if test="@id = $id">
-                <xsl:variable name="type" select="name()"></xsl:variable>
+                <xsl:variable name="ItemType" select="name()"></xsl:variable>
                 <form class="entry" method="post">
                     <xsl:attribute name="action">
-                        <xsl:value-of select="concat('/me/api/',$type,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                        <xsl:value-of select="concat('/me/api/other/',$ItemType,'s/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="PUT"></input>
                     <div>
@@ -257,12 +260,11 @@
                     </div>
                     <div>
                         <input type="submit" name="" value="Save" onclick="parent.hideEditItemView()"/>
-                        <!-- Abbrechen fehlt-->
                     </div>
                 </form>
                 <form class="entry" method="post">
                     <xsl:attribute name="action">
-                        <xsl:value-of select="concat('/me/api/',$type,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                        <xsl:value-of select="concat('/me/api/other/',$ItemType,'s/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="DELETE"></input>
                     <div>

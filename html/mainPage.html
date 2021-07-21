@@ -51,8 +51,8 @@
     <div class="deleteuserbox">
       <div id="deleteusertext">Bist du dir sicher, dass du deinen Account löschen möchtest?</div>
       <div id="deleteuserbuttons">
-        <form action="/api/user" class="deleteuserform" method="POST">
-          <input type="submit" value="Ja" id="deleteuserbuttonyes"></input>
+        <form action="/api/user" class="deleteuserform">
+          <input type="submit" value="Löschen" id="deleteuserbuttonyes"></input>
           <input type="hidden" name="_method" value="delete">
         </form>
         <a href=""><input id="deleteuserbuttonno" type="button" value="Nein"/></a>
@@ -75,8 +75,8 @@
     <div id="deletecalendarbox">
       <div id="deletecalendartext">Bist du dir sicher, dass du den Kalender &nbsp;"<div id="deletecalendarcalendarname">placeholder</div>"&nbsp;löschen möchtest?</div>
       <div id="deletecalendarbuttons">
-        <form class="deletecalendarform" id="deletecalendarform" method="POST">
-          <input type="submit" value="Ja" id="deletecalendarbuttonyes"></input>
+        <form class="deletecalendarform" id="deletecalendarform">
+          <input type="submit" value="Löschen" id="deletecalendarbuttonyes"></input>
           <input type="hidden" name="_method" value="delete">
         </form>
         <a href=""><input type="submit" value="Nein" id="deletecalendarbuttonno"></input></a>
