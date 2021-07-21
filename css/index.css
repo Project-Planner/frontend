@@ -1,3 +1,9 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  color: white;
+}
+
 body {
   background-image: linear-gradient(#1E2125, #EAEBEF);
   background-size: contain;
@@ -12,12 +18,6 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-html, body {
-  margin: 0;
-  height: 100%;
-  color: white;
 }
 
 input[type="submit"] {

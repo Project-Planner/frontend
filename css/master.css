@@ -30,6 +30,17 @@ h2 {
   font-size: 1.5vw;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+  filter: invert(100%);
+}
+
+#adding {
+  color: black;
+}
+
+/*footer*/
 .footer {
   position: fixed;
   bottom: 0;
@@ -60,17 +71,7 @@ div.footer-elements {
   float: right;
 }
 
-a {
-  color: white;
-  text-decoration: none;
-  filter: invert(100%);
-}
-
 footer a:hover {
   color: blue;
   text-decoration: underline;
-}
-
-#adding {
-  color: black;
 }

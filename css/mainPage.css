@@ -1,3 +1,9 @@
+div.logo {
+  float: left;
+  display: inline;
+  width: 20%;
+}
+
 div.logo img {
   display: flex;
   width: 70%;
@@ -54,6 +60,8 @@ div.logo img {
   transition: all 0.25s ease-out;
   filter: invert(0%);
 }
+
+/*delete user*/
 .deleteuser {
   position: absolute;
   width: 100vw;
@@ -115,6 +123,8 @@ div.logo img {
   margin-left: 6vw;
   cursor: pointer;
 }
+
+/*toggle buttons*/
 switch {
   display: flex;
   float: left;
@@ -143,13 +153,7 @@ div.timeToggle * {
   display: inline;
 }
 
-div.logo {
-  float: left;
-  display: inline;
-  width: 20%;
-}
-
-/*Dropdown zu "Meine Kalender"*/
+/*dropdown menu"*/
 .dropbtn {
   border-radius: 50px;
   margin-top: 5vh;
@@ -171,23 +175,8 @@ button.dropbtn {
 .mycalendars {
   border: none;
 }
-/*
-div.dropdown-content {
-  display: none;
-  color: white;
-}
 
-.dropdown-entry * {
-  display: inline;
-  margin-bottom: 20%;
-}
-
-div.dropdown:hover div.dropdown-content {
-  display: inline;
-}*/
-
-/*Suchfeld*/
-
+/*delete calendar*/
 .deletecalendar {
   position: absolute;
   width: 100vw;
@@ -240,6 +229,8 @@ div.dropdown:hover div.dropdown-content {
   cursor: pointer;
 }
 
+
+/*create items*/
 .createitem {
   position: absolute;
   width: 100vw;
@@ -338,6 +329,7 @@ div.dropdown:hover div.dropdown-content {
   filter: invert(100%);
 }
 
+/*share calendars*/
 .sharecalendar {
   position: absolute;
   width: 100vw;
@@ -421,17 +413,6 @@ div.dropdown:hover div.dropdown-content {
   cursor: pointer;
   font-size: 0.6vw;
   filter: invert(100%);
-}
-
-.search p {
-  display: flex;
-}
-
-.search input {
-  display: flex;
-  border: solid black 1px;
-  border-radius: 50px;
-  max-width: 10vw;
 }
 
 .add a {
@@ -672,6 +653,7 @@ input:checked + .slider:before {
   }
 }
 
+/*for entries*/
 .entry {
   white-space: pre-line;
 }

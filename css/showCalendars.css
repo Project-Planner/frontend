@@ -2,10 +2,20 @@ body {
   margin: 0;
   padding: 0;
 }
+
+
+a {
+  color: white;
+  text-decoration: none;
+  font-size: 6vw;
+}
+
 #username {
   visibility: hidden;
   display: none;
 }
+
+/*delete calendar*/
 #confirmdeletecalendar {
   width: 100vw;
   height: 100vh;
@@ -40,10 +50,4 @@ body {
 
 #mycalendars {
   color: white;
-}
-
-a {
-  color: white;
-  text-decoration: none;
-  font-size: 6vw;
 }
