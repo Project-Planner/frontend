@@ -28,3 +28,10 @@ div.mainView {
   width: min-content;
   margin: auto;
 }
+
+div.pwNotMatching {
+  display: none; 
+  color:rgb(187, 0, 0); 
+  font-size: medium; 
+  font-weight: bold;
+}
