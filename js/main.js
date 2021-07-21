@@ -213,5 +213,5 @@ function changecreateForm(){
   if(item == "calendar"){
     document.getElementById("createitemform").action = "/me/c/"+user;
   }else
-  document.getElementById("createitemform").action = "/me/api/"+item+"/"+user+"/"+calendar;
+  document.getElementById("createitemform").action = "/me/api/"+item+"/"+calendar;
 }
