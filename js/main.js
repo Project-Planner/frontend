@@ -211,7 +211,7 @@ function changecreateForm(){
       calendar = radiobuttons[i].value;
   }
   if(item == "calendar"){
-    document.getElementById("createitemform").action = "/me/c/"+user;
+    document.getElementById("createitemform").action = "/me/c";
   }else
-  document.getElementById("createitemform").action = "/me/api/"+item+"/"+calendar;
+  document.getElementById("createitemform").action = "/me/api/"+item+"/post/"+calendar;
 }
