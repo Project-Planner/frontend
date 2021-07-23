@@ -91,32 +91,32 @@
         <form class="createitemform" id="createitemform" method="POST">
           <div id="createitemattributes">
           <div id="createitemtyp">
-            <label for="typ">Typ wählen:</label>
-            <select name="typ" id="createiteminputtyp">
+            <label for="typ" class="opacityonehundred">Typ wählen:</label>
+            <select name="typ" id="createiteminputtyp" class="opacityonehundred">
               <option value="calendar">Kalender</option>
               <option value="tasks">Aufgabe</option>
               <option value="appointments">Termin</option>
               <option value="milestones">Meilenstein</option>
             </select>
           </div>
-          <div id="createitemname"><label for="name">Name</label>
-            <input type="text" id="createiteminputname" name="name" maxlength="250"/></div>
-          <div id="createitemdatef"><label for="startDate">Datum von:</label>
-            <input type="date" id="createiteminputdatef" name="startDate" /></div>
-          <div id="createitemdatet"><label for="endDate">Datum bis:</label>
-            <input type="date" id="createiteminputdatet" name="endDate" /></div>
-          <div id="createitemtimef"><label for="startTime">Zeit von:</label>
-            <input type="time" id="createiteminputtimef" name="startTime" /></div>
-          <div id="createitemtimet"><label for="endTime">Zeit bis:</label>
-            <input type="time" id="createiteminputtimet" name="endTime"></div>
+          <div id="createitemname"><label for="name" class="opacityonehundred">Name</label>
+            <input type="text" id="createiteminputname" name="name" maxlength="250" class="opacityonehundred"/></div>
+          <div id="createitemdatef"><label for="startDate" class="opacityonehundred">Datum von:</label>
+            <input type="date" id="createiteminputdatef" name="startDate"  class="opacityonehundred"/></div>
+          <div id="createitemdatet"><label for="endDate" class="opacityonehundred">Datum bis:</label>
+            <input type="date" id="createiteminputdatet" name="endDate"  class="opacityonehundred"/></div>
+          <div id="createitemtimef"><label for="startTime" class="opacityonehundred">Zeit von:</label>
+            <input type="time" id="createiteminputtimef" name="startTime"  class="opacityonehundred"/></div>
+          <div id="createitemtimet"><label for="endTime" class="opacityonehundred">Zeit bis:</label>
+            <input type="time" id="createiteminputtimet" name="endTime" class="opacityonehundred"></div>
           </div>
-          <div id="createitemdesc"><label for="desc" id="createitemdesclabel">Beschreibung:</label>
-          <textarea id="createiteminputdesc" name="desc" rows="10" cols="30" maxlength="250" placeholder="max 250 Zeichen"></textarea></div>
+          <div id="createitemdesc"><label for="desc" id="createitemdesclabel" class="opacityonehundred">Beschreibung:</label>
+          <textarea id="createiteminputdesc" name="desc" rows="10" cols="30" maxlength="250" placeholder="max 250 Zeichen" class="opacityonehundred"></textarea></div>
           <div id="createitembuttons">
-          <input onclick="changecreateForm()" type="submit" value="Erstellen" id="createitembuttonyes"></input>
+          <input onclick="changecreateForm()" type="submit" value="Erstellen" id="createitembuttonyes" class="opacityonehundred"></input>
         
         </form>
-        <a href=""><input type="button" value="Abbrechen" id="createitembuttonno"></input></a></div>
+        <a href=""><input type="button" value="Abbrechen" id="createitembuttonno" class="opacityonehundred"></input></a></div>
       </div>
     </div>
   </div>
@@ -125,19 +125,19 @@
 
   <div class="sharecalendar" id="sharecalendar">
     <div id="sharecalendarbox">
-      <div id="sharecalendartext" class="opacity100">Wen möchtest du zum Kalender&nbsp;"<div id="sharecalendarcalendarname" class="opacity100">placeholder</div>"&nbsp;hinzufügen?</div>
+      <div id="sharecalendartext">Wen möchtest du zum Kalender&nbsp;"<div id="sharecalendarcalendarname">placeholder</div>"&nbsp;hinzufügen?</div>
       <div id="sharecalendarbuttons">
           <form method="POST" class="sharecalendarform" id="sharecalendarform" action="/me/api/sharing">
             <input type="hidden" name="calendarName" id="sharecalendarcalnameinput"></input>
-            <input name="userName" type="text" placeholder="Name" id="sharecalendartextbox" class="opacity100"></input>
-        <select class="sharecalendardropdown opacity100" name="perm">
+            <input name="userName" type="text" placeholder="Name" id="sharecalendartextbox"></input>
+        <select class="sharecalendardropdown" name="perm">
           <option value="none" selected>Rechte entfernen</option>
           <option value="view">Ansehen</option>
           <option value="edit">Editieren</option>
         </select>
-            <input type="submit" value="Speichern" id="sharecalendarbuttonyes" onclick="shareCalendar()" class="opacity100"></input>
+            <input type="submit" value="Speichern" id="sharecalendarbuttonyes" onclick="shareCalendar()"></input>
           </form>
-      </div><div id="sharecalendarbuttonbackdiv"><a href=""><input type="submit" value="Zurück" id="sharecalendarbuttonback" class="opacity100"></input></a></div>
+      </div><div id="sharecalendarbuttonbackdiv"><a href=""><input type="submit" value="Zurück" id="sharecalendarbuttonback"></input></a></div>
     </div>
   </div>
 
