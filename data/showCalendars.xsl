@@ -73,13 +73,15 @@
                             <xsl:variable name="callfnc">
                                 <xsl:value-of select="concat(concat(concat(concat('setCalendarnameInDeleteCalendar(',$sp),@href), $sp),')')"/>
                             </xsl:variable>
+                            <xsl:if test="position() > 1">
                             &#160;&#160;&#160;
-                            <a>
-                                <xsl:attribute name="onclick">
-                                    <xsl:value-of select="$callfnc"/>
-                                </xsl:attribute>
-                                <img src="/ressources/deletecalendar.svg" style="height: 10vh; cursor: pointer;  filter: invert(100%);"/>
-                            </a>
+                                <a>
+                                    <xsl:attribute name="onclick">
+                                        <xsl:value-of select="$callfnc"/>
+                                    </xsl:attribute>
+                                    <img src="/ressources/deletecalendar.svg" style="height: 10vh; cursor: pointer;  filter: invert(100%);"/>
+                                </a>
+                            </xsl:if>
                         </xsl:if>
                     </div>
                 </xsl:for-each>
