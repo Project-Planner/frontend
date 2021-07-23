@@ -410,7 +410,9 @@ button.dropbtn {
   font-size: 0.6vw;
   filter: invert(100%);
 }
-
+.opacity100 {
+  opacity: 100;
+}
 .add a {
   display: flex;
   margin-left: 0, 5%;
