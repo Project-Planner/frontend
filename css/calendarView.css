@@ -93,12 +93,11 @@ div.daydiv p {
 }
 
 .dayEntry {
-  margin-left: 50%;
-  margin-right: 50%;
   width: 20%;
   height: auto;
   font-size: large;
   z-index: 100;
+  vertical-align: top;
 }
 
 .leftBar {
@@ -163,11 +162,18 @@ div.daydiv p {
   display: flex;
   z-index: 10;
   background-color: green;
-  height: 65px;
+  height: max-content;
+  width: max-content;
 }
 
 .content {
   z-index: 15;
   color: black;
   vertical-align: middle;
+  width: max-content;
+}
+
+.anchor {
+  vertical-align: top;
+  height: 1vh;
 }
