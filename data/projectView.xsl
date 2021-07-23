@@ -10,8 +10,8 @@
     <xsl:template match="/">
         <html>
             <head>
-                <link rel="stylesheet" type="text/css" href="../css/projectView.css"/>
-                <link rel="stylesheet" href="../css/master.css"/>
+                <link rel="stylesheet" type="text/css" href="/css/projectView.css"/>
+                <link rel="stylesheet" href="/css/master.css"/>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro"/>
             </head>
             <body>
