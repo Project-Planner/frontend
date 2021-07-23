@@ -128,16 +128,16 @@
       <div id="sharecalendartext">Wen möchtest du zum Kalender&nbsp;"<div id="sharecalendarcalendarname">placeholder</div>"&nbsp;hinzufügen?</div>
       <div id="sharecalendarbuttons">
           <form method="POST" class="sharecalendarform" id="sharecalendarform" action="/me/api/sharing">
-            <input type="hidden" name="calendarName" id="sharecalendarcalnameinput"></input>
-            <input name="userName" type="text" placeholder="Name" id="sharecalendartextbox"></input>
-        <select class="sharecalendardropdown" name="perm">
+            <input type="hidden" name="calendarName" id="sharecalendarcalnameinput" class="opacityonehundred"></input>
+            <input name="userName" type="text" placeholder="Name" id="sharecalendartextbox" class="opacityonehundred"></input>
+        <select class="sharecalendardropdown opacityonehundred" name="perm">
           <option value="none" selected>Rechte entfernen</option>
           <option value="view">Ansehen</option>
           <option value="edit">Editieren</option>
         </select>
-            <input type="submit" value="Speichern" id="sharecalendarbuttonyes" onclick="shareCalendar()"></input>
+            <input  class="opacityonehundred" type="submit" value="Speichern" id="sharecalendarbuttonyes" onclick="shareCalendar()"></input>
           </form>
-      </div><div id="sharecalendarbuttonbackdiv"><a href=""><input type="submit" value="Zurück" id="sharecalendarbuttonback"></input></a></div>
+      </div><div id="sharecalendarbuttonbackdiv"><a href=""><input  class="opacityonehundred" type="submit" value="Zurück" id="sharecalendarbuttonback"></input></a></div>
     </div>
   </div>
 
