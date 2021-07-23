@@ -94,7 +94,7 @@
             <xsl:if test="@id = $id">
                 <xsl:value-of select="duetime/@val"></xsl:value-of>
                 <xsl:variable name="ItemType" select="name()"></xsl:variable>
-                <form class="entry" method="post" target="_parent">
+                <form class="entry" method="post" target="_top">
                     <xsl:attribute name="action">
                         <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
@@ -188,7 +188,7 @@
                     </div>
                 </form>
                 <xsl:variable name="Itemtype" select="name()"></xsl:variable>
-                <form class="entry" method="post" target="_parent">
+                <form class="entry" method="post" target="_top">
                     <xsl:attribute name="action">
                         <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
@@ -204,7 +204,7 @@
         <xsl:for-each select=" calendar/items/milestones/milestone">
             <xsl:if test="@id = $id">
                 <xsl:variable name="ItemType" select="name()"></xsl:variable>
-                <form class="entry" method="post" target="_parent">
+                <form class="entry" method="post" target="_top">
                     <xsl:attribute name="action">
                         <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
@@ -262,7 +262,7 @@
                         <input type="submit" name="" value="Save" onclick="parent.hideEditItemView()"/>
                     </div>
                 </form>
-                <form class="entry" method="post" target="_parent">
+                <form class="entry" method="post" target="_top">
                     <xsl:attribute name="action">
                         <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
