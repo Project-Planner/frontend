@@ -25,21 +25,20 @@ input[type="submit"] {
   margin: 3%;
   background-color: #F7BFBF !important;
   margin-top: 5%;
+  font-size: 1.1vw;
 }
 
 h1 {
-  height: 400px;
-  width: 800px;
   text-align: center;
   vertical-align: middle;
   display: flex;
   color: #F7BFBF !important;
-  font-size: 160px;
+  font-size: 16vw;
 }
 
 div.btn {
   position: relative;
   left: 48%;
-  top: 15%;
+  top: 50%;
   width: min-content;
 }

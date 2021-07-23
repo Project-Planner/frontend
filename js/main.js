@@ -4,6 +4,7 @@ var mode = "calendar";
 let period = "week";
 var add = 7;
 var showCalendars = false;
+var showDateViewAndTimeframeSelect = true;
 var selectedCalendar = "/me/c";
 
 window.onload = function () {
@@ -163,6 +164,7 @@ function changeCalendarMode(val) {
 }
 
 function changeDisplayMode() {
+  toggleDateViewAndTimeframeSelect();
   var url_string = document.getElementById("calendarFrame").src;
   //Javascript doesn't understand ; as url param splitter
   url_string = url_string.replaceAll(";", "&");
@@ -232,4 +234,16 @@ function changeCalendar(cal) {y = dateJs.getFullYear();
   period +
   ";date=" +
   currentDate;
+}
+function toggleDateViewAndTimeframeSelect(){
+  if(showDateViewAndTimeframeSelect){
+    document.getElementsByClassName("dateDisplay").item(0).style.display = "none";
+    document.getElementsByClassName("timeToggle").item(0).style.display = "none";
+    showDateViewAndTimeframeSelect = false;
+  }else{
+    document.getElementsByClassName("dateDisplay").item(0).style.display = "block";
+    document.getElementsByClassName("timeToggle").item(0).style.display = "block";
+    showDateViewAndTimeframeSelect = true;
+  }
+
 }
