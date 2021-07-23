@@ -4,7 +4,7 @@
   <xsl:template match="/">
     <html>
       <head>
-        <link rel="stylesheet" href="../css/calendarView.css"/>
+        <link rel="stylesheet" href="/css/calendarView.css"/>
       </head>
       <body>
         <xsl:choose>
