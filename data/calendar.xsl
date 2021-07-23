@@ -72,114 +72,227 @@
               </th>
             </tr>
           </thead>
-          <tbody class="bl">
+          <tbody>
             <tr>
               <td>00:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'00:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>01:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'01:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>02:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'02:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>03:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'03:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>04:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'04:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>05:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'05:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>06:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'06:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>07:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'07:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>08:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'08:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>09:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'09:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>10:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'10:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>11:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'11:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>12:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'12:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>13:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'13:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>14:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'14:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
               <tr>
               <td>15:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'15:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>16:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'16:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>17:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'17:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>18:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'18:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>19:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'19:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>20:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'20:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>21:00 Uhr</td>
-              <td>Platz für Inhalt</td>
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'21:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
+              </td>
             </tr>
             <tr>
               <td>22:00 Uhr</td>
               <td>
-                Platz für Inhalt
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'22:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
               </td>
             </tr>
             <tr>
               <td>23:00 Uhr</td>
-              <td> 
-                Platz für Inhalt
+              <td>
+                <xsl:call-template name="insertDay">
+                  <xsl:with-param name="tableVal" select="'23:00'"/>
+                  <xsl:with-param name="date" select="$date"/>
+                </xsl:call-template>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
 
-                <xsl:call-template name="insertDay">
-                <xsl:with-param name="date" select="$date"/>
-                </xsl:call-template>
     </div>
   </xsl:template>
 
@@ -292,21 +405,31 @@
 
   <xsl:template name="insertDay">
     <xsl:param name="date"/>
-    
+    <xsl:param name="tableVal"/>
+
+
     <xsl:for-each select="calendar/items/milestones/milestone">
       <xsl:sort select="duetime/@val" data-type="number"/>
         <xsl:if test="duedate/@val=$date">
         
-          <xsl:variable name="timeVal">
-            <xsl:call-template name="getTimeValue">
+          <xsl:variable name="hourVal">
+            <xsl:call-template name="getHours">
               <xsl:with-param name="time" select="duetime/@val"/>
             </xsl:call-template>
           </xsl:variable>
-          
-          <div class="milestone dayEntry" style="{concat('margin-top:', $timeVal ,'%;')}">
+           <xsl:variable name="tableHourVal">
+            <xsl:call-template name="getHours">
+              <xsl:with-param name="time" select="$tableVal"/>
+            </xsl:call-template>
+          </xsl:variable>
+
+          <xsl:if test="$tableHourVal = $hourVal">
+
+          <div class="milestone dayEntry">
             <p> <xsl:value-of select="name/@val"/> </p>
             <p> <xsl:value-of select="duedate/@val"/> </p>
           </div>
+            </xsl:if>
         </xsl:if>
     </xsl:for-each>
 
@@ -781,5 +904,11 @@
 
     <xsl:value-of select="$hour * 4.16 + $minutes * 0.0694"/>
   </xsl:template>
+
+  <xsl:template name="getHours">
+    <xsl:param name="time"/>
+    <xsl:value-of select="substring-before($time,':')"/>
+  </xsl:template>
+
 
 </xsl:stylesheet>
