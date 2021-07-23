@@ -4,6 +4,7 @@ var mode = "calendar";
 let period = "week";
 var add = 7;
 var showCalendars = false;
+var selectedCalendar = "/me/c";
 
 window.onload = function () {
   document.getElementById("calendarFrame").src =
@@ -27,6 +28,8 @@ function changeDate(val) {
   //Javascript doesn't understand ; as url param splitter
   url_string = url_string.replaceAll(";", "&");
   var url = new URL(url_string);
+  selectedCalendar = url_string.split('/me/c')[1];
+  selectedCalendar = selectedCalendar.startsWith("?")?"/me/c":"/me/c" + selectedCalendar.split("?mode")[0];
 
   if (val != 0) {
     period = url.searchParams.get("period");
@@ -87,7 +90,6 @@ function changeDate(val) {
       }
 
       dateJs = current;
-
       switch (dateJs.getMonth()) {
         case 0:
           limitString = "\n Januar";
@@ -135,7 +137,7 @@ function changeDate(val) {
   d = dateJs.getDate();
   ///me/c
   document.getElementById("calendarFrame").src =
-    "/me/c?mode=" +
+    selectedCalendar + "?mode=" +
     mode +
     ";period=" +
     period +
@@ -167,13 +169,16 @@ function changeDisplayMode() {
   var url = new URL(url_string);
   period = url.searchParams.get("period");
   date = url.searchParams.get("date");
-
+  selectedCalendar = url_string.split('/me/c')[1];
+  selectedCalendar = selectedCalendar.startsWith("?")?"/me/c":"/me/c" + selectedCalendar.split("?mode")[0];
   if (document.getElementById("displayModeCheckbox").checked) {
     document.getElementById("calendarFrame").src =
-      "/me/c?mode=project;period=" + period + ";date=" + date;
+    selectedCalendar + "?mode=project;period=" + period + ";date=" + date;
+      mode="project";
   } else {
     document.getElementById("calendarFrame").src =
-      "/me/c?mode=calendar;period=" + period + ";date=" + date;
+      selectedCalendar + "?mode=calendar;period=" + period + ";date=" + date;
+      mode="calendar";
   }
 }
 
@@ -217,17 +222,14 @@ function changecreateForm(){
 }
 
 function changeCalendar(cal) {y = dateJs.getFullYear();
-  y = dateJs.getFullYear();
-  m = dateJs.getMonth() + 1;
-  d = dateJs.getDate();
+  var url_string = parent.document.getElementById("calendarFrame").src;
+  var modified_url_string = url_string.replaceAll(';','&');
+  var url = new URL(modified_url_string);
+  var currentDate = url.searchParams.get("date");
   parent.document.getElementById("calendarFrame").src = cal +"?mode="+
   mode +
   ";period=" +
   period +
   ";date=" +
-  d +
-  "." +
-  m +
-  "." +
-  y;
+  currentDate;
 }

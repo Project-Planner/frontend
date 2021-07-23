@@ -16,6 +16,9 @@
                 <label id="username">
                     <xsl:value-of select="user/name/@val"/>
                 </label>
+                <xsl:variable name="username">
+                    <xsl:value-of select="/user/name/@val"/>
+                </xsl:variable>
                 <xsl:for-each select="user/items/calendar">
                     <div id="mycalendars">
                         <a target="calendarFrame">
@@ -23,7 +26,7 @@
                                 <xsl:value-of select="concat('/me/c/', @href)"/>
                             </xsl:attribute>-->
                             <xsl:attribute name="onclick">
-                                <xsl:value-of select="concat('changeCalendar(',$sp,'/me/c/',$username,'/',@href,$sp,')')"/>
+                                <xsl:value-of select="concat('changeCalendar(',$sp,'/me/c/',@href,$sp,')')"/>
                             </xsl:attribute>
                             <xsl:choose>
                                 <xsl:when test="position() = 1">
