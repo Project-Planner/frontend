@@ -199,6 +199,7 @@ function setCalendarnameToShare(name){
   parent.document.getElementById("sharecalendarcalendarname").textContent = name;
   parent.window.location.href = parent.window.location.href + "#sharecalendar";  //Appends #sharecalendar to the url to show the sharecalendar dialog
   }
+
   function shareCalendar() {
     var radiobuttons = document.getElementById("mycalendars").contentWindow.document.getElementsByName("showcalendarradiobuttons");
     var calendar;
@@ -206,8 +207,9 @@ function setCalendarnameToShare(name){
       if(radiobuttons[i].checked)
         calendar = radiobuttons[i].value;
     }
-    document.getElementById("sharecalendarcalnameinput").value = calendar;
+    document.getElementById("sharecalendarcalnameinput").value = calendar.split("/")[1];
   }
+
   function setCalendarnameInDeleteCalendar(name){
     parent.document.getElementById("deletecalendarcalendarname").textContent = name; //Sets the calendar name of the element in mainPage.html
     parent.window.location.href = parent.window.location.href + "#deletecalendar";  //Appends #deletecalendar to the url to show the deletecalendar dialog
