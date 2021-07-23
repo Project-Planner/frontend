@@ -229,7 +229,6 @@ button.dropbtn {
   cursor: pointer;
 }
 
-
 /*create items*/
 .createitem {
   position: absolute;
@@ -371,9 +370,6 @@ button.dropbtn {
   display: inline-block;
   width: 24vw;
   margin-left: 14vw;
-}
-#sharecalendarcalnamelabel {
-  display: none;
 }
 #sharecalendartextbox {
   margin-left: 0;

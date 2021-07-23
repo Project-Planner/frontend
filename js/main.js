@@ -198,9 +198,16 @@ function setVisibilityTrue() {
 function setCalendarnameToShare(name){
   parent.document.getElementById("sharecalendarcalendarname").textContent = name;
   parent.window.location.href = parent.window.location.href + "#sharecalendar";  //Appends #sharecalendar to the url to show the sharecalendar dialog
-  parent.document.getElementById("sharecalendarcalnamelabel").textContent = name;
   }
-
+  function shareCalendar() {
+    var radiobuttons = document.getElementById("mycalendars").contentWindow.document.getElementsByName("showcalendarradiobuttons");
+    var calendar;
+    for(var i=0;i<radiobuttons.length;i++) {
+      if(radiobuttons[i].checked)
+        calendar = radiobuttons[i].value;
+    }
+    document.getElementById("sharecalendarcalnameinput").value = calendar;
+  }
   function setCalendarnameInDeleteCalendar(name){
     parent.document.getElementById("deletecalendarcalendarname").textContent = name; //Sets the calendar name of the element in mainPage.html
     parent.window.location.href = parent.window.location.href + "#deletecalendar";  //Appends #deletecalendar to the url to show the deletecalendar dialog
