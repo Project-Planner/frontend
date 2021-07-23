@@ -381,6 +381,7 @@ button.dropbtn {
   border-width: 1px;
   border-style: solid;
   font-size: 0.6vw;
+  opacity: 100%;
 }
 .sharecalendardropdown {
   font-size: 0.6vw;
@@ -394,11 +395,15 @@ button.dropbtn {
   cursor: pointer;
   margin-left: 4vw;
 }
+#sharecalendardropdown {
+  opacity: 100%;
+}
 #sharecalendarbuttonyes {
   width: 4vw;
   margin-left: 4vw;
   cursor: pointer;
   font-size: 0.6vw;
+  opacity: 100%;
 }
 #sharecalendarbuttonbackdiv {
   margin-top: 3vh;
@@ -409,15 +414,12 @@ button.dropbtn {
   cursor: pointer;
   font-size: 0.6vw;
   filter: invert(100%);
-}
-.opacityonehundred {
-  opacity: 100;
+  opacity: 100%;
 }
 .add a {
   display: flex;
   margin-left: 0, 5%;
 }
-
 iframe.calendarView {
   width: 82%;
   height: 85%;
