@@ -425,10 +425,18 @@
 
           <xsl:if test="$tableHourVal = $hourVal">
 
-          <div class="milestone dayEntry">
-            <p> <xsl:value-of select="name/@val"/> </p>
-            <p> <xsl:value-of select="duedate/@val"/> </p>
+          <div class="dayEntry">
+            <div class="milestonesBackground">
+            <p class="content"> <xsl:value-of select="name/@val"/> </p>
+
+            </div>
+
+                                
+
           </div>
+
+
+
             </xsl:if>
         </xsl:if>
     </xsl:for-each>

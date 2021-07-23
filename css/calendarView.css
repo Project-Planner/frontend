@@ -158,3 +158,16 @@ div.daydiv p {
 .insertDay {
   display: flex;
 }
+
+.milestonesBackground {
+  display: flex;
+  z-index: 10;
+  background-color: green;
+  height: 65px;
+}
+
+.content {
+  z-index: 15;
+  color: black;
+  vertical-align: middle;
+}
