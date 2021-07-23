@@ -96,7 +96,7 @@
                 <xsl:variable name="ItemType" select="name()"></xsl:variable>
                 <form class="entry" method="post">
                     <xsl:attribute name="action">
-                        <xsl:value-of select="concat('/me/api/other/',$ItemType,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                        <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="PUT"></input>
                     <div>
@@ -190,7 +190,7 @@
                 <xsl:variable name="Itemtype" select="name()"></xsl:variable>
                 <form class="entry" method="post">
                     <xsl:attribute name="action">
-                        <xsl:value-of select="concat('/me/api/other/',$ItemType,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                        <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="DELETE"></input>
                     <div>
@@ -206,7 +206,7 @@
                 <xsl:variable name="ItemType" select="name()"></xsl:variable>
                 <form class="entry" method="post">
                     <xsl:attribute name="action">
-                        <xsl:value-of select="concat('/me/api/other/',$ItemType,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                        <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="PUT"></input>
                     <div>
@@ -264,7 +264,7 @@
                 </form>
                 <form class="entry" method="post">
                     <xsl:attribute name="action">
-                        <xsl:value-of select="concat('/me/api/other/',$ItemType,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                        <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="DELETE"></input>
                     <div>
