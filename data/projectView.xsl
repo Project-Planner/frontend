@@ -66,7 +66,7 @@
                     </xsl:call-template>
                 </table>
                 <div id ="EditItemView">
-                    <iframe class="editItem" id="editItem" name="editItem"  src="../html/createEntry.html"></iframe>
+                    <iframe class="editItem" id="editItem" name="editItem"  src="/html/createEntry.html"></iframe>
                 </div>
                 <script>function hideEditItemView(){
                document.getElementById("EditItemView").style.display = "none";    

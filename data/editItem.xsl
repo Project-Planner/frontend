@@ -10,8 +10,8 @@
         <html>
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                <link rel="stylesheet" href="../css/mainPage.css"/>
-                <link rel="stylesheet" href="../css/master.css"/>
+                <link rel="stylesheet" href="/css/mainPage.css"/>
+                <link rel="stylesheet" href="/css/master.css"/>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro"/>
             </head>
             <body>
@@ -94,9 +94,9 @@
             <xsl:if test="@id = $id">
                 <xsl:value-of select="duetime/@val"></xsl:value-of>
                 <xsl:variable name="ItemType" select="name()"></xsl:variable>
-                <form class="entry" method="post">
+                <form class="entry" method="post" target="_top">
                     <xsl:attribute name="action">
-                        <xsl:value-of select="concat('/me/api/other/',$ItemType,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                        <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="PUT"></input>
                     <div>
@@ -188,9 +188,9 @@
                     </div>
                 </form>
                 <xsl:variable name="Itemtype" select="name()"></xsl:variable>
-                <form class="entry" method="post">
+                <form class="entry" method="post" target="_top">
                     <xsl:attribute name="action">
-                        <xsl:value-of select="concat('/me/api/other/',$ItemType,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                        <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="DELETE"></input>
                     <div>
@@ -204,9 +204,9 @@
         <xsl:for-each select=" calendar/items/milestones/milestone">
             <xsl:if test="@id = $id">
                 <xsl:variable name="ItemType" select="name()"></xsl:variable>
-                <form class="entry" method="post">
+                <form class="entry" method="post" target="_top">
                     <xsl:attribute name="action">
-                        <xsl:value-of select="concat('/me/api/other/',$ItemType,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                        <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="PUT"></input>
                     <div>
@@ -262,9 +262,9 @@
                         <input type="submit" name="" value="Save" onclick="parent.hideEditItemView()"/>
                     </div>
                 </form>
-                <form class="entry" method="post">
+                <form class="entry" method="post" target="_top">
                     <xsl:attribute name="action">
-                        <xsl:value-of select="concat('/me/api/other/',$ItemType,'s/',$calendarID,'/',$id)"></xsl:value-of>
+                        <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="DELETE"></input>
                     <div>

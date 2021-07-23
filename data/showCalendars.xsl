@@ -8,9 +8,9 @@
         </xsl:variable>
         <html>
             <head>
-                <script src="../js/main.js">
+                <script src="/js/main.js">
                 </script>
-                <link rel="stylesheet" href="../css/showCalendars.css" />
+                <link rel="stylesheet" href="/css/showCalendars.css" />
             </head>
             <body>
                 <label id="username">
@@ -66,7 +66,7 @@
                                 <xsl:attribute name="onclick">
                                     <xsl:value-of select="$callfnc"/>
                                 </xsl:attribute>
-                                <img src="../ressources/sharecalendar.svg" style="height: 10vh; cursor: pointer; filter: invert(100%);"/>
+                                <img src="/ressources/sharecalendar.svg" style="height: 10vh; cursor: pointer; filter: invert(100%);"/>
                             </a>
                         </xsl:if>
                         <xsl:if test="@perm = 'owner'">
@@ -78,7 +78,7 @@
                                 <xsl:attribute name="onclick">
                                     <xsl:value-of select="$callfnc"/>
                                 </xsl:attribute>
-                                <img src="../ressources/deletecalendar.svg" style="height: 10vh; cursor: pointer;  filter: invert(100%);"/>
+                                <img src="/ressources/deletecalendar.svg" style="height: 10vh; cursor: pointer;  filter: invert(100%);"/>
                             </a>
                         </xsl:if>
                     </div>
