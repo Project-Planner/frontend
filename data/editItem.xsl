@@ -127,7 +127,7 @@
                         <label for="endDate">Datum bis:</label>
                         <input type="date" id="endDate" name="endDate">
                             <xsl:variable name="date">
-                                <xsl:value-of select="endDate/@val"></xsl:value-of>
+                                <xsl:value-of select="endDate/@val | duedate/@val"></xsl:value-of>
                             </xsl:variable>
                             <xsl:variable name="dateFormated">
                                 <xsl:call-template name="formatDate">
@@ -161,7 +161,7 @@
                         <input type="time" id="endTime" name="endTime ">
                             <xsl:attribute name="value">
                                 <xsl:variable name="timeWithoutZeros">
-                                    <xsl:value-of select="endTime/@val"></xsl:value-of>
+                                    <xsl:value-of select="endTime/@val | duetime/@val"></xsl:value-of>
                                 </xsl:variable>
                                 <xsl:variable name="timeWithZeros">
                                     <xsl:call-template name="addZerosToTime">

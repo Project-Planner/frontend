@@ -13,6 +13,8 @@
                 <link rel="stylesheet" type="text/css" href="/css/projectView.css"/>
                 <link rel="stylesheet" href="/css/master.css"/>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro"/>
+                <script src="/js/editItem.js">
+  </script>
             </head>
             <body>
                 <xsl:variable name="startwithoutzeros">
@@ -68,11 +70,6 @@
                 <div id ="EditItemView">
                     <iframe class="editItem" id="editItem" name="editItem"  src="/html/createEntry.html"></iframe>
                 </div>
-                <script>function hideEditItemView(){
-               document.getElementById("EditItemView").style.display = "none";    
-                location.reload();      
-            }  
-            </script>
             </body>
         </html>
     </xsl:template>
@@ -179,16 +176,6 @@
                 </xsl:attribute>
                 <xsl:value-of select="$name"></xsl:value-of>
             </a>
-            <script>function showEditItemView(id,calendarID){
-               
-               document.getElementById("EditItemView").style.display = "block";  
-               var iframe = document.getElementById('editItem');
-                iframe.src = iframe.src; 
-                document.getElementById('editItem').src= "/me/c/"+calendarID+"?mode=edit;id="+id;
-                
-               
-                }
-            </script>
         </td>
         <xsl:call-template name="insertEmptyTD">
             <xsl:with-param name ="TDCount" select="$endJulian - $startDivJulian - $length"></xsl:with-param>
