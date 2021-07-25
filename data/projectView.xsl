@@ -161,6 +161,10 @@
             <xsl:with-param name ="TDCount" select="$offsetToBeginnig"></xsl:with-param>
         </xsl:call-template>
         <td>
+            <xsl:attribute name="onclick">
+                <xsl:variable name="apostrophe">'</xsl:variable>
+                <xsl:value-of select="concat('showEditItemView(',$apostrophe,$id,$apostrophe,',',$apostrophe,$calendarID,$apostrophe,')')"></xsl:value-of>
+            </xsl:attribute>
             <xsl:variable name="type" select="name()"></xsl:variable>
             <xsl:attribute name="class" >
                 <xsl:value-of select="$type"></xsl:value-of>
@@ -170,10 +174,6 @@
                 <xsl:value-of select="$length+1"></xsl:value-of>
             </xsl:attribute>
             <a>
-                <xsl:attribute name="onclick">
-                    <xsl:variable name="apostrophe">'</xsl:variable>
-                    <xsl:value-of select="concat('showEditItemView(',$apostrophe,$id,$apostrophe,',',$apostrophe,$calendarID,$apostrophe,')')"></xsl:value-of>
-                </xsl:attribute>
                 <xsl:value-of select="$name"></xsl:value-of>
             </a>
         </td>
