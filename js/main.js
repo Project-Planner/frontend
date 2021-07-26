@@ -4,6 +4,8 @@ var mode = "calendar";
 let period = "week";
 var add = 7;
 var showCalendars = false;
+var showDateViewAndTimeframeSelect = true;
+var selectedCalendar = "/me/c";
 
 window.onload = function () {
   document.getElementById("calendarFrame").src =
@@ -27,6 +29,8 @@ function changeDate(val) {
   //Javascript doesn't understand ; as url param splitter
   url_string = url_string.replaceAll(";", "&");
   var url = new URL(url_string);
+  selectedCalendar = url_string.split('/me/c')[1];
+  selectedCalendar = selectedCalendar.startsWith("?")?"/me/c":"/me/c" + selectedCalendar.split("?mode")[0];
 
   if (val != 0) {
     period = url.searchParams.get("period");
@@ -87,7 +91,6 @@ function changeDate(val) {
       }
 
       dateJs = current;
-
       switch (dateJs.getMonth()) {
         case 0:
           limitString = "\n Januar";
@@ -135,7 +138,7 @@ function changeDate(val) {
   d = dateJs.getDate();
   ///me/c
   document.getElementById("calendarFrame").src =
-    "/me/c?mode=" +
+    selectedCalendar + "?mode=" +
     mode +
     ";period=" +
     period +
@@ -161,19 +164,23 @@ function changeCalendarMode(val) {
 }
 
 function changeDisplayMode() {
+  toggleDateViewAndTimeframeSelect();
   var url_string = document.getElementById("calendarFrame").src;
   //Javascript doesn't understand ; as url param splitter
   url_string = url_string.replaceAll(";", "&");
   var url = new URL(url_string);
   period = url.searchParams.get("period");
   date = url.searchParams.get("date");
-
+  selectedCalendar = url_string.split('/me/c')[1];
+  selectedCalendar = selectedCalendar.startsWith("?")?"/me/c":"/me/c" + selectedCalendar.split("?mode")[0];
   if (document.getElementById("displayModeCheckbox").checked) {
     document.getElementById("calendarFrame").src =
-      "/me/c?mode=project;period=" + period + ";date=" + date;
+    selectedCalendar + "?mode=project;period=" + period + ";date=" + date;
+      mode="project";
   } else {
     document.getElementById("calendarFrame").src =
-      "/me/c?mode=calendar;period=" + period + ";date=" + date;
+      selectedCalendar + "?mode=calendar;period=" + period + ";date=" + date;
+      mode="calendar";
   }
 }
 
@@ -187,18 +194,64 @@ function setVisibilityTrue() {
   }
 }
 
-function setCalendarnameToShare(name) {
-  parent.document.getElementById("sharecalendarcalendarname").textContent =
-    name;
-  parent.window.location.href = parent.window.location.href + "#sharecalendar"; //Appends #sharecalendar to the url to show the sharecalendar dialog
-  parent.document.getElementById("sharecalendarcalnamelabel").textContent =
-    name;
+function setCalendarnameToShare(name){
+  parent.document.getElementById("sharecalendarcalendarname").textContent = name;
+  parent.window.location.href = parent.window.location.href + "#sharecalendar";  //Appends #sharecalendar to the url to show the sharecalendar dialog
+  }
+
+  function shareCalendar() {
+    var radiobuttons = document.getElementById("mycalendars").contentWindow.document.getElementsByName("showcalendarradiobuttons");
+    var calendar;
+    for(var i=0;i<radiobuttons.length;i++) {
+      if(radiobuttons[i].checked)
+        calendar = radiobuttons[i].value;
+    }
+    document.getElementById("sharecalendarcalnameinput").value = calendar.split("/")[1];
+  }
+
+  function setCalendarnameInDeleteCalendar(name){
+    parent.document.getElementById("deletecalendarcalendarname").textContent = name; //Sets the calendar name of the element in mainPage.html
+    parent.window.location.href = parent.window.location.href + "#deletecalendar";  //Appends #deletecalendar to the url to show the deletecalendar dialog
+    parent.document.getElementById("deletecalendarform").action = "/me/c/"+name;
+    parent.document.getElementById("deletecalendarform").href = "/me/c/"+name;
+    }
+
+function changecreateForm(){
+  var item = document.getElementById("createiteminputtyp").value;
+  var user = document.getElementById("mycalendars").contentWindow.document.getElementById("username").textContent;
+  var radiobuttons = document.getElementById("mycalendars").contentWindow.document.getElementsByName("showcalendarradiobuttons");
+  var calendar;
+  for(var i=0;i<radiobuttons.length;i++) {
+    if(radiobuttons[i].checked)
+      calendar = radiobuttons[i].value;
+  }
+  if(item == "calendar"){
+    document.getElementById("createitemform").action = "/me/c";
+  }else
+  document.getElementById("createitemform").action = "/me/api/"+item+"/post/"+calendar;
 }
 
-function setCalendarnameInDeleteCalendar(name) {
-  parent.document.getElementById("deletecalendarcalendarname").textContent =
-    name; //Sets the calendar name of the element in mainPage.html
-  parent.window.location.href = parent.window.location.href + "#deletecalendar"; //Appends #deletecalendar to the url to show the deletecalendar dialog
-  parent.document.getElementById("deletecalendarform").action = "/me/c/" + name;
-  parent.document.getElementById("deletecalendarform").href = "/me/c/" + name;
+function changeCalendar(cal) {y = dateJs.getFullYear();
+  var url_string = parent.document.getElementById("calendarFrame").src;
+  var modified_url_string = url_string.replaceAll(';','&');
+  var url = new URL(modified_url_string);
+  var currentDate = url.searchParams.get("date");
+  parent.document.getElementById("calendarFrame").src = cal +"?mode="+
+  mode +
+  ";period=" +
+  period +
+  ";date=" +
+  currentDate;
+}
+function toggleDateViewAndTimeframeSelect(){
+  if(showDateViewAndTimeframeSelect){
+    document.getElementsByClassName("dateDisplay").item(0).style.display = "none";
+    document.getElementsByClassName("timeToggle").item(0).style.display = "none";
+    showDateViewAndTimeframeSelect = false;
+  }else{
+    document.getElementsByClassName("dateDisplay").item(0).style.display = "block";
+    document.getElementsByClassName("timeToggle").item(0).style.display = "block";
+    showDateViewAndTimeframeSelect = true;
+  }
+
 }

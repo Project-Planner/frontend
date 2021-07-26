@@ -1,3 +1,9 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  color: white;
+}
+
 body {
   background-image: linear-gradient(#1E2125, #EAEBEF);
   background-size: contain;
@@ -8,16 +14,10 @@ body {
 .bg-img {
   width: 100%;
   height: 100%;
-  background-image: url("../ressources/plannet_logo_lightblue.png");
+  background-image: url("/ressources/plannet_logo_lightblue.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-html, body {
-  margin: 0;
-  height: 100%;
-  color: white;
 }
 
 input[type="submit"] {
@@ -25,21 +25,20 @@ input[type="submit"] {
   margin: 3%;
   background-color: #F7BFBF !important;
   margin-top: 5%;
+  font-size: 1.1vw;
 }
 
 h1 {
-  height: 400px;
-  width: 800px;
   text-align: center;
   vertical-align: middle;
   display: flex;
   color: #F7BFBF !important;
-  font-size: 160px;
+  font-size: 16vw;
 }
 
 div.btn {
   position: relative;
   left: 48%;
-  top: 15%;
+  top: 50%;
   width: min-content;
 }

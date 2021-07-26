@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:css="http://www.w3.org/TR/XSL-for-CSS">
+    xmlns="http://www.w3.org/1999/xhtml">
     <xsl:variable name="weekDate" select="'1.1.1970'"/>
     <xsl:variable name="displayMode" select="'calender'"/>
+    <xsl:variable name="calendarID" select="calendar/id/@val"/>
     <!--displayModes: calender/project-->
-    <xsl:output method="XML" encoding="utf-8" indent="yes"/>
+    <xsl:output method="xml" encoding="utf-8" indent="yes"/>
     <xsl:template match="/">
         <html>
             <head>
-                <link rel="stylesheet" href="../css/projectView.css"/>
-                <link rel="stylesheet" href="../css/master.css"/>
+                <link rel="stylesheet" type="text/css" href="/css/projectView.css"/>
+                <link rel="stylesheet" href="/css/master.css"/>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro"/>
+                <script src="/js/editItem.js">
+  </script>
             </head>
             <body>
                 <xsl:variable name="startwithoutzeros">
@@ -64,6 +67,9 @@
                         <xsl:with-param name="endJulian" select="$latestEndJulian"/>
                     </xsl:call-template>
                 </table>
+                <div id ="EditItemView">
+                    <iframe class="editItem" id="editItem" name="editItem"  src="/html/createEntry.html"></iframe>
+                </div>
             </body>
         </html>
     </xsl:template>
@@ -100,11 +106,11 @@
     <xsl:template name="latestEnd">
         <xsl:param name="path"/>
         <xsl:for-each select="$path/appointments/appointment | $path/milestones/milestone | $path/tasks/task | $path/tasks/task/subtasks/subtask">
-            <xsl:sort order="descending" select="substring-after(substring-after(startDate/@val | duedate/@val,'.'),'.')" data-type="number"/>
-            <xsl:sort order="descending" select="substring-before(substring-after(startDate/@val | duedate/@val, '.'), '.')" data-type="number"/>
-            <xsl:sort order="descending" select="substring-before(startDate/@val | duedate/@val, '.')"/>
+            <xsl:sort order="descending" select="substring-after(substring-after(endDate/@val | duedate/@val,'.'),'.')" data-type="number"/>
+            <xsl:sort order="descending" select="substring-before(substring-after(endDate/@val | duedate/@val, '.'), '.')" data-type="number"/>
+            <xsl:sort order="descending" select="substring-before(endDate/@val | duedate/@val, '.')"/>
             <xsl:if test="position() = 1">
-                <xsl:value-of select="startDate/@val | duedate/@val"/>
+                <xsl:value-of select="endDate/@val | duedate/@val"/>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
@@ -132,6 +138,7 @@
                     <xsl:with-param name="name" select="name/@val"/>
                     <xsl:with-param name="startJulian" select="$startJulian"/>
                     <xsl:with-param name="endJulian" select="$endJulian"/>
+                    <xsl:with-param name ="id" select="@id"></xsl:with-param>
                 </xsl:call-template>
             </tr>
         </xsl:for-each>
@@ -141,6 +148,7 @@
         <xsl:param name="name"/>
         <xsl:param name="startJulian"/>
         <xsl:param name="endJulian"/>
+        <xsl:param name="id"/>
         <xsl:variable name="startDivJulian">
             <xsl:call-template name="calculate-julian-day">
                 <xsl:with-param name="date" select="startDate/@val | duedate/@val"/>
@@ -153,6 +161,10 @@
             <xsl:with-param name ="TDCount" select="$offsetToBeginnig"></xsl:with-param>
         </xsl:call-template>
         <td>
+            <xsl:attribute name="onclick">
+                <xsl:variable name="apostrophe">'</xsl:variable>
+                <xsl:value-of select="concat('showEditItemView(',$apostrophe,$id,$apostrophe,',',$apostrophe,$calendarID,$apostrophe,')')"></xsl:value-of>
+            </xsl:attribute>
             <xsl:variable name="type" select="name()"></xsl:variable>
             <xsl:attribute name="class" >
                 <xsl:value-of select="$type"></xsl:value-of>
@@ -161,7 +173,7 @@
             <xsl:attribute name="colspan" >
                 <xsl:value-of select="$length+1"></xsl:value-of>
             </xsl:attribute>
-            <a href="calendar.xml" target="popup" onclick="window.open('calendar.xml','popup','width=600,height=600'); return false;">
+            <a>
                 <xsl:value-of select="$name"></xsl:value-of>
             </a>
         </td>

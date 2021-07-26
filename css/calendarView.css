@@ -36,6 +36,14 @@ body {
   vertical-align: middle;
 }
 
+table {
+  height: 98%;
+  width: 98%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
+}
+
 th {
   background-color: #eaebef;
   border-bottom: 20px solid transparent;
@@ -50,14 +58,6 @@ td {
   border-right: 20px solid transparent;
   border-left: 20px solid transparent;
   text-align: center;
-}
-
-table {
-  height: 98%;
-  width: 98%;
-  border-collapse: collapse;
-  table-layout: fixed;
-  font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
 }
 
 tbody {
@@ -92,12 +92,33 @@ div.daydiv p {
   overflow: auto;
 }
 
+
 .dayEntry {
   width: 20%;
   height: auto;
   font-size: large;
   z-index: 100;
   vertical-align: top;
+
+.background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 15px;
+  background-color: #eaebef;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  justify-content: center;
+  z-index: -100;
+}
+
+.topBar {
+  border-bottom: solid black;
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  z-index: 100;
 }
 
 .leftBar {

@@ -2,6 +2,13 @@ body {
   background: linear-gradient(#1E2125, #EAEBEF) no-repeat center center fixed;
   background-size: cover;
   background-repeat: no-repeat;
+  font-size: 2vw;
+  margin: auto;
+}
+
+h1{
+  font-size: 4vw;
+  margin: auto;
 }
 
 input, button {
@@ -11,14 +18,17 @@ input, button {
   border-width: 1px;
   border-style: solid;
   margin-top: 5%;
+  font-size: 1.1vw;
 }
 
 input[type="submit"] {
   margin: auto;
   width: min-content;
-  margin-top: 5%;
-  margin-right: 5%;
+  margin-top: 7%;
+  margin-right: 7%;
   float: right;
+  font-size: 1.1vw;
+  text-align: center;
 }
 
 div.mainView {
@@ -27,4 +37,11 @@ div.mainView {
   white-space: nowrap;
   width: min-content;
   margin: auto;
+}
+
+div.pwNotMatching {
+  display: none; 
+  color:rgb(187, 0, 0); 
+  font-size: medium; 
+  font-weight: bold;
 }

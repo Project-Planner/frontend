@@ -5,7 +5,6 @@ pre {
   color: white;
   font-size: 1.1vw;
 }
-
 input[type="submit"] {
   background-color: #add3f7;
   font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
@@ -14,7 +13,6 @@ input[type="submit"] {
   border-width: 1px;
   border-style: solid;
 }
-
 h1 {
   font-family: "Pacifico", Arial, Helvetica, sans-serif;
   font-weight: normal;
@@ -30,6 +28,17 @@ h2 {
   font-size: 1.5vw;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+  filter: invert(100%);
+}
+
+#adding {
+  color: black;
+}
+
+/*footer*/
 .footer {
   position: fixed;
   bottom: 0;
@@ -54,23 +63,13 @@ h2 {
 
 .footerBody {
   background: none;
+  overflow: hidden;
 }
-
 div.footer-elements {
   float: right;
-}
-
-a {
-  color: white;
-  text-decoration: none;
-  filter: invert(100%);
 }
 
 footer a:hover {
   color: blue;
   text-decoration: underline;
-}
-
-#adding {
-  color: black;
 }

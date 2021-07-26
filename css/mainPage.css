@@ -1,3 +1,9 @@
+div.logo {
+  float: left;
+  display: inline;
+  width: 20%;
+}
+
 div.logo img {
   display: flex;
   width: 70%;
@@ -54,6 +60,8 @@ div.logo img {
   transition: all 0.25s ease-out;
   filter: invert(0%);
 }
+
+/*delete user*/
 .deleteuser {
   position: absolute;
   width: 100vw;
@@ -115,6 +123,8 @@ div.logo img {
   margin-left: 6vw;
   cursor: pointer;
 }
+
+/*toggle buttons*/
 switch {
   display: flex;
   float: left;
@@ -143,13 +153,7 @@ div.timeToggle * {
   display: inline;
 }
 
-div.logo {
-  float: left;
-  display: inline;
-  width: 20%;
-}
-
-/*Dropdown zu "Meine Kalender"*/
+/*dropdown menu"*/
 .dropbtn {
   border-radius: 50px;
   margin-top: 5vh;
@@ -171,23 +175,8 @@ button.dropbtn {
 .mycalendars {
   border: none;
 }
-/*
-div.dropdown-content {
-  display: none;
-  color: white;
-}
 
-.dropdown-entry * {
-  display: inline;
-  margin-bottom: 20%;
-}
-
-div.dropdown:hover div.dropdown-content {
-  display: inline;
-}*/
-
-/*Suchfeld*/
-
+/*delete calendar*/
 .deletecalendar {
   position: absolute;
   width: 100vw;
@@ -240,6 +229,106 @@ div.dropdown:hover div.dropdown-content {
   cursor: pointer;
 }
 
+/*create items*/
+.createitem {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: gray;
+  margin: 0;
+  top: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+}
+.createitem:target {
+  opacity: 0.8;
+  visibility: visible;
+}
+
+#createitembox {
+  width: 50vw;
+  height: 30vh;
+  margin-left: 25vw;
+  margin-top: 40vh;
+  border: 1px solid white;
+  border-radius: 5px;
+  box-shadow: 0 0 2px white;
+}
+
+#createitemtext {
+  text-align: center;
+  font-weight: 800;
+}
+#createitemfields {
+  margin-top: 5vh;
+  width: 50vw;
+}
+.createitemform {
+  width: 50vw;
+}
+#createitemattributes {
+  display: inline-block;
+  margin-left: 4vw;
+}
+#createitemtyp {
+  font-size: 0.6vw;
+}
+#createiteminputtyp {
+  font-size: 0.6vw;
+}
+#createitemname {
+  margin-top: 1vh;
+  font-size: 0.6vw;
+}
+#createitemdatef {
+  margin-top: 1vh;
+  font-size: 0.6vw;
+}
+#createitemdatet {
+  margin-top: 1vh;
+  font-size: 0.6vw;
+}
+#createitemtimef {
+  margin-top: 1vh;
+  font-size: 0.6vw;
+}
+#createitemtimet {
+  margin-top: 1vh;
+  font-size: 0.6vw;
+}
+#createitemdesc {
+  display: inline-block;
+  font-size: 0.6vw;
+  margin-left: 4vw;
+}
+#createitemdesclabel {
+  vertical-align: top;
+}
+#createitembuttons {
+  display: inline-block;
+  margin-left: 4vw;
+  width: 5vw;
+  vertical-align: top;
+  margin-top: 5vh;
+}
+#createitembuttonyes {
+  width: 4vw;
+  cursor: pointer;
+}
+#createitembuttonno {
+  width: 4vw;
+  cursor: pointer;
+  background-color: #add3f7;
+  font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
+  border-radius: 25pt;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
+  filter: invert(100%);
+}
+
+/*share calendars*/
 .sharecalendar {
   position: absolute;
   width: 100vw;
@@ -279,11 +368,8 @@ div.dropdown:hover div.dropdown-content {
 }
 .sharecalendarform {
   display: inline-block;
-  width: 24vw;
-  margin-left: 14vw;
-}
-#sharecalendarcalnamelabel {
-  display: none;
+  width: 26vw;
+  margin-left: 13vw;
 }
 #sharecalendartextbox {
   margin-left: 0;
@@ -295,10 +381,11 @@ div.dropdown:hover div.dropdown-content {
   border-width: 1px;
   border-style: solid;
   font-size: 0.6vw;
+  opacity: 100%;
 }
 .sharecalendardropdown {
   font-size: 0.6vw;
-  width: 6vw;
+  width: 8vw;
   background-color: #add3f7;
   font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
   border-radius: 25pt;
@@ -308,11 +395,15 @@ div.dropdown:hover div.dropdown-content {
   cursor: pointer;
   margin-left: 4vw;
 }
+#sharecalendardropdown {
+  opacity: 100%;
+}
 #sharecalendarbuttonyes {
   width: 4vw;
   margin-left: 4vw;
   cursor: pointer;
   font-size: 0.6vw;
+  opacity: 100%;
 }
 #sharecalendarbuttonbackdiv {
   margin-top: 3vh;
@@ -323,24 +414,12 @@ div.dropdown:hover div.dropdown-content {
   cursor: pointer;
   font-size: 0.6vw;
   filter: invert(100%);
+  opacity: 100%;
 }
-
-.search p {
-  display: flex;
-}
-
-.search input {
-  display: flex;
-  border: solid black 1px;
-  border-radius: 50px;
-  max-width: 10vw;
-}
-
 .add a {
   display: flex;
   margin-left: 0, 5%;
 }
-
 iframe.calendarView {
   width: 82%;
   height: 85%;
@@ -574,6 +653,7 @@ input:checked + .slider:before {
   }
 }
 
+/*for entries*/
 .entry {
   white-space: pre-line;
 }

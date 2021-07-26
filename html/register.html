@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
-    <link rel="stylesheet" href="../css/login.css" />
-    <link rel="stylesheet" href="../css/master.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/master.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Pacifico"
@@ -16,10 +16,18 @@
     />
 
     <script>
-      //ToDo:
-      //Check if RPassword= Password (JavaScript)
-      //Bot-Protection (ReCaptcha)
-      //Check for valid characters
+      function isValidForm() {
+        document.getElementById("pwNotMatching").style.display="none";
+
+        var pw = document.getElementById("Password").value;
+        var rpw = document.getElementById("RPassword").value; 
+        if (rpw !== pw) {
+          document.getElementById("pwNotMatching").style.display="block";
+          return false;
+        }
+
+        return true; 
+      }
     </script>
   </head>
 
@@ -27,7 +35,7 @@
     <div class="mainView">
       <h1>Plannet</h1>
 
-      <form action="/api/register" method="post">
+      <form action="/api/register" method="post" onsubmit="return isValidForm()">
         <div class="userCol">
           <label for="Username">Username:</label>
           <input
@@ -36,6 +44,7 @@
             name="username"
             maxlength="250"
             pattern="^[-_A-Za-z0-9]+$"
+            title="Es dürfen nur Groß- und Kleinbuchstaben, Ziffern 0-9, und die Sonderzeichen _ - eingegeben werden."
           />
         </div>
 
@@ -53,17 +62,24 @@
           <input
             type="password"
             id="RPassword"
-            name="password"
+            name="repeat_password"
             maxlength="250"
           />
+        </div>
+
+        <div id="pwNotMatching" class="pwNotMatching">
+          <p>Passwörter stimmen nicht überein!</p>
         </div>
 
         <div class="btnCol">
           <input type="submit" value="Register" />
         </div>
       </form>
+      <form action="login.html">
+        <input type="submit" value="Login" />
+      </form>
     </div>
 
-    <iframe class="footerLogin" src="../html/footer.html"></iframe>
+    <iframe class="footerLogin" src="/html/footer.html"></iframe>
   </body>
 </html>

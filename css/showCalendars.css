@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+a {
+  color: white;
+  text-decoration: none;
+  font-size: 6vw;
+}
+
+#username {
+  visibility: hidden;
+  display: none;
+}
+
+/*delete calendar*/
+#confirmdeletecalendar {
+  width: 100vw;
+  height: 100vh;
+  background-color: gray;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 100000;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#confirmdeletecalendar:target {
+  visibility: visible;
+  opacity: 0.8;
+}
+.deletecalendarbox {
+  background-color: #aaaaaa;
+  width: 42vw;
+  height: 10vh;
+  margin: auto;
+  margin-top: 40vh;
+  border-radius: 5px;
+  box-shadow: 0 0 2px black;
+  position: absolute;
+  left: 29vw;
+}
+.deletecalendartext {
+  color: #333333;
+  display: inline;
+  font-size: 1.8vh;
+}
+
+#mycalendars {
+  color: white;
+}
