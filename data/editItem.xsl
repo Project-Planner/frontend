@@ -92,7 +92,6 @@
     <xsl:template name="showNormalview">
         <xsl:for-each select="calendar/items/appointments/appointment  | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
             <xsl:if test="@id = $id">
-                <xsl:value-of select="duetime/@val"></xsl:value-of>
                 <xsl:variable name="ItemType" select="name()"></xsl:variable>
                 <form class="entry" method="post" target="_top">
                     <xsl:attribute name="action">
