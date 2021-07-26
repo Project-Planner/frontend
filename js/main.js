@@ -192,7 +192,6 @@ function setVisibilityTrue() {
     document.getElementById("dropdown-content").style.display = "none";
     showCalendars = true;
   }
-    
 }
 
 function setCalendarnameToShare(name){

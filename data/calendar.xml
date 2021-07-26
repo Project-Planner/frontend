@@ -38,12 +38,36 @@
                 <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
             </appointment>
         </appointments>
-        <milestones>
-            <milestone id="1224-34-2322342-42-24-24">
-                <name val="somename"/>
-                <duedate val="1.5.2021"/>
+        <milestones>s
+            <milestone id="1">
+                <name val="Test 1"/>
+                <duedate val="5.7.2021"/>
+                <duetime val="05:35"/>
+            </milestone>
+            <milestone id="1">
+                <name val="Test 2"/>
+                <duedate val="5.7.2021"/>
+                <duetime val="06:35"/>
+            </milestone>
+            <milestone id="1">
+                <name val="Test 3"/>
+                <duedate val="5.7.2021"/>
+                <duetime val="00:01"/>
+            </milestone>
+            <milestone id="2">
+                <name val="milestone5"/>
+                <duedate val="1.7.2021"/>
                 <duetime val="5:34"/>
-                <desc>Some Milestone</desc>
+            </milestone>
+            <milestone id="3">
+                <name val="milestone6"/>
+                <duedate val="15.7.2021"/>
+                <duetime val="5:34"/>
+            </milestone>
+            <milestone id="3">
+                <name val="milestone6"/>
+                <duedate val="05.07.2021"/>
+                <duetime val="16:17"/>
             </milestone>
             <milestone id="1224-34-2322342-42-24-24">
                 <name val="somename"/>
