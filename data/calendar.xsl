@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-  <xsl:variable name="period" select="'day'"/>
-  <xsl:variable name="date" select="'5.7.2021'"/>
 
   <xsl:template match="/">
     <html>
@@ -488,6 +486,9 @@
 
           <xsl:if test="$tableHourVal = $hourVal">
             <div class="dayEntry milestonesBackground" style="{concat('height:', $end - $hourVal, 'vh;')}">
+            <xsl:attribute name="style">
+              <xsl:value-of select="concat('height:', $end - $hourVal, 'vh;')"/>
+            </xsl:attribute>
               <p class="content milestonesBackground"> <xsl:value-of select="name/@val"/> </p>
             </div>
           </xsl:if>
@@ -924,6 +925,5 @@
     <xsl:param name="time"/>
     <xsl:value-of select="substring-before($time,':')"/>
   </xsl:template>
-
 
 </xsl:stylesheet>
