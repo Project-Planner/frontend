@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
+  <xsl:variable name="calendarID" select="calendar/id/@val"/>
+  <xsl:variable name="period" select="'day'"/>
+  <xsl:variable name="date" select="'1.6.2021'"/>
   <xsl:template match="/">
     <html>
+    <script src="/js/editItem.js"></script>
       <head>
         <link rel="stylesheet" href="/css/calendarView.css"/>
       </head>
@@ -19,6 +22,9 @@
             <xsl:call-template name="monthCalendar"/>
           </xsl:when>
         </xsl:choose>
+        <div id ="EditItemView">
+        <iframe class="editItem" id="editItem" name="editItem"  src="/html/createEntry.html"></iframe>
+      </div>
       </body>
     </html>
   </xsl:template>
@@ -421,10 +427,16 @@
               <xsl:with-param name="time" select="$tableVal"/>
             </xsl:call-template>
           </xsl:variable>
-
+        
           <xsl:if test="$tableHourVal = $hourVal">
-            <div class="dayEntry milestonesBackground" style="{concat('height:', $hourVal, 'vh;')}">
-              <p class="content milestonesBackground"> <xsl:value-of select="name/@val"/> </p>
+            <xsl:variable name="id" select="@id"/>
+            <xsl:variable name="apostrophe">'</xsl:variable>
+            <xsl:attribute name="onclick">
+              <xsl:value-of select="concat('showEditItemView(',$apostrophe,$id,$apostrophe,',',$apostrophe,$calendarID,$apostrophe,')')"></xsl:value-of>
+            </xsl:attribute>
+            <div class="milestone dayEntry" style="{concat('margin-top:', $hourVal ,'%;')}">
+              <p> <xsl:value-of select="name/@val"/> </p>
+              <p> <xsl:value-of select="duedate/@val"/> </p>
             </div>
           </xsl:if>
         </xsl:if>
@@ -434,7 +446,7 @@
     <xsl:for-each select="calendar/items/tasks/task">
       <xsl:sort select="startTime/@val" data-type="number"/>
         <xsl:if test="startDate/@val=$date">
-        
+      
           <xsl:variable name="hourVal">
             <xsl:call-template name="getHours">
               <xsl:with-param name="time" select="startTime/@val"/>
@@ -454,10 +466,17 @@
           </xsl:variable>
 
           <xsl:if test="$tableHourVal = $hourVal">
-            <div class="dayEntry milestonesBackground" style="{concat('height:', $end - $hourVal, 'vh;')}">
-              <p class="content"> <xsl:value-of select="name/@val"/> </p>
-            </div>
+          <xsl:variable name="id" select="@id"/>
+          <xsl:variable name="apostrophe">'</xsl:variable>
+          <div class="task dayEntry" style="{concat('margin-top:', $end - $hourVal,'%;')}">
+          <xsl:attribute name="onclick">
+            <xsl:value-of select="concat('showEditItemView(',$apostrophe,$id,$apostrophe,',',$apostrophe,$calendarID,$apostrophe,')')"></xsl:value-of>
+          </xsl:attribute>
+          <p> <xsl:value-of select="name/@val"/> </p>
+          <p> <xsl:value-of select="startDate/@val"/> </p>
+          </div>
           </xsl:if>
+
         </xsl:if>
     </xsl:for-each>
 
@@ -485,12 +504,15 @@
           </xsl:variable>
 
           <xsl:if test="$tableHourVal = $hourVal">
-            <div class="dayEntry milestonesBackground" style="{concat('height:', $end - $hourVal, 'vh;')}">
-            <xsl:attribute name="style">
-              <xsl:value-of select="concat('height:', $end - $hourVal, 'vh;')"/>
-            </xsl:attribute>
-              <p class="content milestonesBackground"> <xsl:value-of select="name/@val"/> </p>
-            </div>
+          <xsl:variable name="id" select="@id"/>
+          <xsl:variable name="apostrophe">'</xsl:variable>
+          <div class="milestone dayEntry" style="{concat('margin-top:',  $end - $hourVal ,'%;')}">
+          <xsl:attribute name="onclick">
+            <xsl:value-of select="concat('showEditItemView(',$apostrophe,$id,$apostrophe,',',$apostrophe,$calendarID,$apostrophe,')')"></xsl:value-of>
+          </xsl:attribute>
+          <p> <xsl:value-of select="name/@val"/> </p>
+          <p> <xsl:value-of select="startDate/@val"/> </p>
+          </div>
           </xsl:if>
         </xsl:if>
     </xsl:for-each>
@@ -530,17 +552,18 @@
 
         <xsl:if test="$check &lt; 6">
           <xsl:if test="$check >=0">
+            <xsl:variable name="id" select="@id"/>
+            <xsl:variable name="apostrophe">'</xsl:variable>
             <div class="milestone">
+            <xsl:attribute name="onclick">
+                <xsl:value-of select="concat('showEditItemView(',$apostrophe,$id,$apostrophe,',',$apostrophe,$calendarID,$apostrophe,')')"></xsl:value-of>
+            </xsl:attribute>
               <p>
                 <xsl:value-of select="name/@val"/>
               </p>
               <p>
                 <xsl:value-of select="duedate/@val"/>
               </p>
-              <!-- <p>
-                <xsl:value-of select="duetime/@val"/>
-                Uhr
-              </p> -->
             </div>
           </xsl:if>
         </xsl:if>
@@ -574,20 +597,18 @@
 
         <xsl:if test="$check &lt; 6">
           <xsl:if test="$check >=0">
+            <xsl:variable name="id" select="@id"/>
+            <xsl:variable name="apostrophe">'</xsl:variable>
             <div class="task">
+            <xsl:attribute name="onclick">
+                <xsl:value-of select="concat('showEditItemView(',$apostrophe,$id,$apostrophe,',',$apostrophe,$calendarID,$apostrophe,')')"></xsl:value-of>
+            </xsl:attribute>
               <p>
                 <xsl:value-of select="name/@val"/>
               </p>
               <p>
                 <xsl:value-of select="duedate/@val"/>
               </p>
-              <!-- <p>
-                <xsl:value-of select="duetime/@val"/>
-    Uhr
-              </p>
-              <p>
-                <xsl:value-of select="desc"/>
-              </p> -->
             </div>
           </xsl:if>
         </xsl:if>
@@ -621,20 +642,18 @@
 
         <xsl:if test="$check &lt; 6">
           <xsl:if test="$check >=0">
+            <xsl:variable name="id" select="@id"/>
+            <xsl:variable name="apostrophe">'</xsl:variable>
             <div class="appointment">
+            <xsl:attribute name="onclick">
+                <xsl:value-of select="concat('showEditItemView(',$apostrophe,$id,$apostrophe,',',$apostrophe,$calendarID,$apostrophe,')')"></xsl:value-of>
+            </xsl:attribute>
               <p>
                 <xsl:value-of select="name/@val"/>
               </p>
               <p>
                 <xsl:value-of select="startDate/@val"/>
               </p>
-              <!-- <p>
-                <xsl:value-of select="startTime/@val"/>
-    Uhr
-              </p>
-              <p>
-                <xsl:value-of select="desc"/>
-              </p> -->
             </div>
           </xsl:if>
         </xsl:if>
@@ -660,7 +679,7 @@
 
       <xsl:variable name="dayOfDate">
         <xsl:call-template name="getDay">
-          <xsl:with-param name="date" select="duedate/@val"/>
+            <xsl:with-param name="date" select="duedate/@val"/>
         </xsl:call-template>
       </xsl:variable>
 
@@ -689,17 +708,15 @@
 
         <xsl:if test="$check &lt; ($i - 1 ) *7 + $currentMonthDay">
           <xsl:if test="$check >= ($i - 2 ) * 7 + $currentMonthDay">
+            <xsl:variable name="id" select="@id"/>
+            <xsl:variable name="apostrophe">'</xsl:variable>
             <div class="milestone">
+            <xsl:attribute name="onclick">
+                <xsl:value-of select="concat('showEditItemView(',$apostrophe,$id,$apostrophe,',',$apostrophe,$calendarID,$apostrophe,')')"></xsl:value-of>
+            </xsl:attribute>
               <p>
                 <xsl:value-of select="name/@val"/>
               </p>
-              <p>
-                <xsl:value-of select="duedate/@val"/>
-              </p>
-              <!-- <p>
-                <xsl:value-of select="duetime/@val"/>
-    Uhr
-              </p> -->
             </div>
           </xsl:if>
         </xsl:if>
@@ -739,17 +756,15 @@
         <xsl:variable name="check" select="$currentDateInt - $currentMonthInt"/>
         <xsl:if test="$check &lt; ($i - 1 )  *7 + $currentMonthDay">
           <xsl:if test="$check >= ($i - 2 ) * 7 + $currentMonthDay">
+           <xsl:variable name="id" select="@id"/>
+            <xsl:variable name="apostrophe">'</xsl:variable>
             <div class="appointment">
+            <xsl:attribute name="onclick">
+                <xsl:value-of select="concat('showEditItemView(',$apostrophe,$id,$apostrophe,',',$apostrophe,$calendarID,$apostrophe,')')"></xsl:value-of>
+            </xsl:attribute>
               <p>
                 <xsl:value-of select="name/@val"/>
               </p>
-              <p>
-                <xsl:value-of select="startDate/@val"/>
-              </p>
-              <!-- <p>
-                <xsl:value-of select="duetime/@val"/>
-    Uhr
-              </p> -->
             </div>
           </xsl:if>
         </xsl:if> 
@@ -789,17 +804,15 @@
 
         <xsl:if test="$check &lt; ($i - 1 ) *7 + $currentMonthDay">
           <xsl:if test="$check >= ($i - 2 ) * 7 +$currentMonthDay">
+            <xsl:variable name="id" select="@id"/>
+            <xsl:variable name="apostrophe">'</xsl:variable>
             <div class="task">
+            <xsl:attribute name="onclick">
+                <xsl:value-of select="concat('showEditItemView(',$apostrophe,$id,$apostrophe,',',$apostrophe,$calendarID,$apostrophe,')')"></xsl:value-of>
+            </xsl:attribute>
               <p>
                 <xsl:value-of select="name/@val"/>
               </p>
-              <p>
-                <xsl:value-of select="duedate/@val"/>
-              </p>
-              <!-- <p>
-                <xsl:value-of select="duetime/@val"/>
-              Uhr
-              </p> -->
             </div>
           </xsl:if>
         </xsl:if>

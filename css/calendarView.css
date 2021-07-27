@@ -4,6 +4,7 @@ body {
 
 .milestone {
   background-color: green;
+  width: 20px;
 }
 
 .appointment {
@@ -92,14 +93,12 @@ div.daydiv p {
   overflow: auto;
 }
 
-
 .dayEntry {
   width: 20%;
   height: auto;
   font-size: large;
   z-index: 100;
   vertical-align: top;
-
 }
 
 .background {
@@ -199,4 +198,5 @@ div.daydiv p {
 .anchor {
   vertical-align: top;
   height: 1vh;
+  width: max-content;
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="projectView.xsl"?>
+<?xml-stylesheet type="text/xsl" href="calendar.xsl"?>
 <calendar>
     <name val="Birthday_Calendar" />
     <owner val="ownerName" />
@@ -19,16 +19,16 @@
     <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
     <items>
         <appointments>
-            <appointment id="1224-34-2322342-42-24-24">
+            <appointment id="1234-34-2322342-42-24-24">
                 <name val="somename that works"/>
-                <startDate val="1.4.2021"/>
+                <startDate val="1.6.2021"/>
                 <startTime val="4:12" />
                 <endTime val="5:12" />
                 <endDate val="7.4.2021" />
                 <desc>Lorem Ipsum.</desc>
                 <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
             </appointment>
-            <appointment id="1224-34-2322342-42-24-24">
+            <appointment id="1227-34-2322442-42-24-24">
                 <name val="somename that also works"/>
                 <startDate val="1.4.2021"/>
                 <startTime val="4:12" />
@@ -38,51 +38,36 @@
                 <!-- Has to be limited to 250 chars (in Frontend and Backend) -->
             </appointment>
         </appointments>
-        <milestones>s
-            <milestone id="1">
-                <name val="Test 1"/>
-                <duedate val="5.7.2021"/>
-                <duetime val="05:35"/>
-            </milestone>
-            <milestone id="1">
-                <name val="Test 2"/>
-                <duedate val="5.7.2021"/>
-                <duetime val="06:35"/>
-            </milestone>
-            <milestone id="1">
-                <name val="Test 3"/>
-                <duedate val="5.7.2021"/>
-                <duetime val="00:01"/>
-            </milestone>
-            <milestone id="2">
-                <name val="milestone5"/>
-                <duedate val="1.7.2021"/>
-                <duetime val="5:34"/>
+        <milestones>
+            <milestone id="1223-34-2322345-42-24-24">
+                <name val="somename"/>
+                <duedate val="1.5.2021"/>
+                <duetime val="05:34"/>
             </milestone>
             <milestone id="3">
                 <name val="milestone6"/>
                 <duedate val="15.7.2021"/>
                 <duetime val="5:34"/>
             </milestone>
-            <milestone id="3">
+            <milestone id="4">
                 <name val="milestone6"/>
                 <duedate val="05.07.2021"/>
                 <duetime val="16:17"/>
             </milestone>
-            <milestone id="1224-34-2322342-42-24-24">
+            <milestone id="1224-34-2322342-42-74-24">
                 <name val="somename"/>
                 <duedate val="1.6.2021"/>
-                <duetime val="5:34"/>
+                <duetime val="05:34"/>
                 <desc>Some Milestone</desc>
             </milestone>
         </milestones>
         <tasks>
-            <task id="1224-34-2322342-42-24-24">
+            <task id="1223-34-2322342-42-24-28">
                 <name val="name"/>
                 <milestone id="id of the milestone"/>
                 <startDate val="1.7.2021"/>
                 <startTime val="4:12" />
-                <duedate val="2.8.2021"/>
+                <duedate val="1.6.2021"/>
                 <duetime val="5:34"/>
                 <desc>Dolor</desc>
                 <subtasks>
@@ -104,7 +89,7 @@
                     </subtask>
                 </subtasks>
             </task>
-            <task id="1224-34-2322342-42-24-24">
+            <task id="1224-34-2322342-42-24-94">
                 <name val="name"/>
                 <milestone id="id of the milestone"/>
                 <startDate val="1.10.2021"/>
