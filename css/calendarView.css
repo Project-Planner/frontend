@@ -4,7 +4,6 @@ body {
 
 .milestone {
   background-color: green;
-  width: 20px;
 }
 
 .appointment {
@@ -199,4 +198,22 @@ div.daydiv p {
   vertical-align: top;
   height: 1vh;
   width: max-content;
+}
+
+.EditItemView {
+  display: none;
+}
+
+#EditItemView {
+  display: none;
+  position: fixed;
+  top: 40%;
+  left: 40%;
+  height: 40%;
+  width: 20%;
+}
+
+iframe {
+  height: 100%;
+  width: 100%;
 }
