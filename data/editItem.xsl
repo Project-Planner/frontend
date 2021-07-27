@@ -182,7 +182,7 @@
                             </textarea>
                         </div>
                         <div>
-                            <input type="submit" name="" value="Save"/>
+                            <input type="submit" name="" value="Speichern"/>
                         </div>
                     </div>
                 </form>
@@ -193,7 +193,7 @@
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="DELETE"></input>
                     <div>
-                        <input type="submit" name="" value="Delete"/>
+                        <input type="submit" name="" value="Löschen"/>
                     </div>
                 </form>
             </xsl:if>
@@ -258,7 +258,7 @@
                         </textarea>
                     </div>
                     <div>
-                        <input type="submit" name="" value="Save" onclick="parent.hideEditItemView()"/>
+                        <input type="submit" name="" value="Speichern" onclick="parent.hideEditItemView()"/>
                     </div>
                 </form>
                 <form class="entry" method="post" target="_top">
@@ -267,7 +267,7 @@
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="DELETE"></input>
                     <div>
-                        <input type="submit" name="" value="Delete"/>
+                        <input type="submit" name="" value="Löschen"/>
                     </div>
                 </form>
             </xsl:if>
