@@ -200,10 +200,6 @@ div.daydiv p {
   width: max-content;
 }
 
-.EditItemView {
-  display: none;
-}
-
 #EditItemView {
   display: none;
   position: fixed;
