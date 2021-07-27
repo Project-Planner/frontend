@@ -50,11 +50,6 @@ td {
   border-style: solid;
 }
 
-/*edit item*/
-.EditItemView {
-  display: none;
-}
-
 #EditItemView {
   display: none;
   position: fixed;
