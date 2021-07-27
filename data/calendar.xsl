@@ -2,8 +2,6 @@
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <xsl:variable name="calendarID" select="calendar/id/@val"/>
-  <xsl:variable name="period" select="'day'"/>
-  <xsl:variable name="date" select="'1.6.2021'"/>
   <xsl:template match="/">
     <html>
     <script src="/js/editItem.js"></script>
@@ -408,6 +406,7 @@
   </xsl:template>
 
   <xsl:template name="insertDay">
+  <!--ToDo: Onclick doesnt workt -->
     <xsl:param name="date"/>
     <xsl:param name="tableVal"/>
 
