@@ -235,11 +235,13 @@ function changeCalendar(cal) {y = dateJs.getFullYear();
   var url_string = parent.document.getElementById("calendarFrame").src;
   var modified_url_string = url_string.replaceAll(';','&');
   var url = new URL(modified_url_string);
+  var currentMode = url.searchParams.get("mode");
+  var currentPeriod = url.searchParams.get("period");
   var currentDate = url.searchParams.get("date");
   parent.document.getElementById("calendarFrame").src = cal +"?mode="+
-  mode +
+  currentMode +
   ";period=" +
-  period +
+  currentPeriod +
   ";date=" +
   currentDate;
 }
