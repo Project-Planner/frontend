@@ -46,7 +46,7 @@ table {
 
 th {
   background-color: #eaebef;
-  border-bottom: 20px solid transparent;
+  border-bottom: 1px solid black;
   border-bottom-width: 50%;
   border-spacing: 20px;
   border-left: 20px solid transparent;
@@ -55,8 +55,8 @@ th {
 
 td {
   height: 100%;
-  border-right: 20px solid transparent;
-  border-left: 20px solid transparent;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
   text-align: center;
 }
 
