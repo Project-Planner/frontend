@@ -17,12 +17,10 @@
             <body>
                 <xsl:variable name="type">
                     <xsl:call-template name="getType">
-                       
                     </xsl:call-template>
                 </xsl:variable>
                 <xsl:if test="not ( $type = 'milestone' )">
                     <xsl:call-template name="showNormalview">
-                        
                     </xsl:call-template>
                 </xsl:if>
                 <xsl:if test="$type = 'milestone'">
@@ -32,6 +30,7 @@
             </body>
         </html>
     </xsl:template>
+    <!-- formats to date for the dateInputField -->
     <xsl:template name = "formatDate">
         <xsl:param name="date"></xsl:param>
         <xsl:variable name = "dateWithZeros">
@@ -48,6 +47,7 @@
         <xsl:text>-</xsl:text>
         <xsl:value-of select="$day"/>
     </xsl:template>
+    <!-- Adds missing Zeros to date, to ensure correct sorting order -->
     <xsl:template name="addZerosToDate">
         <xsl:param name="date"></xsl:param>
         <xsl:choose>
@@ -82,6 +82,7 @@
             </xsl:when>
         </xsl:choose>
     </xsl:template>
+    <!-- returns the type of an item (milestone, task, ...) -->
     <xsl:template name="getType">
         <xsl:for-each select="calendar/items/appointments/appointment | calendar/items/milestones/milestone | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
             <xsl:if test="@id = $id">
@@ -89,12 +90,14 @@
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
+    <!-- shows view for appointment, task and subtasks -->
     <xsl:template name="showNormalview">
         <xsl:for-each select="calendar/items/appointments/appointment  | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
             <xsl:if test="@id = $id">
                 <xsl:variable name="ItemType" select="name()"></xsl:variable>
                 <form class="entry" method="post" target="_top">
                     <xsl:attribute name="action">
+                    <!-- link to backend for saving  -->
                         <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="PUT"></input>
@@ -189,6 +192,7 @@
                 <xsl:variable name="Itemtype" select="name()"></xsl:variable>
                 <form class="entry" method="post" target="_top">
                     <xsl:attribute name="action">
+                    <!-- link to backend for deleting -->
                         <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="DELETE"></input>
@@ -199,6 +203,7 @@
             </xsl:if>
         </xsl:for-each>
     </xsl:template>
+    <!-- shows view for milestone, since it only has one date and one time -->
     <xsl:template name="showMilestoneView">
         <xsl:for-each select=" calendar/items/milestones/milestone">
             <xsl:if test="@id = $id">
