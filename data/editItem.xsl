@@ -218,7 +218,7 @@
                     </div>
                     <div>
                         <label for="duedate">Datum:</label>
-                        <input type="date" id="duedate" name="duedate">
+                        <input type="date" id="duedate" name="endDate">
                             <xsl:variable name="date">
                                 <xsl:value-of select="duedate/@val"></xsl:value-of>
                             </xsl:variable>
@@ -234,7 +234,7 @@
                     </div>
                     <div>
                         <label for="duetime">Zeit:</label>
-                        <input type="time" id="duetime" name="duetime" >
+                        <input type="time" id="duetime" name="endTime" >
                             <xsl:attribute name="value">
                                 <xsl:variable name="timeWithoutZeros">
                                     <xsl:value-of select="duetime/@val"></xsl:value-of>
