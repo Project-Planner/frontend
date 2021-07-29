@@ -1,21 +1,27 @@
 body {
   height: 100%;
+  background-color: #5a5c5f;
+  overflow: hidden;
 }
 
 .milestone {
   background-color: green;
+  border-radius: 10px;
 }
 
 .appointment {
   background-color: red;
+  border-radius: 10px;
 }
 
 .subtask {
   background-color: blue;
+  border-radius: 10px;
 }
 
 .task {
   background-color: purple;
+  border-radius: 10px;
 }
 
 .daydiv {
@@ -26,9 +32,7 @@ body {
 
 .month {
   height: 20%;
-  border-style: solid;
-  border-color: black;
-  border-radius: 20px;
+  background-color: #eaebef;
 }
 
 .dayTr {
@@ -39,7 +43,7 @@ body {
 table {
   height: 98%;
   width: 98%;
-  border-collapse: collapse;
+  border-collapse: separate;
   table-layout: fixed;
   font-family: "Source Code Pro", Arial, Helvetica, sans-serif;
 }
@@ -70,8 +74,6 @@ tbody {
   justify-content: center;
   align-items: center;
   display: flex;
-  border-radius: 15px;
-  background-color: #eaebef;
 }
 
 div.daydiv p {
