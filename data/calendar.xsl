@@ -866,7 +866,7 @@
     <xsl:param name="j"/>
    
     <xsl:if test="$i &lt;= $row">
-    <tbody class="limitDiv">
+    
       <tr> 
         <xsl:call-template name="createRows">
           <xsl:with-param name="col" select="$col"/>
@@ -874,7 +874,7 @@
           <xsl:with-param name="i" select="$i"/>
         </xsl:call-template>
       </tr>
-    </tbody>  
+
     </xsl:if>
 
     <xsl:if test="$i &lt;= $row">
