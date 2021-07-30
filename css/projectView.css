@@ -25,6 +25,7 @@ body {
   border: 1px solid black;
   border-radius: 5px;
   border-collapse: separate;
+  cursor: pointer;
 }
 
 tr th {
@@ -62,4 +63,5 @@ td {
 iframe {
   height: 100%;
   width: 100%;
+  border-radius: 10px;
 }

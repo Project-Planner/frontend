@@ -7,21 +7,25 @@ body {
 .milestone {
   background-color: green;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .appointment {
   background-color: red;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .subtask {
   background-color: blue;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .task {
   background-color: purple;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .daydiv {
@@ -214,4 +218,5 @@ div.daydiv p {
 iframe {
   height: 100%;
   width: 100%;
+  border-radius: 10px;
 }
