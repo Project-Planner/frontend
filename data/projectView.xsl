@@ -83,7 +83,7 @@
             </body>
         </html>
     </xsl:template>
-    <xsl:template name="IsCalendarEmpty">
+    <xsl:template name="isCalendarEmpty">
         <xsl:for-each select="calendar/items">
             <xsl:if test="appointments/appointment | milestones/milestone | tasks/task">
                 <xsl:value-of select="'false'"/>
