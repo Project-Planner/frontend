@@ -17,64 +17,76 @@
   </script>
             </head>
             <body>
-                <xsl:variable name="startwithoutzeros">
-                    <xsl:call-template name="erliestStart">
-                        <xsl:with-param name="path" select="calendar/items"/>
-                    </xsl:call-template>
+                <xsl:variable name="isEmpty">
+                    <xsl:call-template name="IsCalendarEmpty"/>
                 </xsl:variable>
-                <xsl:variable name="start">
-                <!-- adds zeros to date if necessary -->
-                    <xsl:choose>
-                        <xsl:when test="string-length(substring-before($startwithoutzeros, '.'))=1 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.'))=1">
-                            <xsl:value-of select="concat(0,substring-before($startwithoutzeros, '.'),'.',0,substring-after($startwithoutzeros, '.'))"/>
-                        </xsl:when>
-                        <xsl:when test="string-length(substring-before($startwithoutzeros, '.')) = 1 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.')) = 2">
-                            <xsl:value-of select="concat(0, $startwithoutzeros)"/>
-                        </xsl:when>
-                        <xsl:when test="string-length(substring-before($startwithoutzeros, '.')) = 2 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.')) = 1">
-                            <xsl:value-of select="concat(substring-before($startwithoutzeros, '.'), '.',0,substring-after($startwithoutzeros, '.'))"/>
-                        </xsl:when>
-                        <xsl:when test="string-length(substring-before($startwithoutzeros, '.')) = 2 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.')) = 2">
-                            <xsl:value-of select="$startwithoutzeros"/>
-                        </xsl:when>
-                    </xsl:choose>
-                </xsl:variable>
-                <xsl:variable name="end">
-                    <xsl:call-template name="latestEnd">
-                        <xsl:with-param name="path" select="calendar/items"/>
-                    </xsl:call-template>
-                </xsl:variable>
-                <xsl:variable name="earliestStartJulian">
-                    <xsl:call-template name="calculate-julian-day">
-                        <xsl:with-param name="date" select="$start"/>
-                    </xsl:call-template>
-                </xsl:variable>
-                <xsl:variable name="latestEndJulian">
-                    <xsl:call-template name="calculate-julian-day">
-                        <xsl:with-param name="date" select="$end"/>
-                    </xsl:call-template>
-                </xsl:variable>
-                <table>
-                    <tr>
-                        <xsl:call-template name="DrawHeadDate">
-                            <xsl:with-param name="iterationtimes" select="$latestEndJulian - $earliestStartJulian"/>
-                            <xsl:with-param name="date" select="$start"/>
-                        </xsl:call-template>
-                    </tr>
-                    <xsl:call-template name="DrawDivsInLines">
-                        <xsl:with-param name="path" select="calendar/items"/>
-                        <xsl:with-param name="startJulian" select="$earliestStartJulian"/>
-                        <xsl:with-param name="endJulian" select="$latestEndJulian"/>
-                    </xsl:call-template>
-                </table>
-                <div id ="EditItemView">
-                    <iframe class="editItem" id="editItem" name="editItem"  src="/html/createEntry.html"></iframe>
-                </div>
+                <xsl:choose>
+                    <xsl:when test="$isEmpty = 'false'">
+                        <xsl:variable name="start">
+                            <!-- adds zeros to date if necessary -->
+                            <xsl:choose>
+                                <xsl:when test="string-length(substring-before($startwithoutzeros, '.'))=1 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.'))=1">
+                                    <xsl:value-of select="concat(0,substring-before($startwithoutzeros, '.'),'.',0,substring-after($startwithoutzeros, '.'))"/>
+                                </xsl:when>
+                                <xsl:when test="string-length(substring-before($startwithoutzeros, '.')) = 1 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.')) = 2">
+                                    <xsl:value-of select="concat(0, $startwithoutzeros)"/>
+                                </xsl:when>
+                                <xsl:when test="string-length(substring-before($startwithoutzeros, '.')) = 2 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.')) = 1">
+                                    <xsl:value-of select="concat(substring-before($startwithoutzeros, '.'), '.',0,substring-after($startwithoutzeros, '.'))"/>
+                                </xsl:when>
+                                <xsl:when test="string-length(substring-before($startwithoutzeros, '.')) = 2 and string-length(substring-before(substring-after($startwithoutzeros, '.'), '.')) = 2">
+                                    <xsl:value-of select="$startwithoutzeros"/>
+                                </xsl:when>
+                            </xsl:choose>
+                        </xsl:variable>
+                        <xsl:variable name="end">
+                            <xsl:call-template name="latestEnd">
+                                <xsl:with-param name="path" select="calendar/items"/>
+                            </xsl:call-template>
+                        </xsl:variable>
+                        <xsl:variable name="earliestStartJulian">
+                            <xsl:call-template name="calculate-julian-day">
+                                <xsl:with-param name="date" select="$start"/>
+                            </xsl:call-template>
+                        </xsl:variable>
+                        <xsl:variable name="latestEndJulian">
+                            <xsl:call-template name="calculate-julian-day">
+                                <xsl:with-param name="date" select="$end"/>
+                            </xsl:call-template>
+                        </xsl:variable>
+                        <table>
+                            <tr>
+                                <xsl:call-template name="DrawHeadDate">
+                                    <xsl:with-param name="iterationtimes" select="$latestEndJulian - $earliestStartJulian"/>
+                                    <xsl:with-param name="date" select="$start"/>
+                                </xsl:call-template>
+                            </tr>
+                            <xsl:call-template name="DrawDivsInLines">
+                                <xsl:with-param name="path" select="calendar/items"/>
+                                <xsl:with-param name="startJulian" select="$earliestStartJulian"/>
+                                <xsl:with-param name="endJulian" select="$latestEndJulian"/>
+                            </xsl:call-template>
+                        </table>
+                        <div id ="EditItemView">
+                            <iframe class="editItem" id="editItem" name="editItem"  src="/html/createEntry.html"></iframe>
+                        </div>
+                    </xsl:when>
+                    <xsl:otherwise>
+                    Dieser Kalender enthält keine Elemente
+                    </xsl:otherwise>
+                </xsl:choose>
             </body>
         </html>
     </xsl:template>
+    <xsl:template name="IsCalendarEmpty">
+        <xsl:for-each select="calendar/items">
+            <xsl:if test="appointments/appointment | milestones/milestone | tasks/task">
+                <xsl:value-of select="'false'"/>
+            </xsl:if>
+        </xsl:for-each>
+    </xsl:template>
     <xsl:template name="DrawHeadDate">
-    <!-- recursivly draws all dates from a given start date -->
+        <!-- recursivly draws all dates from a given start date -->
         <xsl:param name="iterationtimes"/>
         <xsl:param name="date"/>
         <th>
@@ -94,7 +106,7 @@
         </xsl:if>
     </xsl:template>
     <xsl:template name="erliestStart">
-    <!-- finds the earliest date of all items -->
+        <!-- finds the earliest date of all items -->
         <xsl:param name="path"/>
         <xsl:for-each select="$path/appointments/appointment | $path/milestones/milestone | $path/tasks/task | $path/tasks/task/subtasks/subtask">
             <xsl:sort order="ascending" select="substring-after(substring-after(startDate/@val | duedate/@val,'.'),'.')" data-type="number"/>
@@ -106,7 +118,7 @@
         </xsl:for-each>
     </xsl:template>
     <xsl:template name="latestEnd">
-    <!-- finds the latest date of all items -->
+        <!-- finds the latest date of all items -->
         <xsl:param name="path"/>
         <xsl:for-each select="$path/appointments/appointment | $path/milestones/milestone | $path/tasks/task | $path/tasks/task/subtasks/subtask">
             <xsl:sort order="descending" select="substring-after(substring-after(endDate/@val | duedate/@val,'.'),'.')" data-type="number"/>
@@ -118,7 +130,7 @@
         </xsl:for-each>
     </xsl:template>
     <xsl:template name="DrawDivsInLines">
-    <!-- draws the main table-->
+        <!-- draws the main table-->
         <xsl:param name="path"/>
         <xsl:param name="startJulian"/>
         <xsl:param name="endJulian"/>
@@ -148,7 +160,7 @@
         </xsl:for-each>
     </xsl:template>
     <xsl:template name="drawDivsInOneLine">
-    <!-- draw one line in one row -->
+        <!-- draw one line in one row -->
         <xsl:param name="length"/>
         <xsl:param name="name"/>
         <xsl:param name="startJulian"/>
@@ -188,7 +200,7 @@
         </xsl:call-template>
     </xsl:template>
     <xsl:template name="insertEmptyTD">
-    <!-- generates empty tds to fill before and after an item in the table -->
+        <!-- generates empty tds to fill before and after an item in the table -->
         <xsl:param name="TDCount"/>
         <xsl:if test="$TDCount > 0">
             <td>
@@ -210,7 +222,7 @@
         <xsl:value-of select="$day + floor((153 * $m + 2) div 5) + $y * 365 + floor($y div 4) - floor($y div 100) + floor($y div 400) - 32045"/>
     </xsl:template>
     <xsl:template name="next-day-date">
-    <!-- returns the next date of a given date, used to generate the table header -->
+        <!-- returns the next date of a given date, used to generate the table header -->
         <xsl:param name="date"/>
         <xsl:variable name="old_year" select="substring-after(substring-after($date,'.'),'.')"/>
         <xsl:variable name="old_month" select="substring-before(substring-after($date,'.'),'.')"/>
