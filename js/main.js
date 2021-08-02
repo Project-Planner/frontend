@@ -259,17 +259,17 @@ function toggleDateViewAndTimeframeSelect(){
 }
 function createItemOnChange(selectedObject) {
   var item = selectedObject.value;
-  var l_date_fr = document.getElementById("createitemstartdatelabel");
+  var l_date_to = document.getElementById("createitemenddatelabel");
   var in_date_fr = document.getElementById("createitemdatef");
   var in_date_to = document.getElementById("createitemdatet");
-  var l_time_fr = document.getElementById("createitemstarttimelabel");
+  var l_time_to = document.getElementById("createitemendtimelabel");
   var in_time_fr = document.getElementById("createitemtimef");
   var in_time_to = document.getElementById("createitemtimet");
   var in_desc = document.getElementById("createitemdesc");
   switch(item) {
     case "calendar":
-      l_date_fr.textContent = "Datum von:";
-      l_time_fr.textContent = "Zeit von:";
+      l_date_to.textContent = "Datum bis:";
+      l_time_to.textContent = "Zeit bis:";
       in_date_fr.style.visibility = "hidden";
       in_date_to.style.visibility = "hidden";
       in_time_fr.style.visibility = "hidden";
@@ -277,8 +277,8 @@ function createItemOnChange(selectedObject) {
       in_desc.style.visibility = "hidden";
       break;
     case "tasks":
-      l_date_fr.textContent = "Datum von:";
-      l_time_fr.textContent = "Zeit von:";
+      l_date_to.textContent = "Datum bis:";
+      l_time_to.textContent = "Zeit bis:";
       in_date_fr.style.visibility = "visible";
       in_date_to.style.visibility = "visible";
       in_time_fr.style.visibility = "visible";
@@ -286,8 +286,8 @@ function createItemOnChange(selectedObject) {
       in_desc.style.visibility = "visible";
       break;
     case "appointments":
-      l_date_fr.textContent = "Datum von:";
-      l_time_fr.textContent = "Zeit von:";
+      l_date_to.textContent = "Datum bis:";
+      l_time_to.textContent = "Zeit bis:";
       in_date_fr.style.visibility = "visible";
       in_date_to.style.visibility = "visible";
       in_time_fr.style.visibility = "visible";
@@ -295,12 +295,12 @@ function createItemOnChange(selectedObject) {
       in_desc.style.visibility = "visible";
       break;
     case "milestones":
-      l_date_fr.textContent = "Datum";
-      l_time_fr.textContent = "Zeit:";
-      in_date_fr.style.visibility = "visible";
-      in_date_to.style.visibility = "hidden";
-      in_time_fr.style.visibility = "visible";
-      in_time_to.style.visibility = "hidden";
+      l_date_to.textContent = "Datum:";
+      l_time_to.textContent = "Zeit:";
+      in_date_fr.style.visibility = "hidden";
+      in_date_to.style.visibility = "visible";
+      in_time_fr.style.visibility = "hidden";
+      in_time_to.style.visibility = "visible";
       in_desc.style.visibility = "visible";
       break;
   }
