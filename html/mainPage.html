@@ -92,20 +92,20 @@
           <div id="createitemattributes">
           <div id="createitemtyp">
             <label for="typ" >Typ wählen:</label>
-            <select name="typ" id="createiteminputtyp" >
-              <option value="calendar">Kalender</option>
+            <select name="typ" id="createiteminputtyp" onchange="createItemOnChange(this)">
               <option value="tasks">Aufgabe</option>
+              <option value="calendar">Kalender</option>
               <option value="appointments">Termin</option>
               <option value="milestones">Meilenstein</option>
             </select>
           </div>
           <div id="createitemname"><label for="name" >Name</label>
             <input type="text" id="createiteminputname" name="name" maxlength="250" /></div>
-          <div id="createitemdatef"><label for="startDate" >Datum von:</label>
+          <div id="createitemdatef"><label for="startDate" id="createitemstartdatelabel">Datum von:</label>
             <input type="date" id="createiteminputdatef" name="startDate"  /></div>
           <div id="createitemdatet"><label for="endDate" >Datum bis:</label>
             <input type="date" id="createiteminputdatet" name="endDate"  /></div>
-          <div id="createitemtimef"><label for="startTime" >Zeit von:</label>
+          <div id="createitemtimef"><label for="startTime" id="createitemstarttimelabel">Zeit von:</label>
             <input type="time" id="createiteminputtimef" name="startTime"  /></div>
           <div id="createitemtimet"><label for="endTime" >Zeit bis:</label>
             <input type="time" id="createiteminputtimet" name="endTime" ></div>
