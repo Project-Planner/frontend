@@ -85,6 +85,7 @@
     <!-- returns the type of an item (milestone, task, ...) -->
     <xsl:template name="getType">
         <xsl:for-each select="calendar/items/appointments/appointment | calendar/items/milestones/milestone | calendar/items/tasks/task | calendar/items/tasks/task/subtasks/subtask">
+            <!-- id variable is set by backend -->
             <xsl:if test="@id = $id">
                 <xsl:value-of select="name()"></xsl:value-of>
             </xsl:if>
@@ -97,7 +98,7 @@
                 <xsl:variable name="ItemType" select="name()"></xsl:variable>
                 <form class="entry" method="post" target="_top">
                     <xsl:attribute name="action">
-                    <!-- link to backend for saving  -->
+                        <!-- link to backend for saving  -->
                         <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="PUT"></input>
@@ -192,7 +193,7 @@
                 <xsl:variable name="Itemtype" select="name()"></xsl:variable>
                 <form class="entry" method="post" target="_top">
                     <xsl:attribute name="action">
-                    <!-- link to backend for deleting -->
+                        <!-- link to backend for deleting -->
                         <xsl:value-of select="concat('/me/api/',$ItemType,'s/other/',$calendarID,'/',$id)"></xsl:value-of>
                     </xsl:attribute>
                     <input type="hidden" name="_method" value="DELETE"></input>
